@@ -399,30 +399,6 @@
     border-color:var(--white);
   }
 
-  /* ---------- MELODIC LINE DIVIDER (signature element) ---------- */
-  .melody-divider{
-    width:100%;
-    height:64px;
-    overflow:hidden;
-    display:block;
-  }
-  .melody-divider svg{display:block;width:100%;height:100%;}
-  .melody-divider path{
-    fill:none;
-    stroke:var(--sage);
-    stroke-width:1.4;
-    stroke-dasharray:1400;
-    stroke-dashoffset:1400;
-    transition:stroke-dashoffset 1.8s ease;
-  }
-  .melody-divider.in-view path{stroke-dashoffset:0;}
-  .melody-divider .note{
-    fill:var(--sage-deep);
-    opacity:0;
-    transition:opacity .4s ease 1.4s;
-  }
-  .melody-divider.in-view .note{opacity:1;}
-
   /* ---------- SECTION GENERIC ---------- */
   section{position:relative;}
   .section-pad{padding:120px 0;}
@@ -445,10 +421,10 @@
     display:grid;
     grid-template-columns:0.85fr 1.15fr;
     gap:7vw;
-    align-items:start;
   }
   .about-photo{
-    position:relative;
+    position:sticky;
+    top:118px;
   }
   .about-photo .frame{
     position:relative;
@@ -865,10 +841,32 @@
 
   /* ---------- CONTACT ---------- */
   .contact{
+    position:relative;
     background:var(--ink);
     color:var(--white);
+    overflow:hidden;
+  }
+  .contact-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .contact-bg img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:30% 60%;
+    filter:saturate(0.85) contrast(1.05);
+  }
+  .contact-bg::after{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      linear-gradient(100deg, rgba(8,11,12,0.78) 0%, rgba(8,11,12,0.62) 38%, rgba(8,11,12,0.74) 68%, rgba(8,11,12,0.86) 100%),
+      linear-gradient(180deg, rgba(8,11,12,0.25) 0%, rgba(8,11,12,0.1) 30%, rgba(8,11,12,0.5) 100%);
   }
   .contact-grid{
+    position:relative;
+    z-index:1;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:7vw;
@@ -878,12 +876,18 @@
     line-height:1.1;
     color:var(--white);
     margin-bottom:22px;
+    text-shadow:0 2px 16px rgba(0,0,0,0.3);
+  }
+  .contact h2 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--sage-pale);
   }
   .contact .eyebrow{color:var(--sage);}
   .contact p.lead{
     font-size:15.5px;
     line-height:1.8;
-    color:rgba(255,255,255,0.72);
+    color:rgba(255,255,255,0.82);
     max-width:440px;
     margin-bottom:30px;
   }
@@ -906,9 +910,15 @@
     display:flex;
     flex-direction:column;
     gap:18px;
+    background:rgba(13,16,17,0.42);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:4px;
+    padding:32px;
+    backdrop-filter:blur(6px);
   }
   .contact-form input,
-  .contact-form textarea{
+  .contact-form textarea,
+  .contact-form select{
     background:transparent;
     border:none;
     border-bottom:1px solid rgba(255,255,255,0.28);
@@ -918,12 +928,35 @@
     padding:12px 2px;
     outline:none;
     transition:border-color .3s ease;
+    width:100%;
   }
   .contact-form input::placeholder,
   .contact-form textarea::placeholder{color:rgba(255,255,255,0.4);}
   .contact-form input:focus,
-  .contact-form textarea:focus{border-color:var(--sage);}
-  .contact-form textarea{resize:vertical;min-height:90px;}
+  .contact-form textarea:focus,
+  .contact-form select:focus{border-color:var(--sage);}
+  .contact-form textarea{resize:vertical;min-height:80px;}
+  .contact-form select{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fa191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat:no-repeat;
+    background-position:right 2px center;
+    background-size:16px;
+  }
+  .contact-form select option{color:var(--ink);}
+  .contact-form select:invalid{color:rgba(255,255,255,0.4);}
+  .live-fields{
+    display:none;
+    flex-direction:column;
+    gap:18px;
+    padding:16px 16px 4px;
+    border-left:2px solid var(--sage);
+    background:rgba(127,161,145,0.08);
+  }
+  .live-fields.is-visible{display:flex;}
+  .live-fields input{padding:8px 2px;}
   .contact-form button{
     align-self:flex-start;
     margin-top:6px;
@@ -1039,11 +1072,10 @@
   .reveal.in-view{opacity:1;transform:translateY(0);}
 
   @media (prefers-reduced-motion: reduce){
-    .reveal, .melody-divider path, .melody-divider .note{
+    .reveal{
       transition:none !important;
       opacity:1 !important;
       transform:none !important;
-      stroke-dashoffset:0 !important;
     }
   }
 
@@ -1086,6 +1118,10 @@
     .about-grid,.coach-grid,.contact-grid,.bookings-grid{
       grid-template-columns:1fr;
       gap:40px;
+    }
+    .about-photo{
+      position:static;
+      top:auto;
     }
     .quals-layout{
       grid-template-columns:1fr;
@@ -1180,16 +1216,6 @@
   <div class="scroll-cue"><span class="dash"></span>Scroll</div>
 </section>
 
-<div class="melody-divider" id="divider1">
-  <svg viewBox="0 0 1200 64" preserveAspectRatio="none">
-    <path d="M0,40 C60,10 110,55 170,32 C230,12 280,50 340,28 C400,8 450,46 510,30 C570,14 620,48 680,26 C740,8 790,44 850,30 C910,16 960,42 1020,28 C1070,18 1120,38 1200,24"/>
-    <circle class="note" cx="170" cy="32" r="4"></circle>
-    <circle class="note" cx="510" cy="30" r="4"></circle>
-    <circle class="note" cx="850" cy="30" r="4"></circle>
-    <circle class="note" cx="1200" cy="24" r="4"></circle>
-  </svg>
-</div>
-
 <section class="about section-pad" id="about">
   <div class="wrap about-grid">
     <figure class="about-photo reveal">
@@ -1221,7 +1247,7 @@
     </div>
   </a>
   <a href="#coaching" class="service-card">
-    <img src="https://static.wixstatic.com/media/4b1edb_412f302b4bae42a6b4c79b9891dc5bb0~mv2.jpeg/v1/crop/x_986,y_0,w_4688,h_4575/fill/w_770,h_752,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/325Kasia%20Howley4530%20(2).jpeg" alt="Kasia Howley vocal coaching session">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/724719899_1642882010129207_6907086987528118233_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North">
     <div class="service-overlay"></div>
     <div class="service-text">
       <span class="service-kicker">For your craft</span>
@@ -1231,15 +1257,6 @@
     </div>
   </a>
 </section>
-
-<div class="melody-divider" id="divider2">
-  <svg viewBox="0 0 1200 64" preserveAspectRatio="none">
-    <path d="M0,24 C60,46 110,12 170,30 C230,50 280,18 340,32 C400,48 450,14 510,28 C570,46 620,16 680,30 C740,48 790,20 850,34 C910,16 960,44 1020,26 C1070,40 1120,18 1200,32"/>
-    <circle class="note" cx="170" cy="30" r="4"></circle>
-    <circle class="note" cx="510" cy="28" r="4"></circle>
-    <circle class="note" cx="850" cy="34" r="4"></circle>
-  </svg>
-</div>
 
 <section class="experience section-pad" id="experience">
   <div class="wrap">
@@ -1406,11 +1423,14 @@
 </section>
 
 <section class="contact section-pad" id="contact">
+  <div class="contact-bg">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals at Eaves Hall">
+  </div>
   <div class="wrap contact-grid">
     <div class="reveal">
       <div class="label-row"><span class="num">06</span><span class="eyebrow">Get in touch</span></div>
-      <h2>Let's talk about<br>your voice.</h2>
-      <p class="lead">If you're interested in booking Kasia for an event, starting vocal coaching, or just have a question — get in touch below.</p>
+      <h2>Let's talk.</h2>
+      <p class="lead">Whether you're booking live piano vocals for a wedding or event, or starting vocal coaching — get in touch and let's talk through what you need.</p>
       <div class="contact-detail">
         <span class="k">Phone</span>
         <span class="v">07894 945722</span>
@@ -1421,13 +1441,24 @@
       </div>
       <div class="contact-detail">
         <span class="k">Based in</span>
-        <span class="v">West Yorkshire, UK</span>
+        <span class="v">Tileyard North, Wakefield</span>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="event.preventDefault();">
+    <form class="contact-form reveal" id="contactForm" onsubmit="event.preventDefault();">
       <input type="text" placeholder="Your name" required>
       <input type="email" placeholder="Your email" required>
-      <textarea placeholder="Tell Kasia a little about what you need..."></textarea>
+      <input type="tel" placeholder="Your phone number" required>
+      <select id="serviceType" required>
+        <option value="" disabled selected>What can I help with?</option>
+        <option value="coaching">Vocal Coaching</option>
+        <option value="live">Live Music Booking</option>
+        <option value="other">Something else</option>
+      </select>
+      <div class="live-fields" id="liveFields">
+        <input type="date" id="eventDate" placeholder="Event date">
+        <input type="text" id="eventLocation" placeholder="Venue / location">
+      </div>
+      <textarea placeholder="A few more details..."></textarea>
       <button type="submit">Send message</button>
     </form>
   </div>
@@ -1495,7 +1526,19 @@
     });
   }, { threshold: 0.18 });
 
-  document.querySelectorAll('.reveal, .melody-divider').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Contact form: reveal date/venue fields only for live music bookings
+  const serviceSelect = document.getElementById('serviceType');
+  const liveFields = document.getElementById('liveFields');
+  if (serviceSelect && liveFields) {
+    serviceSelect.addEventListener('change', () => {
+      const isLive = serviceSelect.value === 'live';
+      liveFields.classList.toggle('is-visible', isLive);
+      document.getElementById('eventDate').required = isLive;
+      document.getElementById('eventLocation').required = isLive;
+    });
+  }
 
   // Hero video: YouTube IFrame Player API
   // Used for reliable mute/unmute control and to request 720p playback.
