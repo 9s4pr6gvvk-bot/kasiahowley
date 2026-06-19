@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kasia Howley Music — Vocalist &amp; Vocal Coach</title>
+<title>Kasia Howley Music — Live Music Bookings &amp; Vocal Coaching</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -61,18 +61,21 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:50;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:22px 6vw;
+    padding:26px 0;
     background:rgba(255,255,255,0);
     transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
   }
   header.site.scrolled{
     background:rgba(255,255,255,0.92);
     backdrop-filter:blur(8px);
-    padding:14px 6vw;
+    padding:16px 0;
     box-shadow:0 1px 0 var(--line);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
   }
   .brand{
     font-family:'Cormorant Garamond',serif;
@@ -93,6 +96,12 @@
     font-weight:500;
     color:var(--sage);
     margin-top:3px;
+  }
+
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:34px;
   }
 
   nav.links{display:flex;gap:38px;}
@@ -117,6 +126,29 @@
 
   .nav-toggle{display:none;}
 
+  .nav-cta{
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:11px 22px;
+    border:1px solid var(--sage);
+    color:var(--white);
+    background:rgba(127,161,145,0.18);
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
+    white-space:nowrap;
+  }
+  header.site.scrolled .nav-cta{
+    color:var(--ink);
+    border-color:var(--sage-deep);
+    background:transparent;
+  }
+  .nav-cta:hover{
+    background:var(--sage);
+    color:var(--ink);
+    border-color:var(--sage);
+  }
+
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
@@ -126,26 +158,57 @@
     align-items:flex-end;
     overflow:hidden;
   }
-  .hero img{
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .hero-fallback-img{
     position:absolute;
     inset:0;
     width:100%;height:100%;
     object-fit:cover;
-    object-position:center 20%;
+    object-position:32% 62%;
+    filter:saturate(0.92) contrast(1.02);
+  }
+  .hero-video-wrap{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+  }
+  .hero-video-wrap iframe{
+    position:absolute;
+    top:50%;left:50%;
+    width:100vw;
+    height:56.25vw;
+    min-width:177.78vh;
+    min-height:100vh;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    border:0;
     filter:saturate(0.92) contrast(1.02);
   }
   .hero::before{
     content:'';
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(20,24,26,0.32) 0%, rgba(20,24,26,0.05) 32%, rgba(20,24,26,0.06) 55%, rgba(20,24,26,0.78) 100%);
+    background:linear-gradient(180deg, rgba(13,16,17,0.22) 0%, rgba(13,16,17,0) 32%, rgba(13,16,17,0.08) 55%, rgba(13,16,17,0.62) 100%);
+    z-index:1;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(100deg, rgba(10,13,14,0.88) 0%, rgba(10,13,14,0.58) 26%, rgba(10,13,14,0.22) 48%, rgba(10,13,14,0.04) 66%, rgba(10,13,14,0) 82%);
     z-index:1;
   }
   .hero-content{
     position:relative;
     z-index:2;
     color:var(--white);
-    padding:0 6vw 7vw;
+    padding-bottom:7vw;
     width:100%;
+    text-shadow:0 2px 18px rgba(0,0,0,0.22);
   }
   .hero-content .eyebrow{color:var(--sage);}
   .hero-content .eyebrow::before{
@@ -157,11 +220,11 @@
     vertical-align:middle;
   }
   .hero h1{
-    font-size:clamp(46px, 8.4vw, 104px);
-    line-height:0.96;
-    margin-top:18px;
+    font-size:clamp(32px, 4.4vw, 62px);
+    line-height:1.12;
+    margin-top:20px;
     font-weight:500;
-    max-width:880px;
+    max-width:740px;
   }
   .hero h1 em{
     font-style:italic;
@@ -176,23 +239,39 @@
     color:rgba(255,255,255,0.86);
     line-height:1.6;
   }
-  .hero-cta{
+  .hero-pills{
+    display:flex;
+    gap:16px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .hero-pill{
     display:inline-flex;
     align-items:center;
-    gap:14px;
-    margin-top:34px;
-    padding:14px 30px;
-    border:1px solid rgba(255,255,255,0.55);
+    gap:10px;
+    padding:15px 28px;
     font-size:12px;
-    letter-spacing:0.16em;
+    letter-spacing:0.14em;
     text-transform:uppercase;
-    font-weight:500;
-    transition:background .3s ease, color .3s ease, border-color .3s ease;
+    font-weight:600;
+    border-radius:999px;
+    transition:background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
   }
-  .hero-cta:hover{
+  .hero-pill.solid{
     background:var(--sage);
-    border-color:var(--sage);
     color:var(--ink);
+    border:1px solid var(--sage);
+  }
+  .hero-pill.solid:hover{background:var(--sage-pale);transform:translateY(-2px);}
+  .hero-pill.outline{
+    background:transparent;
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.55);
+  }
+  .hero-pill.outline:hover{
+    background:rgba(255,255,255,0.12);
+    border-color:var(--white);
+    transform:translateY(-2px);
   }
 
   .scroll-cue{
@@ -205,10 +284,83 @@
     text-transform:uppercase;
     writing-mode:vertical-rl;
     display:flex;align-items:center;gap:10px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);
   }
   .scroll-cue .dash{
     width:1px;height:46px;
     background:rgba(255,255,255,0.5);
+  }
+
+  /* ---------- SERVICES SPLIT (dual offer, immediately after hero) ---------- */
+  .services-split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .service-card{
+    position:relative;
+    display:block;
+    height:320px;
+    overflow:hidden;
+  }
+  .service-card img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .service-card:hover img{transform:scale(1.06);}
+  .service-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(20,24,26,0.15) 0%, rgba(20,24,26,0.82) 100%);
+    transition:background .4s ease;
+  }
+  .service-card:nth-child(1) .service-overlay{
+    background:linear-gradient(180deg, rgba(93,125,111,0.18) 0%, rgba(20,24,26,0.86) 100%);
+  }
+  .service-card:nth-child(2) .service-overlay{
+    background:linear-gradient(180deg, rgba(20,24,26,0.2) 0%, rgba(20,24,26,0.88) 100%);
+  }
+  .service-text{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    z-index:2;
+    padding:30px 6vw 32px;
+    color:var(--white);
+  }
+  .service-kicker{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--sage);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .service-text h3{
+    font-size:28px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .service-text p{
+    font-size:14px;
+    color:rgba(255,255,255,0.78);
+    max-width:340px;
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+  .service-link{
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-pale);
+    border-bottom:1px solid rgba(127,161,145,0.6);
+    padding-bottom:3px;
+    transition:color .3s ease, border-color .3s ease;
+  }
+  .service-card:hover .service-link{
+    color:var(--white);
+    border-color:var(--white);
   }
 
   /* ---------- MELODIC LINE DIVIDER (signature element) ---------- */
@@ -268,8 +420,9 @@
   }
   .about-photo img{
     width:100%;
-    aspect-ratio:351/345;
+    aspect-ratio:828/916;
     object-fit:cover;
+    object-position:center 25%;
     position:relative;
     z-index:2;
   }
@@ -312,6 +465,149 @@
     line-height:1.5;
     color:var(--sage-deep);
     max-width:560px;
+  }
+
+  /* ---------- QUALIFICATIONS & TRAINING (standalone section) ---------- */
+  .quals-section{
+    background:var(--cream);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .quals-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .quals-head h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin-bottom:18px;
+  }
+  .quals-head p{
+    font-size:15.5px;
+    line-height:1.75;
+    color:#4a5250;
+    max-width:540px;
+  }
+
+  .quals-grid{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:22px;
+  }
+  .qual-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-top:3px solid var(--sage);
+    padding:30px 24px 28px;
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .qual-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 34px rgba(20,24,26,0.08);
+    border-top-color:var(--sage-deep);
+  }
+  .qual-badge{
+    margin-bottom:20px;
+  }
+  .qual-badge-photo{
+    width:60px;height:60px;
+    border-radius:50%;
+    overflow:hidden;
+    border:1.5px solid var(--sage);
+    padding:2px;
+  }
+  .qual-badge-photo img{
+    width:100%;height:100%;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .qual-badge-type{
+    width:60px;height:60px;
+    border-radius:50%;
+    background:var(--sage-pale);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .qual-badge-type span{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:16px;
+    font-weight:600;
+    color:var(--sage-deep);
+    line-height:1.1;
+    text-align:center;
+  }
+  .qual-badge-type span small{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-style:normal;
+    font-size:7.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-deep);
+    opacity:0.85;
+    margin-top:1px;
+  }
+  .qual-tag{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--sage-deep);
+    background:var(--sage-pale);
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .qual-card h3{
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:6px;
+    color:var(--ink);
+  }
+  .qual-org{
+    font-size:12px;
+    color:var(--sage-deep);
+    font-weight:500;
+    margin-bottom:14px;
+  }
+  .qual-card p{
+    font-size:13.5px;
+    line-height:1.65;
+    color:#5a6260;
+  }
+
+  .quals-trust{
+    margin-top:48px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding-top:36px;
+    border-top:1px solid var(--line);
+  }
+  .quals-trust img{
+    width:58px;height:58px;
+    border-radius:50%;
+    box-shadow:0 0 0 1.5px var(--sage);
+    flex-shrink:0;
+    object-fit:contain;
+  }
+  .quals-trust-text{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .quals-trust-text strong{
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .quals-trust-text span{
+    font-size:12.5px;
+    color:#6a716e;
   }
 
   /* ---------- EXPERIENCE / TIMELINE ---------- */
@@ -483,6 +779,41 @@
   }
   .btn.outline:hover{background:var(--ink);color:var(--white);}
 
+  /* ---------- LIVE MUSIC BOOKINGS ---------- */
+  .bookings{background:var(--white);}
+  .bookings-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:7vw;
+    align-items:center;
+  }
+  .bookings-photo{position:relative;}
+  .bookings-photo img{
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  .bookings-photo::before{
+    content:'';
+    position:absolute;
+    top:-16px;left:-16px;
+    width:100%;height:100%;
+    border:1.5px solid var(--sage);
+    z-index:-1;
+  }
+  .bookings h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin-bottom:22px;
+  }
+  .bookings p{
+    font-size:15.5px;
+    line-height:1.8;
+    color:#3a4240;
+    margin-bottom:18px;
+    max-width:560px;
+  }
+
   /* ---------- CONTACT ---------- */
   .contact{
     background:var(--ink);
@@ -560,65 +891,131 @@
   }
   .contact-form button:hover{background:var(--sage-pale);}
 
-  /* ---------- QUALIFICATIONS FOOTER ---------- */
-  footer.quals{
+  /* ---------- FOOTER ---------- */
+  .site-footer{
     background:var(--white);
     border-top:1px solid var(--line);
-    padding:60px 0 32px;
+    padding:80px 0 30px;
   }
-  .quals-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    margin-bottom:42px;
-    flex-wrap:wrap;
-    gap:20px;
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;
+    gap:6vw;
+    padding-bottom:54px;
   }
-  .quals-top h3{
-    font-size:24px;
+  .footer-brand .footer-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    margin-bottom:16px;
   }
-  .badges{
-    display:flex;
-    gap:40px;
-    flex-wrap:wrap;
+  .footer-brand .footer-logo span{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-size:10px;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    font-weight:600;
+    margin-top:4px;
   }
-  .badge{
+  .footer-brand p{
+    font-size:13.5px;
+    line-height:1.7;
+    color:#6a716e;
+    max-width:240px;
+  }
+  .footer-col h4{
+    font-family:'Work Sans',sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .footer-col a, .footer-col span.static{
+    display:block;
+    font-size:14px;
+    color:#4a5250;
+    margin-bottom:13px;
+    transition:color .25s ease;
+  }
+  .footer-col a:hover{color:var(--sage-deep);}
+  .footer-cta-col p{
+    font-size:13.5px;
+    line-height:1.65;
+    color:#6a716e;
+    margin-bottom:20px;
+    max-width:220px;
+  }
+  .footer-cta-col .btn{padding:12px 24px;font-size:11px;}
+
+  .footer-divider{
+    height:1px;
+    background:var(--line);
+  }
+
+  .footer-quals{
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:40px;
+    padding:38px 0 44px;
+    flex-wrap:wrap;
   }
-  .badge .ring{
-    width:64px;height:64px;
-    border-radius:50%;
-    border:1.5px solid var(--sage);
-    padding:4px;
+  .quals-label{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-deep);
     flex-shrink:0;
   }
-  .badge .ring img{
-    width:100%;height:100%;
-    border-radius:50%;
-    object-fit:cover;
+  .footer-quals{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    padding:34px 0 40px;
+    flex-wrap:wrap;
   }
-  .badge .badge-text .t1{
-    font-size:13px;
+  .quals-label{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
     font-weight:600;
-    margin-bottom:2px;
+    color:var(--sage-deep);
+    flex-shrink:0;
   }
-  .badge .badge-text .t2{
-    font-size:11.5px;
+  .footer-quals-text{
+    font-size:13px;
     color:#6a716e;
+    flex:1;
+    min-width:240px;
+    line-height:1.6;
   }
+  .footer-quals-link{
+    font-size:12px;
+    letter-spacing:0.08em;
+    font-weight:600;
+    color:var(--sage-deep);
+    white-space:nowrap;
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease;
+  }
+  .footer-quals-link:hover{border-color:var(--sage-deep);}
+
   .foot-bottom{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding-top:26px;
+    padding-top:24px;
     border-top:1px solid var(--line);
     flex-wrap:wrap;
     gap:14px;
   }
   .foot-bottom .fl{
-    font-size:18px;
+    font-size:17px;
     font-family:'Cormorant Garamond',serif;
   }
   .foot-bottom .fr{
@@ -626,7 +1023,10 @@
     color:#8a9189;
     display:flex;
     gap:24px;
+    align-items:center;
   }
+  .foot-bottom .fr a{color:#8a9189;transition:color .25s ease;}
+  .foot-bottom .fr a:hover{color:var(--sage-deep);}
 
   /* ---------- REVEAL ANIMATION ---------- */
   .reveal{
@@ -647,6 +1047,7 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:880px){
+    .nav-cta{display:none;}
     nav.links{
       position:fixed;
       top:0;right:0;
@@ -680,14 +1081,27 @@
     header.site.scrolled .nav-toggle span{background:var(--ink);}
     header.site.scrolled .nav-toggle.active span{background:var(--white);}
 
-    .about-grid,.coach-grid,.contact-grid{
+    .about-grid,.coach-grid,.contact-grid,.bookings-grid{
       grid-template-columns:1fr;
       gap:40px;
     }
+    .quals-grid{
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .quals-trust{flex-wrap:wrap;}
+    .bookings-grid .text-block{order:1;}
+    .bookings-photo{order:2;}
+    .services-split{grid-template-columns:1fr;}
+    .service-card{height:280px;}
     .coach-photo{order:2;}
     .coach .text-block{order:1;}
     .quals-top{flex-direction:column;align-items:flex-start;}
     .badges{gap:26px;}
+    .footer-top{
+      grid-template-columns:1fr 1fr;
+      gap:36px 24px;
+    }
+    .footer-quals{flex-direction:column;align-items:flex-start;gap:22px;}
   }
 
   @media (max-width:520px){
@@ -696,31 +1110,46 @@
     .scroll-cue{display:none;}
     .badges{gap:20px;}
     .badge .ring{width:54px;height:54px;}
+    .footer-top{grid-template-columns:1fr;}
+    .quals-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
 
 <header class="site" id="siteHeader">
-  <div class="brand">KASIA HOWLEY<span>Vocalist &amp; Vocal Coach</span></div>
-  <nav class="links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#coaching">Vocal Coaching</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="nav-toggle" id="navToggle" aria-label="Menu">
-    <span></span><span></span><span></span>
+  <div class="wrap header-inner">
+    <div class="brand">KASIA HOWLEY<span>Vocalist &amp; Vocal Coach</span></div>
+    <div class="nav-right">
+      <nav class="links" id="navLinks">
+        <a href="#bookings">Live Music Bookings</a>
+        <a href="#coaching">Vocal Coaching</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Check availability</a>
+      <div class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </div>
 </header>
 
 <section class="hero">
-  <img src="https://static.wixstatic.com/media/4b1edb_412f302b4bae42a6b4c79b9891dc5bb0~mv2.jpeg/v1/crop/x_986,y_0,w_4688,h_4575/fill/w_770,h_752,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/325Kasia%20Howley4530%20(2).jpeg" alt="Kasia Howley, vocalist and vocal coach">
-  <div class="hero-content">
+  <div class="hero-bg">
+    <img class="hero-fallback-img" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals">
+    <div class="hero-video-wrap">
+      <iframe src="https://www.youtube.com/embed/NcjX_CceJlo?start=49&autoplay=1&mute=1&loop=1&playlist=NcjX_CceJlo&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1" title="Kasia Howley performing live" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+  <div class="hero-content wrap">
     <div class="eyebrow">West Yorkshire &amp; Tileyard North, London</div>
-    <h1>Voice, built to<br><em>last the run.</em></h1>
-    <p class="hero-sub">Kasia Howley is a professional vocalist and vocal coach helping performers and singers develop efficient, sustainable technique — grounded in research, refined on stage.</p>
-    <a href="#coaching" class="hero-cta">Book a session →</a>
+    <h1>Live music for your day.<br><em>Vocal coaching for your craft.</em></h1>
+    <p class="hero-sub">Kasia Howley is a professional piano vocalist available for weddings, ceremonies and events — and a vocal coach helping performers and singers build technique that lasts.</p>
+    <div class="hero-pills">
+      <a href="#bookings" class="hero-pill solid">Live Music &amp; Weddings →</a>
+      <a href="#coaching" class="hero-pill outline">Vocal Coaching →</a>
+    </div>
   </div>
   <div class="scroll-cue"><span class="dash"></span>Scroll</div>
 </section>
@@ -739,7 +1168,7 @@
   <div class="wrap about-grid">
     <figure class="about-photo reveal">
       <div class="frame">
-        <img src="https://static.wixstatic.com/media/4b1edb_ee50334ec8b346e79c9dbc5751fc85d1~mv2.jpg/v1/fill/w_351,h_345,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_ee50334ec8b346e79c9dbc5751fc85d1~mv2.jpg" alt="Portrait of Kasia Howley">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/IMG_5168.jpg" alt="Kasia Howley singing live at a piano">
       </div>
       <figcaption>Tileyard North, Leeds</figcaption>
     </figure>
@@ -751,6 +1180,99 @@
       <p>She has worked extensively with the Estill method under the mentorship of Andy Follin, and trained in myofascial release under Robert Price at the Voice Care Centre. Having performed as a soloist at the Royal Albert Hall, Trafalgar Square and the London O2 Indigo Arena, Kasia brings the realities of performance into every lesson she teaches.</p>
     </div>
   </div>
+</section>
+
+<section class="quals-section section-pad" id="qualifications">
+  <div class="wrap">
+    <div class="quals-head reveal">
+      <div class="label-row"><span class="num">02</span><span class="eyebrow">Credentials</span></div>
+      <h2>Qualifications &amp; Training</h2>
+      <p>A coaching practice grounded in formal training, clinical certification and ongoing research — not just performance experience.</p>
+    </div>
+
+    <div class="quals-grid">
+      <div class="qual-card reveal">
+        <div class="qual-badge qual-badge-photo">
+          <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
+        </div>
+        <span class="qual-tag">Clinical</span>
+        <h3>Vocal Health First Aid</h3>
+        <div class="qual-org">Level 2, Qualified</div>
+        <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
+      </div>
+
+      <div class="qual-card reveal">
+        <div class="qual-badge qual-badge-photo">
+          <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
+        </div>
+        <span class="qual-tag">Clinical</span>
+        <h3>Vocal Manual Therapy</h3>
+        <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
+        <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
+      </div>
+
+      <div class="qual-card reveal">
+        <div class="qual-badge qual-badge-type">
+          <span>E<small>1&amp;2</small></span>
+        </div>
+        <span class="qual-tag">Technique</span>
+        <h3>Estill Method</h3>
+        <div class="qual-org">Levels 1 &amp; 2</div>
+        <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
+      </div>
+
+      <div class="qual-card reveal">
+        <div class="qual-badge qual-badge-type">
+          <span>BA<small>Hons</small></span>
+        </div>
+        <span class="qual-tag">Academic</span>
+        <h3>Musical Theatre</h3>
+        <div class="qual-org">ArtsEd London</div>
+        <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
+      </div>
+
+      <div class="qual-card reveal">
+        <div class="qual-badge qual-badge-type">
+          <span>MA<small>In progress</small></span>
+        </div>
+        <span class="qual-tag">Research</span>
+        <h3>Vocal Pedagogy</h3>
+        <div class="qual-org">Voice Study Centre</div>
+        <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
+      </div>
+    </div>
+
+    <div class="quals-trust reveal">
+      <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+      <div class="quals-trust-text">
+        <strong>Rated 5 Stars on Hitched</strong>
+        <span>Reviewed by real couples for live wedding performances</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-split">
+  <a href="#bookings" class="service-card">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
+    <div class="service-overlay"></div>
+    <div class="service-text">
+      <span class="service-kicker">For your event</span>
+      <h3>Live Music Bookings</h3>
+      <p>Piano vocals for weddings, ceremonies &amp; private functions.</p>
+      <span class="service-link">View bookings →</span>
+    </div>
+  </a>
+  <a href="#coaching" class="service-card">
+    <img src="https://static.wixstatic.com/media/4b1edb_412f302b4bae42a6b4c79b9891dc5bb0~mv2.jpeg/v1/crop/x_986,y_0,w_4688,h_4575/fill/w_770,h_752,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/325Kasia%20Howley4530%20(2).jpeg" alt="Kasia Howley vocal coaching session">
+    <div class="service-overlay"></div>
+    <div class="service-text">
+      <span class="service-kicker">For your craft</span>
+      <h3>Vocal Coaching</h3>
+      <p>Private lessons &amp; technique for performers and singers.</p>
+      <span class="service-link">View coaching →</span>
+    </div>
+  </a>
 </section>
 
 <div class="melody-divider" id="divider2">
@@ -765,7 +1287,7 @@
 <section class="experience section-pad" id="experience">
   <div class="wrap">
     <div class="exp-head reveal">
-      <div class="label-row"><span class="num">02</span><span class="eyebrow">Experience</span></div>
+      <div class="label-row"><span class="num">03</span><span class="eyebrow">Experience</span></div>
       <h2>From soloist to specialist.</h2>
       <div class="venues">
         <span>Royal Albert Hall</span>
@@ -811,30 +1333,39 @@
       <img src="https://static.wixstatic.com/media/4b1edb_ee50334ec8b346e79c9dbc5751fc85d1~mv2.jpg/v1/fill/w_351,h_345,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_ee50334ec8b346e79c9dbc5751fc85d1~mv2.jpg" alt="Kasia Howley teaching vocal coaching">
     </div>
     <div class="text-block reveal">
-      <div class="label-row"><span class="num">03</span><span class="eyebrow">Vocal Coaching &amp; Bookings</span></div>
+      <div class="label-row"><span class="num">04</span><span class="eyebrow">Vocal Coaching</span></div>
       <h2>Lessons built around your voice, not a method.</h2>
       <p>Whether you're training for drama school auditions, maintaining your voice through a long-running show, or preparing for a tour, sessions are tailored to your repertoire, your schedule and the demands placed on your voice.</p>
-      <p>Kasia is also available to book for live piano vocal performances — from intimate events to large-scale productions.</p>
+      <p>One-to-one lessons are available in-person at Tileyard North, Leeds, and online — for students, working performers and professional musicians alike.</p>
       <div class="cta-row">
         <a href="#contact" class="btn solid">Enquire about coaching</a>
-        <a href="#contact" class="btn outline">Live music bookings</a>
       </div>
     </div>
   </div>
 </section>
 
-<div class="band" style="height:300px;">
-  <img src="https://static.wixstatic.com/media/nsplsh_734753334f2d617166666b~mv2_d_4288_2848_s_4_2.jpg/v1/fill/w_1960,h_742,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Michal%20Czyz.jpg" alt="Live music performance">
-  <div class="band-text reveal">
-    <div class="eyebrow">Available for live bookings</div>
-    <h2>Piano vocalist for events, ceremonies &amp; private functions.</h2>
+<section class="bookings section-pad" id="bookings">
+  <div class="wrap bookings-grid">
+    <div class="text-block reveal">
+      <div class="label-row"><span class="num">05</span><span class="eyebrow">Live Music Bookings</span></div>
+      <h2>A piano vocalist for your day.</h2>
+      <p>Kasia performs as a solo piano vocalist or alongside a full band — for wedding ceremonies and drinks receptions, corporate functions, private parties and concert events. Repertoire spans musical theatre, jazz standards, pop and contemporary, tailored to suit the occasion.</p>
+      <p>She has performed as a soloist at venues including the Royal Albert Hall, Trafalgar Square, the London Hippodrome Casino and the London O2 Indigo Arena — bringing the same polish to a wedding breakfast as to a concert stage.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn solid">Check availability</a>
+        <a href="mailto:kasiahowley@gmail.com" class="btn outline">Email enquiry</a>
+      </div>
+    </div>
+    <div class="bookings-photo reveal">
+      <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley performing live piano vocals at a wedding venue">
+    </div>
   </div>
-</div>
+</section>
 
 <section class="contact section-pad" id="contact">
   <div class="wrap contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">04</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">06</span><span class="eyebrow">Get in touch</span></div>
       <h2>Let's talk about<br>your voice.</h2>
       <p class="lead">If you're interested in booking Kasia for an event, starting vocal coaching, or just have a question — get in touch below.</p>
       <div class="contact-detail">
@@ -859,52 +1390,47 @@
   </div>
 </section>
 
-<footer class="quals">
+<footer class="site-footer">
   <div class="wrap">
-    <div class="quals-top">
-      <h3>Qualifications</h3>
-      <span class="eyebrow" style="color:#8a9189;">Credentials &amp; certifications</span>
+    <div class="footer-top">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
+        <p>Piano vocalist &amp; vocal coach, based in West Yorkshire and performing &amp; teaching across the UK.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#bookings">Live Music Bookings</a>
+        <a href="#coaching">Vocal Coaching</a>
+        <a href="#about">About</a>
+        <a href="#qualifications">Qualifications</a>
+        <a href="#experience">Experience</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="tel:07894945722">07894 945722</a>
+        <a href="mailto:kasiahowley@gmail.com">kasiahowley@gmail.com</a>
+        <span class="static">West Yorkshire, UK</span>
+      </div>
+      <div class="footer-col footer-cta-col">
+        <h4>Ready to start?</h4>
+        <p>Tell me about your event, or your goals as a singer.</p>
+        <a href="#contact" class="btn solid">Get in touch</a>
+      </div>
     </div>
-    <div class="badges">
-      <div class="badge">
-        <div class="ring"><img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification"></div>
-        <div class="badge-text">
-          <div class="t1">Vocal Health First Aid</div>
-          <div class="t2">Level 2, Qualified</div>
-        </div>
-      </div>
-      <div class="badge">
-        <div class="ring"><img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Massage Training certification"></div>
-        <div class="badge-text">
-          <div class="t1">Vocal Manual Therapy</div>
-          <div class="t2">Certified Practitioner</div>
-        </div>
-      </div>
-      <div class="badge">
-        <div class="ring" style="display:flex;align-items:center;justify-content:center;background:var(--sage-pale);">
-          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--sage-deep);">Estill<br>1&amp;2</span>
-        </div>
-        <div class="badge-text">
-          <div class="t1">Estill Method</div>
-          <div class="t2">Levels 1 &amp; 2</div>
-        </div>
-      </div>
-      <div class="badge">
-        <div class="ring" style="display:flex;align-items:center;justify-content:center;background:var(--sage-pale);">
-          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--sage-deep);text-align:center;">BA<br>(Hons)</span>
-        </div>
-        <div class="badge-text">
-          <div class="t1">Musical Theatre</div>
-          <div class="t2">ArtsEd London</div>
-        </div>
-      </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-quals">
+      <span class="quals-label">Qualifications &amp; training</span>
+      <p class="footer-quals-text">BA (Hons) Musical Theatre · MA Vocal Pedagogy (in progress) · Vocal Health First Aid, Level 2 · Certified Vocal Manual Therapist · Estill Levels 1&nbsp;&amp;&nbsp;2</p>
+      <a href="#qualifications" class="footer-quals-link">View qualifications →</a>
     </div>
 
     <div class="foot-bottom">
       <div class="fl">Kasia Howley Music</div>
       <div class="fr">
-        <span>West Yorkshire, UK</span>
-        <span>kasiahowley@gmail.com</span>
+        <a href="#bookings">Bookings</a>
+        <a href="#coaching">Coaching</a>
         <span>© 2026</span>
       </div>
     </div>
