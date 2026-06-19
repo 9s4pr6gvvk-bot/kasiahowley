@@ -274,6 +274,37 @@
     transform:translateY(-2px);
   }
 
+  .sound-toggle{
+    position:absolute;
+    left:6vw;bottom:40px;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 16px 10px 13px;
+    border-radius:999px;
+    background:rgba(13,16,17,0.38);
+    border:1px solid rgba(255,255,255,0.4);
+    color:var(--white);
+    backdrop-filter:blur(6px);
+    cursor:pointer;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .sound-toggle:hover{
+    background:rgba(127,161,145,0.5);
+    border-color:var(--sage);
+    transform:translateY(-2px);
+  }
+  .sound-toggle .icon-unmuted{display:none;}
+  .sound-toggle.is-unmuted .icon-muted{display:none;}
+  .sound-toggle.is-unmuted .icon-unmuted{display:block;}
+  .sound-toggle-label{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+
   .scroll-cue{
     position:absolute;
     right:6vw;bottom:36px;
@@ -910,11 +941,18 @@
     border-top:1px solid var(--line);
     padding:80px 0 30px;
   }
+  .footer-wrap{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 5vw;
+  }
   .footer-top{
     display:grid;
     grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;
-    gap:6vw;
-    padding-bottom:54px;
+    gap:5vw;
+    padding-bottom:48px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:26px;
   }
   .footer-brand .footer-logo{
     font-family:'Cormorant Garamond',serif;
@@ -937,7 +975,7 @@
     font-size:13.5px;
     line-height:1.7;
     color:#6a716e;
-    max-width:240px;
+    max-width:260px;
   }
   .footer-col h4{
     font-family:'Work Sans',sans-serif;
@@ -961,62 +999,9 @@
     line-height:1.65;
     color:#6a716e;
     margin-bottom:20px;
-    max-width:220px;
+    max-width:240px;
   }
   .footer-cta-col .btn{padding:12px 24px;font-size:11px;}
-
-  .footer-divider{
-    height:1px;
-    background:var(--line);
-  }
-
-  .footer-quals{
-    display:flex;
-    align-items:center;
-    gap:40px;
-    padding:38px 0 44px;
-    flex-wrap:wrap;
-  }
-  .quals-label{
-    font-size:11px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    font-weight:600;
-    color:var(--sage-deep);
-    flex-shrink:0;
-  }
-  .footer-quals{
-    display:flex;
-    align-items:center;
-    gap:24px;
-    padding:34px 0 40px;
-    flex-wrap:wrap;
-  }
-  .quals-label{
-    font-size:11px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    font-weight:600;
-    color:var(--sage-deep);
-    flex-shrink:0;
-  }
-  .footer-quals-text{
-    font-size:13px;
-    color:#6a716e;
-    flex:1;
-    min-width:240px;
-    line-height:1.6;
-  }
-  .footer-quals-link{
-    font-size:12px;
-    letter-spacing:0.08em;
-    font-weight:600;
-    color:var(--sage-deep);
-    white-space:nowrap;
-    border-bottom:1px solid transparent;
-    transition:border-color .25s ease;
-  }
-  .footer-quals-link:hover{border-color:var(--sage-deep);}
 
   .foot-bottom{
     display:flex;
@@ -1121,13 +1106,13 @@
       grid-template-columns:1fr 1fr;
       gap:36px 24px;
     }
-    .footer-quals{flex-direction:column;align-items:flex-start;gap:22px;}
   }
 
   @media (max-width:520px){
     .section-pad{padding:80px 0;}
     .hero-content{padding-bottom:90px;}
     .scroll-cue{display:none;}
+    .sound-toggle{bottom:24px;left:6vw;}
     .badges{gap:20px;}
     .badge .ring{width:54px;height:54px;}
     .footer-top{grid-template-columns:1fr;}
@@ -1163,7 +1148,7 @@
   <div class="hero-bg">
     <img class="hero-fallback-img" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals">
     <div class="hero-video-wrap">
-      <iframe src="https://www.youtube.com/embed/NcjX_CceJlo?start=49&autoplay=1&mute=1&loop=1&playlist=NcjX_CceJlo&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1" title="Kasia Howley performing live" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <iframe id="heroVideoFrame" src="https://www.youtube.com/embed/-_ttB6e5vA4?start=49&autoplay=1&mute=1&loop=1&playlist=-_ttB6e5vA4&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1&enablejsapi=1" title="Kasia Howley performing live" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
   </div>
   <div class="hero-content wrap">
@@ -1175,6 +1160,19 @@
       <a href="#coaching" class="hero-pill outline">Vocal Coaching →</a>
     </div>
   </div>
+  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Unmute video" aria-pressed="false">
+    <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+    <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+      <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+      <path d="M18.5 6a9 9 0 0 1 0 12"></path>
+    </svg>
+    <span class="sound-toggle-label">Unmute</span>
+  </button>
   <div class="scroll-cue"><span class="dash"></span>Scroll</div>
 </section>
 
@@ -1431,7 +1429,7 @@
 </section>
 
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="footer-wrap">
     <div class="footer-top">
       <div class="footer-col footer-brand">
         <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
@@ -1456,14 +1454,6 @@
         <p>Tell me about your event, or your goals as a singer.</p>
         <a href="#contact" class="btn solid">Get in touch</a>
       </div>
-    </div>
-
-    <div class="footer-divider"></div>
-
-    <div class="footer-quals">
-      <span class="quals-label">Qualifications &amp; training</span>
-      <p class="footer-quals-text">BA (Hons) Musical Theatre · MA Vocal Pedagogy (in progress) · Vocal Health First Aid, Level 2 · Certified Vocal Manual Therapist · Estill Levels 1&nbsp;&amp;&nbsp;2</p>
-      <a href="#qualifications" class="footer-quals-link">View qualifications →</a>
     </div>
 
     <div class="foot-bottom">
@@ -1501,6 +1491,28 @@
   }, { threshold: 0.18 });
 
   document.querySelectorAll('.reveal, .melody-divider').forEach(el => observer.observe(el));
+
+  // Hero video sound toggle (YouTube postMessage API)
+  const soundToggle = document.getElementById('soundToggle');
+  const heroFrame = document.getElementById('heroVideoFrame');
+  let heroMuted = true;
+
+  function sendPlayerCommand(func, args){
+    if (!heroFrame || !heroFrame.contentWindow) return;
+    heroFrame.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args: args || [] }), '*');
+  }
+
+  if (soundToggle && heroFrame) {
+    soundToggle.addEventListener('click', () => {
+      heroMuted = !heroMuted;
+      sendPlayerCommand(heroMuted ? 'mute' : 'unMute');
+      if (!heroMuted) sendPlayerCommand('setVolume', [80]);
+      soundToggle.classList.toggle('is-unmuted', !heroMuted);
+      soundToggle.setAttribute('aria-pressed', String(!heroMuted));
+      soundToggle.setAttribute('aria-label', heroMuted ? 'Unmute video' : 'Mute video');
+      soundToggle.querySelector('.sound-toggle-label').textContent = heroMuted ? 'Unmute' : 'Mute';
+    });
+  }
 </script>
 
 </body>
