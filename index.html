@@ -473,43 +473,84 @@
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
   }
-  .quals-head{
-    max-width:640px;
-    margin-bottom:56px;
+  .quals-layout{
+    display:grid;
+    grid-template-columns:0.78fr 1.22fr;
+    gap:8vw;
   }
-  .quals-head h2{
+  .quals-intro-sticky{
+    position:sticky;
+    top:118px;
+  }
+  .quals-intro-sticky h2{
     font-size:clamp(30px,3.6vw,42px);
-    margin-bottom:18px;
+    margin:18px 0 18px;
+    line-height:1.12;
   }
-  .quals-head p{
+  .quals-intro-sticky p{
     font-size:15.5px;
     line-height:1.75;
     color:#4a5250;
-    max-width:540px;
+    max-width:380px;
   }
 
-  .quals-grid{
+  .quals-trust{
+    margin-top:38px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+    max-width:380px;
+  }
+  .quals-trust img{
+    width:54px;height:54px;
+    border-radius:50%;
+    box-shadow:0 0 0 1.5px var(--sage);
+    flex-shrink:0;
+    object-fit:contain;
+  }
+  .quals-trust-text{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .quals-trust-text strong{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .quals-trust-text span{
+    font-size:12px;
+    color:#6a716e;
+    line-height:1.4;
+  }
+
+  .quals-list{
+    border-top:1px solid var(--line);
+  }
+  .qual-row{
     display:grid;
-    grid-template-columns:repeat(5, 1fr);
-    gap:22px;
+    grid-template-columns:40px 64px 1fr;
+    gap:28px;
+    align-items:start;
+    padding:34px 0;
+    border-bottom:1px solid var(--line);
+    transition:background .3s ease;
   }
-  .qual-card{
-    background:var(--white);
-    border:1px solid var(--line);
-    border-top:3px solid var(--sage);
-    padding:30px 24px 28px;
-    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-  }
-  .qual-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 18px 34px rgba(20,24,26,0.08);
-    border-top-color:var(--sage-deep);
+  .qual-row:hover{background:rgba(127,161,145,0.06);}
+  .qual-row-index{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--sage);
+    padding-top:4px;
   }
   .qual-badge{
-    margin-bottom:20px;
+    flex-shrink:0;
   }
   .qual-badge-photo{
-    width:60px;height:60px;
+    width:64px;height:64px;
     border-radius:50%;
     overflow:hidden;
     border:1.5px solid var(--sage);
@@ -521,7 +562,7 @@
     object-fit:cover;
   }
   .qual-badge-type{
-    width:60px;height:60px;
+    width:64px;height:64px;
     border-radius:50%;
     background:var(--sage-pale);
     display:flex;
@@ -532,7 +573,7 @@
   .qual-badge-type span{
     font-family:'Cormorant Garamond',serif;
     font-style:italic;
-    font-size:16px;
+    font-size:17px;
     font-weight:600;
     color:var(--sage-deep);
     line-height:1.1;
@@ -550,6 +591,7 @@
     opacity:0.85;
     margin-top:1px;
   }
+  .qual-row-text{min-width:0;}
   .qual-tag{
     display:inline-block;
     font-size:10px;
@@ -560,54 +602,25 @@
     background:var(--sage-pale);
     padding:4px 10px;
     border-radius:999px;
-    margin-bottom:14px;
+    margin-bottom:12px;
   }
-  .qual-card h3{
-    font-size:19px;
+  .qual-row-text h3{
+    font-size:21px;
     font-weight:600;
-    margin-bottom:6px;
+    margin-bottom:5px;
     color:var(--ink);
   }
   .qual-org{
-    font-size:12px;
+    font-size:12.5px;
     color:var(--sage-deep);
     font-weight:500;
-    margin-bottom:14px;
+    margin-bottom:12px;
   }
-  .qual-card p{
-    font-size:13.5px;
-    line-height:1.65;
+  .qual-row-text p{
+    font-size:14px;
+    line-height:1.7;
     color:#5a6260;
-  }
-
-  .quals-trust{
-    margin-top:48px;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    padding-top:36px;
-    border-top:1px solid var(--line);
-  }
-  .quals-trust img{
-    width:58px;height:58px;
-    border-radius:50%;
-    box-shadow:0 0 0 1.5px var(--sage);
-    flex-shrink:0;
-    object-fit:contain;
-  }
-  .quals-trust-text{
-    display:flex;
-    flex-direction:column;
-    gap:3px;
-  }
-  .quals-trust-text strong{
-    font-size:14.5px;
-    font-weight:600;
-    color:var(--ink);
-  }
-  .quals-trust-text span{
-    font-size:12.5px;
-    color:#6a716e;
+    max-width:520px;
   }
 
   /* ---------- EXPERIENCE / TIMELINE ---------- */
@@ -1085,17 +1098,24 @@
       grid-template-columns:1fr;
       gap:40px;
     }
-    .quals-grid{
-      grid-template-columns:repeat(2, 1fr);
+    .quals-layout{
+      grid-template-columns:1fr;
+      gap:34px;
     }
-    .quals-trust{flex-wrap:wrap;}
+    .quals-intro-sticky{
+      position:static;
+    }
+    .quals-intro-sticky p, .quals-trust{max-width:none;}
+    .qual-row{
+      grid-template-columns:32px 56px 1fr;
+      gap:18px;
+    }
     .bookings-grid .text-block{order:1;}
     .bookings-photo{order:2;}
     .services-split{grid-template-columns:1fr;}
     .service-card{height:280px;}
     .coach-photo{order:2;}
     .coach .text-block{order:1;}
-    .quals-top{flex-direction:column;align-items:flex-start;}
     .badges{gap:26px;}
     .footer-top{
       grid-template-columns:1fr 1fr;
@@ -1111,7 +1131,11 @@
     .badges{gap:20px;}
     .badge .ring{width:54px;height:54px;}
     .footer-top{grid-template-columns:1fr;}
-    .quals-grid{grid-template-columns:1fr;}
+    .qual-row{
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    .qual-row-index{display:none;}
   }
 </style>
 </head>
@@ -1182,76 +1206,6 @@
   </div>
 </section>
 
-<section class="quals-section section-pad" id="qualifications">
-  <div class="wrap">
-    <div class="quals-head reveal">
-      <div class="label-row"><span class="num">02</span><span class="eyebrow">Credentials</span></div>
-      <h2>Qualifications &amp; Training</h2>
-      <p>A coaching practice grounded in formal training, clinical certification and ongoing research — not just performance experience.</p>
-    </div>
-
-    <div class="quals-grid">
-      <div class="qual-card reveal">
-        <div class="qual-badge qual-badge-photo">
-          <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
-        </div>
-        <span class="qual-tag">Clinical</span>
-        <h3>Vocal Health First Aid</h3>
-        <div class="qual-org">Level 2, Qualified</div>
-        <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
-      </div>
-
-      <div class="qual-card reveal">
-        <div class="qual-badge qual-badge-photo">
-          <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
-        </div>
-        <span class="qual-tag">Clinical</span>
-        <h3>Vocal Manual Therapy</h3>
-        <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
-        <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
-      </div>
-
-      <div class="qual-card reveal">
-        <div class="qual-badge qual-badge-type">
-          <span>E<small>1&amp;2</small></span>
-        </div>
-        <span class="qual-tag">Technique</span>
-        <h3>Estill Method</h3>
-        <div class="qual-org">Levels 1 &amp; 2</div>
-        <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
-      </div>
-
-      <div class="qual-card reveal">
-        <div class="qual-badge qual-badge-type">
-          <span>BA<small>Hons</small></span>
-        </div>
-        <span class="qual-tag">Academic</span>
-        <h3>Musical Theatre</h3>
-        <div class="qual-org">ArtsEd London</div>
-        <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
-      </div>
-
-      <div class="qual-card reveal">
-        <div class="qual-badge qual-badge-type">
-          <span>MA<small>In progress</small></span>
-        </div>
-        <span class="qual-tag">Research</span>
-        <h3>Vocal Pedagogy</h3>
-        <div class="qual-org">Voice Study Centre</div>
-        <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
-      </div>
-    </div>
-
-    <div class="quals-trust reveal">
-      <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
-      <div class="quals-trust-text">
-        <strong>Rated 5 Stars on Hitched</strong>
-        <span>Reviewed by real couples for live wedding performances</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="services-split">
   <a href="#bookings" class="service-card">
     <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
@@ -1287,7 +1241,7 @@
 <section class="experience section-pad" id="experience">
   <div class="wrap">
     <div class="exp-head reveal">
-      <div class="label-row"><span class="num">03</span><span class="eyebrow">Experience</span></div>
+      <div class="label-row"><span class="num">02</span><span class="eyebrow">Experience</span></div>
       <h2>From soloist to specialist.</h2>
       <div class="venues">
         <span>Royal Albert Hall</span>
@@ -1333,7 +1287,7 @@
       <img src="https://static.wixstatic.com/media/4b1edb_ee50334ec8b346e79c9dbc5751fc85d1~mv2.jpg/v1/fill/w_351,h_345,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_ee50334ec8b346e79c9dbc5751fc85d1~mv2.jpg" alt="Kasia Howley teaching vocal coaching">
     </div>
     <div class="text-block reveal">
-      <div class="label-row"><span class="num">04</span><span class="eyebrow">Vocal Coaching</span></div>
+      <div class="label-row"><span class="num">03</span><span class="eyebrow">Vocal Coaching</span></div>
       <h2>Lessons built around your voice, not a method.</h2>
       <p>Whether you're training for drama school auditions, maintaining your voice through a long-running show, or preparing for a tour, sessions are tailored to your repertoire, your schedule and the demands placed on your voice.</p>
       <p>One-to-one lessons are available in-person at Tileyard North, Leeds, and online — for students, working performers and professional musicians alike.</p>
@@ -1347,7 +1301,7 @@
 <section class="bookings section-pad" id="bookings">
   <div class="wrap bookings-grid">
     <div class="text-block reveal">
-      <div class="label-row"><span class="num">05</span><span class="eyebrow">Live Music Bookings</span></div>
+      <div class="label-row"><span class="num">04</span><span class="eyebrow">Live Music Bookings</span></div>
       <h2>A piano vocalist for your day.</h2>
       <p>Kasia performs as a solo piano vocalist or alongside a full band — for wedding ceremonies and drinks receptions, corporate functions, private parties and concert events. Repertoire spans musical theatre, jazz standards, pop and contemporary, tailored to suit the occasion.</p>
       <p>She has performed as a soloist at venues including the Royal Albert Hall, Trafalgar Square, the London Hippodrome Casino and the London O2 Indigo Arena — bringing the same polish to a wedding breakfast as to a concert stage.</p>
@@ -1358,6 +1312,92 @@
     </div>
     <div class="bookings-photo reveal">
       <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley performing live piano vocals at a wedding venue">
+    </div>
+  </div>
+</section>
+
+<section class="quals-section section-pad" id="qualifications">
+  <div class="wrap quals-layout">
+    <div class="quals-intro">
+      <div class="quals-intro-sticky reveal">
+        <div class="label-row"><span class="num">05</span><span class="eyebrow">Credentials</span></div>
+        <h2>Qualifications &amp; Training</h2>
+        <p>A coaching practice grounded in formal training, clinical certification and ongoing research — not just performance experience.</p>
+        <div class="quals-trust">
+          <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+          <div class="quals-trust-text">
+            <strong>Rated 5 Stars on Hitched</strong>
+            <span>Reviewed by real couples for live wedding performances</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quals-list">
+      <div class="qual-row reveal">
+        <div class="qual-row-index">01</div>
+        <div class="qual-badge qual-badge-photo">
+          <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Clinical</span>
+          <h3>Vocal Health First Aid</h3>
+          <div class="qual-org">Level 2, Qualified</div>
+          <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">02</div>
+        <div class="qual-badge qual-badge-photo">
+          <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Clinical</span>
+          <h3>Vocal Manual Therapy</h3>
+          <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
+          <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">03</div>
+        <div class="qual-badge qual-badge-type">
+          <span>E<small>1&amp;2</small></span>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Technique</span>
+          <h3>Estill Method</h3>
+          <div class="qual-org">Levels 1 &amp; 2</div>
+          <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">04</div>
+        <div class="qual-badge qual-badge-type">
+          <span>BA<small>Hons</small></span>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Academic</span>
+          <h3>Musical Theatre</h3>
+          <div class="qual-org">ArtsEd London</div>
+          <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">05</div>
+        <div class="qual-badge qual-badge-type">
+          <span>MA<small>In progress</small></span>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Research</span>
+          <h3>Vocal Pedagogy</h3>
+          <div class="qual-org">Voice Study Centre</div>
+          <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
