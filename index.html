@@ -281,7 +281,7 @@
     display:inline-flex;
     align-items:center;
     gap:9px;
-    padding:10px 16px 10px 13px;
+    padding:13px 18px 13px 15px;
     border-radius:999px;
     background:rgba(13,16,17,0.38);
     border:1px solid rgba(255,255,255,0.4);
@@ -642,6 +642,9 @@
     transition:transform .6s ease;
   }
   .photo-item:hover img{transform:scale(1.07);}
+
+  .carousel-toolbar{display:none;}
+  .carousel-dots{display:none;}
   .photo-item .photo-caption{
     position:absolute;
     left:16px;bottom:14px;
@@ -1366,7 +1369,8 @@
     display:block;
     font-size:14px;
     color:#4a5250;
-    margin-bottom:13px;
+    padding:4px 0;
+    margin-bottom:9px;
     transition:color .25s ease;
   }
   .footer-col a:hover{color:var(--sage-deep);}
@@ -1447,23 +1451,27 @@
     nav.links.open{transform:translateX(0);}
     nav.links a{color:var(--white) !important;font-size:14px;}
     .nav-toggle{
-      display:block;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       position:relative;
-      width:24px;
-      height:16px;
+      width:44px;
+      height:44px;
+      margin:-10px -10px -10px 0;
       cursor:pointer;
       z-index:70;
     }
     .nav-toggle span{
       position:absolute;
-      left:0;
+      left:50%;
+      margin-left:-12px;
       width:24px;height:1px;
       background:var(--white);
       transition:transform .35s ease, opacity .25s ease, background .3s ease;
     }
-    .nav-toggle span:nth-child(1){top:0;}
-    .nav-toggle span:nth-child(2){top:7px;}
-    .nav-toggle span:nth-child(3){top:14px;}
+    .nav-toggle span:nth-child(1){top:15px;}
+    .nav-toggle span:nth-child(2){top:22px;}
+    .nav-toggle span:nth-child(3){top:29px;}
     .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
     .nav-toggle.active span:nth-child(2){opacity:0;}
     .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -1528,10 +1536,90 @@
     .qual-row-index{display:none;}
     .review-card{flex:0 0 86vw;}
     .reviews-nav{display:none;}
-    .video-grid{grid-template-columns:1fr;}
+    .carousel-toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin:-6px 0 14px;
+    }
+    .carousel-label{
+      font-size:11px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      font-weight:600;
+      color:rgba(255,255,255,0.55);
+    }
+    .carousel-nav{display:flex;gap:8px;}
+    .carousel-arrow{
+      width:40px;height:40px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,0.3);
+      background:rgba(255,255,255,0.04);
+      color:var(--white);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:background .25s ease, border-color .25s ease, transform .15s ease, opacity .25s ease;
+    }
+    .carousel-arrow svg{width:16px;height:16px;}
+    .carousel-arrow:active{transform:scale(0.92);}
+    .carousel-arrow:hover{
+      background:var(--sage);
+      border-color:var(--sage);
+    }
+    .carousel-arrow:disabled{
+      opacity:0.3;
+      pointer-events:none;
+    }
+    .carousel-dots{
+      display:flex;
+      justify-content:center;
+      gap:7px;
+      margin-top:16px;
+    }
+    .carousel-dots .dot{
+      width:6px;height:6px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.28);
+      transition:background .25s ease, transform .25s ease;
+    }
+    .carousel-dots .dot.active{
+      background:var(--sage);
+      transform:scale(1.3);
+    }
+    .video-grid{
+      display:flex;
+      grid-template-columns:unset;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      gap:14px;
+      padding:2px 2px 6px;
+      margin:-2px -2px -6px;
+      scrollbar-width:none;
+    }
+    .video-grid::-webkit-scrollbar{display:none;}
+    .video-card{flex:0 0 70vw; scroll-snap-align:start;}
     .photo-grid{
-      grid-template-columns:repeat(2, 1fr);
-      grid-template-rows:none;
+      display:flex;
+      grid-template-columns:unset;
+      grid-template-rows:unset;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      gap:12px;
+      padding:2px 2px 6px;
+      margin:-2px -2px -6px;
+      scrollbar-width:none;
+    }
+    .photo-grid::-webkit-scrollbar{display:none;}
+    .photo-item, .photo-feature, .photo-wide{
+      flex:0 0 62vw;
+      aspect-ratio:4/5;
+      grid-column:unset;
+      grid-row:unset;
+      scroll-snap-align:start;
     }
   }
 </style>
@@ -1722,7 +1810,19 @@
       </div>
     </div>
 
-    <div class="video-grid">
+    <div class="carousel-toolbar">
+      <span class="carousel-label">Videos</span>
+      <div class="carousel-nav">
+        <button class="carousel-arrow" type="button" data-target="videoTrack" data-dir="-1" aria-label="Previous video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+        </button>
+        <button class="carousel-arrow" type="button" data-target="videoTrack" data-dir="1" aria-label="Next video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="video-grid" id="videoTrack">
       <div class="video-card reveal" data-video-id="5rAx8sFYiCc">
         <div class="video-frame">
           <button class="video-play" type="button" aria-label="Play video">
@@ -1757,8 +1857,21 @@
         </div>
       </div>
     </div>
+    <div class="carousel-dots" id="videoDots"></div>
 
-    <div class="photo-grid">
+    <div class="carousel-toolbar">
+      <span class="carousel-label">Photos</span>
+      <div class="carousel-nav">
+        <button class="carousel-arrow" type="button" data-target="photoTrack" data-dir="-1" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+        </button>
+        <button class="carousel-arrow" type="button" data-target="photoTrack" data-dir="1" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="photo-grid" id="photoTrack">
       <div class="photo-item reveal photo-feature">
         <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals at Eaves Hall" loading="lazy">
         <div class="photo-caption"><span class="dash"></span>Eaves Hall</div>
@@ -1776,6 +1889,7 @@
         <div class="photo-caption"><span class="dash"></span>Live Performance</div>
       </div>
     </div>
+    <div class="carousel-dots" id="photoDots"></div>
   </div>
 </section>
 
@@ -2052,6 +2166,72 @@
   }, { threshold: 0.18 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile carousels: pagination dots + arrow disabled-state sync (video + photo galleries)
+  function setupCarouselDots(trackId, dotsId) {
+    const track = document.getElementById(trackId);
+    const dotsWrap = document.getElementById(dotsId);
+    if (!track || !dotsWrap) return;
+    const items = Array.from(track.children);
+    if (items.length < 2) return;
+
+    items.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to item ${i + 1}`);
+      dot.addEventListener('click', () => {
+        items[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsWrap.children);
+    const arrows = document.querySelectorAll(`.carousel-arrow[data-target="${trackId}"]`);
+
+    function syncState() {
+      const trackRect = track.getBoundingClientRect();
+      const center = trackRect.left + trackRect.width / 2;
+      let closest = 0;
+      let closestDist = Infinity;
+      items.forEach((item, i) => {
+        const r = item.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - center);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+      const maxScroll = track.scrollWidth - track.clientWidth - 2;
+      arrows.forEach((btn) => {
+        const dir = parseInt(btn.getAttribute('data-dir'), 10);
+        if (dir < 0) btn.disabled = track.scrollLeft <= 2;
+        else btn.disabled = track.scrollLeft >= maxScroll;
+      });
+    }
+
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { syncState(); ticking = false; });
+    });
+    syncState();
+  }
+
+  setupCarouselDots('videoTrack', 'videoDots');
+  setupCarouselDots('photoTrack', 'photoDots');
+
+  // Carousel arrow buttons: step one card at a time
+  document.querySelectorAll('.carousel-arrow').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const track = document.getElementById(btn.getAttribute('data-target'));
+      if (!track) return;
+      const dir = parseInt(btn.getAttribute('data-dir'), 10);
+      const item = track.children[0];
+      const gap = parseFloat(getComputedStyle(track).gap) || 14;
+      const step = (item ? item.getBoundingClientRect().width : 280) + gap;
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    });
+  });
 
   // Performance videos: load the YouTube iframe only when played
   document.querySelectorAll('.video-card').forEach((card) => {
