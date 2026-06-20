@@ -1,824 +1,1605 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CEIBA | Transformational Coaching &amp; Change</title>
-<meta name="description" content="CEIBA — Transformational coaching for life transitions and change, built on The CEIBA Method™. Clarity. Change. Possibility." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasia Howley Music — Live Music Bookings &amp; Vocal Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-
   :root{
-    --bg:        #F4EFE3;
-    --bg-warm:   #EFE8D8;
-    --bg-alt:    #EAE2CE;
-    --white:     #FBF9F3;
-    --forest:    #1F4434;
-    --forest-deep:#16352A;
-    --forest-mid:#3A6B52;
-    --sage:      #9CBBA4;
-    --sage-soft: #C3D4C4;
-    --text:      #232A24;
-    --muted:     #5E665C;
-    --subtle:    #8E948A;
-    --border:    #D8CDB4;
-    --border-lt: #E6DDC8;
-    --gold:      #C08A3E;
-    --gold-deep: #A6712B;
-    --gold-soft: #D9B98B;
-    --max: 1240px;
-    --ease: cubic-bezier(.22,.61,.36,1);
-    --hero-img: url('https://images.unsplash.com/photo-1533219480925-55054b668f15?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    --sage:#7fa191;
+    --sage-deep:#5d7d6f;
+    --sage-pale:#e7eee9;
+    --ink:#14181a;
+    --white:#ffffff;
+    --cream:#faf9f7;
+    --line:rgba(20,24,26,0.12);
   }
 
-  html{ scroll-behavior:smooth; scroll-padding-top:96px; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
   body{
-    font-family:'Outfit',sans-serif; font-weight:300;
-    background:var(--bg); color:var(--text);
-    line-height:1.72; overflow-x:hidden;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  h1,h2,h3,h4{ font-family:'Cormorant Garamond',serif; font-weight:500; color:var(--text); }
-  em{ font-style:italic; color:var(--gold); }
-  a{ color:inherit; }
-  img{ display:block; max-width:100%; }
-  ::selection{ background:var(--sage); color:var(--forest-deep); }
-
-  /* ── reveal animation ── */
-  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
-  .reveal.in{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
-
-  /* ── TOP UTILITY BAR ── */
-  .util{ background:var(--forest-deep); color:rgba(255,255,255,.62); font-size:11.5px; letter-spacing:.08em; }
-  .util-in{ max-width:var(--max); margin:0 auto; padding:8px 40px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
-  .util a{ color:rgba(255,255,255,.78); text-decoration:none; transition:color .2s; }
-  .util a:hover{ color:#fff; }
-  .util-right{ display:flex; gap:22px; align-items:center; }
-  .util-tag{ text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:var(--gold-soft); }
-
-  /* ── NAV ── */
-  nav.main{ position:sticky; top:0; z-index:100; background:transparent; border-bottom:1px solid transparent; isolation:isolate; }
-  nav.main::before{ content:''; position:absolute; top:0; left:0; right:0; bottom:-46px; z-index:0; pointer-events:none; background:linear-gradient(to bottom, rgba(244,239,227,.98) 0%, rgba(244,239,227,.84) 38%, rgba(244,239,227,.40) 68%, rgba(244,239,227,0) 100%); opacity:1; transition:opacity .45s var(--ease); }
-  nav.main::after{ content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(244,239,227,.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border); box-shadow:0 10px 40px -16px rgba(31,68,52,.22); opacity:0; transition:opacity .45s var(--ease); }
-  nav.main.scrolled::before{ opacity:0; }
-  nav.main.scrolled::after{ opacity:1; }
-  .nav-inner{ position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 40px; height:96px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
-
-  .brand{ display:flex; align-items:center; text-decoration:none; transition:transform .3s var(--ease); }
-  .brand:hover{ transform:translateY(-1px); }
-  .brand-logo{ height:68px; width:auto; display:block; }
-
-  .nav-links{ display:flex; list-style:none; gap:30px; align-items:center; }
-  .nav-links > li > a{ position:relative; font-size:11.5px; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; padding:4px 0; }
-  .nav-links > li > a::after{ content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1.5px; background:var(--gold); transition:right .3s var(--ease); }
-  .nav-links > li > a:hover{ color:var(--text); }
-  .nav-links > li > a:hover::after{ right:0; }
-  .nav-links > li > a.active{ color:var(--forest); }
-  .nav-links > li > a.active::after{ right:0; }
-  .nav-cta{ background:var(--forest); color:#fff !important; padding:13px 26px; font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:500; text-decoration:none; border-radius:2px; transition:background .25s, transform .2s var(--ease), box-shadow .25s; white-space:nowrap; }
-  .nav-cta::after{ display:none; }
-  .nav-cta:hover{ background:var(--forest-mid); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(31,68,52,.5); }
-
-  .hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; }
-  .hamburger span{ display:block; width:24px; height:1.5px; background:var(--text); transition:transform .3s, opacity .3s; }
-  .mob-menu{ display:none; position:fixed; inset:0; background:var(--forest-deep); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:1.6rem; }
-  .mob-menu.open{ display:flex; }
-  .mob-menu a{ font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:rgba(255,255,255,.88); text-decoration:none; }
-  .mob-menu a.mob-cta{ margin-top:14px; font-family:'Outfit',sans-serif; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; border:1px solid var(--gold); color:var(--gold-soft); padding:14px 30px; border-radius:2px; }
-  .mob-close{ position:absolute; top:26px; right:32px; background:none; border:none; color:rgba(255,255,255,.6); font-size:32px; cursor:pointer; line-height:1; }
-
-  /* ── shared ── */
-  .wrap{ max-width:var(--max); margin:0 auto; padding:0 40px; }
-  .kicker{ display:inline-flex; align-items:center; gap:11px; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:20px; }
-  .kicker::before{ content:''; width:26px; height:1px; background:var(--gold); opacity:.6; }
-  .kicker.center{ justify-content:center; }
-  .kicker.center::after{ content:''; width:26px; height:1px; background:var(--gold); opacity:.6; }
-  .kicker.on-dark{ color:var(--gold-soft); }
-  .kicker.on-dark::before, .kicker.on-dark::after{ background:var(--gold-soft); }
-  .headline{ font-family:'Cormorant Garamond',serif; font-weight:500; line-height:1.12; letter-spacing:-.01em; color:var(--text); }
-  .lede{ font-size:15.5px; font-weight:300; color:var(--muted); line-height:1.95; }
-  .lede + .lede{ margin-top:15px; }
-
-  .text-link{ display:inline-flex; align-items:center; gap:8px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; font-weight:500; border-bottom:1px solid var(--border); padding-bottom:4px; transition:color .25s,border-color .25s; }
-  .text-link:hover{ color:var(--text); border-color:var(--gold); }
-  .arrow-link{ display:inline-flex; align-items:center; gap:11px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text); text-decoration:none; font-weight:500; }
-  .arrow-link .ln{ width:30px; height:1px; background:var(--gold); transition:width .3s var(--ease); }
-  .arrow-link:hover .ln{ width:44px; }
-  .arrow-link:hover{ color:var(--gold-deep); }
-
-  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:500; text-decoration:none; padding:14px 28px; cursor:pointer; border:none; border-radius:2px; transition:background .25s,color .25s,transform .2s var(--ease),box-shadow .25s,border-color .25s; }
-  .btn:hover{ transform:translateY(-2px); }
-  .btn-fill{ background:var(--forest); color:rgba(255,255,255,.96); box-shadow:0 4px 14px -6px rgba(31,68,52,.4); }
-  .btn-fill:hover{ background:var(--forest-mid); box-shadow:0 12px 28px -8px rgba(31,68,52,.5); }
-  .btn-gold{ background:var(--gold); color:#fff; box-shadow:0 4px 14px -6px rgba(192,138,62,.5); }
-  .btn-gold:hover{ background:var(--gold-deep); box-shadow:0 12px 28px -8px rgba(192,138,62,.55); }
-  .btn-outline{ background:transparent; color:var(--forest); border:1px solid var(--border); }
-  .btn-outline:hover{ border-color:var(--forest); }
-  .btn-outline-white{ background:transparent; color:rgba(255,255,255,.9); border:1px solid rgba(255,255,255,.4); }
-  .btn-outline-white:hover{ border-color:#fff; color:#fff; }
-
-  .section-pad{ padding:108px 0; }
-
-  /* ── HERO ── */
-  .hero{ position:relative; min-height:100vh; margin-top:-96px; padding-top:96px; display:flex; align-items:center; overflow:hidden; background:#2a2417; }
-  .hero-bg{ position:absolute; inset:0; background-image:var(--hero-img); background-size:cover; background-position:center 40%; transform:scale(1.06); animation:heroZoom 26s var(--ease) forwards; }
-  @keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1);} }
-  .hero-scrim{ position:absolute; inset:0; pointer-events:none; background:
-      linear-gradient(105deg, var(--bg) 0%, rgba(244,239,227,.97) 26%, rgba(244,239,227,.74) 44%, rgba(244,239,227,.30) 60%, rgba(244,239,227,0) 76%); }
-  .hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:36px 40px; width:100%; }
-  .hero-text{ max-width:580px; }
-  @media (min-width:1081px){ .hero-br{ display:block; } }
-  .hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:18px; font-weight:500; }
-  .hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
-  .hero h1{ font-size:clamp(2.5rem,4.6vw,4.6rem); line-height:1.04; color:var(--text); margin-bottom:20px; letter-spacing:-.015em; }
-  .hero h1 em{ color:var(--gold); }
-  .hero-br{ display:none; }
-  .hero-lead{ font-size:15px; font-weight:300; color:var(--muted); line-height:1.75; max-width:430px; margin-bottom:30px; }
-  .hero-actions{ display:flex; gap:24px; align-items:center; flex-wrap:wrap; }
-
-  /* ── REFLECT + METHOD bridge wrapper ── */
-  .bridge{ position:relative; background:var(--bg); }
-  .branch-bleed{ position:absolute; left:-34px; top:10px; width:min(40vw,520px); z-index:6; pointer-events:none; opacity:.95; filter:saturate(.94); }
-  .branch-bleed img{ width:100%; height:auto; }
-
-  .reflect{ position:relative; z-index:2; padding:92px 0 70px; }
-  .reflect-in{ max-width:880px; margin:0 auto; padding:0 40px; text-align:center; }
-  .reflect h2{ font-size:clamp(1.9rem,3vw,2.7rem); line-height:1.3; }
-  .reflect-mark{ width:8px; height:8px; border-radius:50%; background:var(--gold); margin:22px auto; position:relative; }
-  .reflect-mark::before,.reflect-mark::after{ content:''; position:absolute; top:50%; width:40px; height:1px; background:var(--border); }
-  .reflect-mark::before{ right:16px; } .reflect-mark::after{ left:16px; }
-  .reflect-in .lede{ max-width:620px; margin:0 auto; }
-
-  /* ── METHOD ── */
-  .method{ position:relative; z-index:2; background:transparent; padding:30px 0 110px; }
-  .method-head{ text-align:center; margin-bottom:72px; }
-  .method-title{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,2vw,1.9rem); letter-spacing:.18em; text-transform:uppercase; color:var(--forest); font-weight:500; }
-  .method-title sup{ font-size:.45em; letter-spacing:0; }
-  .method-divider{ width:9px; height:9px; border-radius:50%; background:var(--gold); margin:16px auto 0; }
-  .method-sub{ margin-top:18px; font-size:14.5px; color:var(--muted); max-width:420px; margin-left:auto; margin-right:auto; line-height:1.8; }
-
-  .method-grid{ max-width:var(--max); margin:0 auto; padding:0 40px; position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
-  .method-line{ position:absolute; top:-2px; left:calc(12.5% + 24px); right:calc(12.5% + 24px); height:1px; background:linear-gradient(to right, transparent, var(--border) 8%, var(--border) 92%, transparent); z-index:0; }
-
-  .method-grid{ margin-top:50px; }
-  .m-card{ position:relative; z-index:1; text-align:center; background:var(--white); border:1px solid var(--border-lt); border-radius:6px; padding:54px 24px 32px; transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease); }
-  .m-card:hover{ transform:translateY(-7px); box-shadow:0 24px 48px -18px rgba(31,68,52,.18); border-color:var(--border); }
-
-  .m-badge{ position:absolute; top:-26px; left:50%; transform:translateX(-50%); width:48px; height:48px; border-radius:50%; background:var(--forest); color:#fff; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -4px rgba(31,68,52,.45), 0 0 0 5px var(--bg); border:1px solid var(--gold-soft); letter-spacing:0; z-index:2; }
-  .m-badge-label{ position:absolute; top:24px; left:50%; transform:translateX(-50%); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--subtle); white-space:nowrap; }
-
-  .m-ring{ width:96px; height:96px; border-radius:50%; border:1px solid var(--sage); display:flex; align-items:center; justify-content:center; margin:10px auto 24px; position:relative; transition:border-color .4s var(--ease); background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.5), transparent 70%); overflow:hidden; }
-  .m-card:hover .m-ring{ border-color:var(--gold); }
-  .m-ring svg{ width:42px; height:42px; }
-  .m-ring.is-photo{ background:none; }
-  .m-ring.is-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.05); transition:transform .6s var(--ease); }
-  .m-card:hover .m-ring.is-photo img{ transform:scale(1.14); }
-  .m-ring.is-photo::after{ content:''; position:absolute; inset:0; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(255,255,255,.25); }
-
-  .m-name{ font-family:'Cormorant Garamond',serif; font-size:1.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text); margin-bottom:5px; }
-  .m-stage{ display:block; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:18px; }
-  .m-words{ font-size:12.5px; color:var(--muted); line-height:1.85; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border-lt); }
-  .m-ask{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.08rem; color:var(--forest-mid); line-height:1.4; }
-
-  /* ── AUDIENCE (Who I work with) ── */
-  .aud{ display:grid; grid-template-columns:1fr 1fr; background:var(--white); }
-  .aud-panel{ display:grid; grid-template-columns:0.82fr 1fr; min-height:480px; }
-  .aud-panel.org{ grid-template-columns:1fr 0.82fr; }
-  .aud-panel.org .aud-figure{ order:2; }
-  .aud-panel.org .aud-body{ order:1; }
-
-  .aud-figure{ position:relative; overflow:hidden; }
-  .aud-figure-img{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.05); transition:transform 1.2s var(--ease); }
-  .aud-panel:hover .aud-figure-img{ transform:scale(1.12); }
-  .aud-figure-tone{ position:absolute; inset:0; }
-  .aud-panel.individuals .aud-figure-img{ background-color:#cbbd9d; background-image:url('https://images.unsplash.com/photo-1550504630-cc20eca3b23e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
-  .aud-panel.individuals .aud-figure-tone{ background:linear-gradient(115deg, rgba(31,68,52,.12), rgba(192,138,62,.18)); }
-  .aud-panel.org .aud-figure-img{ background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop'); }
-  .aud-panel.org .aud-figure-tone{ background:linear-gradient(115deg, rgba(22,53,42,.55), rgba(22,53,42,.2)); }
-
-  .aud-body{ display:flex; flex-direction:column; justify-content:center; padding:64px 56px; }
-  .aud-panel.individuals .aud-body{ background:var(--white); }
-  .aud-panel.org .aud-body{ background:var(--forest); }
-  .aud-ico{ width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:24px; }
-  .aud-panel.individuals .aud-ico{ border:1px solid var(--border); background:var(--bg); }
-  .aud-panel.org .aud-ico{ border:1px solid rgba(156,187,164,.45); background:rgba(255,255,255,.04); }
-  .aud-ico svg{ width:24px; height:24px; }
-  .aud-label{ font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:500; margin-bottom:8px; }
-  .aud-panel.individuals .aud-label{ color:var(--gold-deep); }
-  .aud-panel.org .aud-label{ color:var(--gold-soft); }
-  .aud-title{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1.2; margin-bottom:24px; }
-  .aud-panel.individuals .aud-title{ color:var(--text); }
-  .aud-panel.org .aud-title{ color:#fff; }
-  .aud-list{ list-style:none; display:flex; flex-direction:column; gap:0; margin-bottom:26px; }
-  .aud-list li{ display:flex; align-items:center; gap:13px; font-size:14.5px; font-weight:300; padding:11px 0; border-bottom:1px solid; }
-  .aud-panel.individuals .aud-list li{ color:var(--text); border-color:var(--border-lt); }
-  .aud-panel.org .aud-list li{ color:rgba(255,255,255,.9); border-color:rgba(255,255,255,.12); }
-  .aud-list li:last-child{ border-bottom:none; }
-  .aud-list .dot{ width:5px; height:5px; border-radius:50%; flex-shrink:0; }
-  .aud-panel.individuals .aud-list .dot{ background:var(--gold); }
-  .aud-panel.org .aud-list .dot{ background:var(--sage); }
-  .aud-foot{ font-size:13.5px; line-height:1.8; margin-bottom:28px; max-width:360px; }
-  .aud-panel.individuals .aud-foot{ color:var(--muted); }
-  .aud-panel.org .aud-foot{ color:rgba(255,255,255,.72); }
-
-  /* ── ABOUT ── */
-  .about{ position:relative; background:var(--white); }
-  .about-grid{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:.85fr 1.15fr; align-items:stretch; }
-  .about-photo{ position:relative; min-height:600px; overflow:hidden; margin:48px 0 48px 40px; border-radius:6px; box-shadow:0 30px 60px -24px rgba(31,68,52,.28); }
-  .about-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
-  .about-photo-ph{ position:absolute; inset:0; background:linear-gradient(160deg,var(--bg-warm),var(--border)); display:flex; align-items:center; justify-content:center; }
-  .about-photo-ph svg{ width:38%; opacity:.45; }
-  .about-photo-tag{ position:absolute; left:24px; bottom:24px; right:24px; z-index:2; display:flex; align-items:center; gap:10px; }
-  .about-photo-tag .ln{ width:20px; height:1px; background:var(--gold-soft); }
-  .about-photo-tag span{ font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.9); }
-  .about-photo-frame{ position:absolute; inset:14px; border:1px solid rgba(255,255,255,.35); border-radius:4px; pointer-events:none; z-index:1; }
-
-  .about-body{ padding:96px 64px 96px 72px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
-  .about-watermark{ position:absolute; right:-60px; top:50%; transform:translateY(-50%); width:340px; opacity:.05; pointer-events:none; }
-  .about-body .headline{ font-size:clamp(2rem,2.8vw,2.9rem); margin-bottom:8px; position:relative; }
-  .about-body .lede{ position:relative; max-width:520px; }
-  .about-stats{ display:flex; gap:36px; margin:34px 0 6px; position:relative; }
-  .about-stat-fig{ font-family:'Cormorant Garamond',serif; font-size:2.1rem; color:var(--text); line-height:1; }
-  .about-stat-desc{ font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--subtle); margin-top:6px; line-height:1.5; max-width:110px; }
-  .about-divider{ width:100%; height:1px; background:var(--border-lt); margin:30px 0 24px; position:relative; }
-
-  /* ── PULL QUOTE ── */
-  .quote{ position:relative; overflow:hidden; padding:140px 40px; text-align:center; }
-  .quote-bg{ position:absolute; inset:0; background-color:#cfc4a6; background-image:url('https://images.unsplash.com/photo-1545350089-47b3d117a92c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center; transform:scale(1.05); filter:saturate(.85) brightness(.9); }
-  .quote-overlay{ position:absolute; inset:0; background:
-      linear-gradient(to bottom,
-        var(--white) 0%,
-        rgba(251,249,243,.5) 16%,
-        rgba(22,40,32,.48) 38%,
-        rgba(17,34,27,.6) 50%,
-        rgba(22,40,32,.48) 62%,
-        rgba(234,226,206,.5) 84%,
-        var(--bg-alt) 100%); }
-  .quote-inner{ position:relative; z-index:2; max-width:820px; margin:0 auto; }
-  .quote-badge{ width:56px; height:56px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; margin:0 auto 32px; box-shadow:0 12px 28px -6px rgba(0,0,0,.35); }
-  .quote-badge svg{ width:23px; height:19px; }
-  .quote blockquote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:clamp(1.7rem,3.1vw,2.6rem); line-height:1.45; color:#FBF6EC; text-shadow:0 2px 18px rgba(0,0,0,.25); }
-  .quote-attrib{ margin-top:30px; display:flex; align-items:center; justify-content:center; gap:12px; }
-  .quote-attrib .ln{ width:26px; height:1px; background:rgba(217,185,139,.6); }
-  .quote-attrib span:not(.ln){ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; }
-
-
-  /* ── WORK WITH ME ── */
-  .work{ background:var(--bg-alt); border-top:1px solid var(--border); }
-  .work-head{ max-width:var(--max); margin:0 auto; padding:96px 40px 56px; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:end; }
-  .work-head .headline{ font-size:clamp(2rem,2.8vw,2.9rem); }
-  .work-head .lede{ max-width:440px; }
-  .work-grid{ max-width:var(--max); margin:0 auto; padding:0 40px 100px; display:grid; grid-template-columns:1.25fr .9fr; gap:28px; align-items:stretch; }
-  .work-offer{ background:var(--white); padding:56px 56px; border:1px solid var(--border); border-radius:6px; }
-  .work-offer h3{ font-size:1.7rem; margin-bottom:14px; }
-  .work-included{ list-style:none; margin-top:30px; display:flex; flex-direction:column; gap:0; }
-  .work-included li{ display:flex; gap:16px; align-items:flex-start; font-size:14.5px; color:var(--muted); line-height:1.6; padding:16px 0; border-bottom:1px solid var(--border-lt); transition:padding-left .25s var(--ease); }
-  .work-included li:last-child{ border-bottom:none; }
-  .work-included li:hover{ padding-left:6px; }
-  .work-included .tick{ width:22px; height:22px; border-radius:50%; background:var(--bg-alt); color:var(--forest-mid); flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-top:1px; }
-  .work-included .tick svg{ width:12px; height:12px; }
-
-  .work-card{ background:linear-gradient(165deg, var(--forest) 0%, var(--forest-deep) 100%); color:#fff; padding:52px 44px 44px; display:flex; flex-direction:column; position:relative; overflow:hidden; border-radius:6px; box-shadow:0 32px 64px -24px rgba(22,53,42,.45); }
-  .work-card-leaf{ position:absolute; right:-30px; top:-30px; width:180px; opacity:.1; }
-  .work-card-badge{ position:absolute; top:0; right:0; background:var(--gold); color:#fff; font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; padding:8px 16px; border-radius:0 6px 0 10px; z-index:1; }
-  .work-card-label{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; margin-bottom:16px; position:relative; }
-  .work-price-row{ display:flex; align-items:baseline; gap:12px; position:relative; }
-  .work-price{ font-family:'Cormorant Garamond',serif; font-size:4rem; color:#fff; line-height:1; }
-  .work-price-was{ font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:rgba(255,255,255,.4); text-decoration:line-through; }
-  .work-price-note{ font-size:13px; color:var(--gold-soft); margin-top:10px; margin-bottom:28px; line-height:1.6; position:relative; font-weight:500; letter-spacing:.02em; }
-  .work-card-divider{ height:1px; background:rgba(255,255,255,.12); margin-bottom:28px; position:relative; }
-  .work-card-text{ font-size:14px; color:rgba(255,255,255,.78); line-height:1.85; margin-bottom:32px; position:relative; flex:1; }
-  .work-card .btn{ width:100%; position:relative; }
-  .work-card-foot{ font-size:12.5px; color:rgba(255,255,255,.55); text-align:center; margin-top:20px; line-height:1.6; position:relative; }
-
-  /* ── CTA BANNER ── */
-  .cta{ position:relative; overflow:hidden; padding:120px 0; text-align:center; }
-  .cta-bg{ position:absolute; inset:0; background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1665345990873-98ff7b05b510?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center 75%; }
-  .cta-overlay{ position:absolute; inset:0; background:linear-gradient(135deg, rgba(22,53,42,.78), rgba(31,68,52,.7)); }
-  .cta-inner{ position:relative; z-index:2; max-width:760px; margin:0 auto; padding:0 40px; }
-  .cta h2{ color:#fff; font-size:clamp(2rem,3.4vw,3rem); line-height:1.2; }
-  .cta h2 em{ color:var(--gold-soft); }
-  .cta p{ margin-top:18px; font-size:16px; color:rgba(255,255,255,.78); }
-  .cta .btn{ margin-top:34px; }
-
-  /* ── DISCOVERY CALL MODAL ── */
-  .modal-overlay{ position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:24px; }
-  .modal-overlay.open{ display:flex; }
-  .modal-scrim{ position:absolute; inset:0; background:rgba(17,28,22,.7); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:0; transition:opacity .35s var(--ease); }
-  .modal-overlay.open .modal-scrim{ opacity:1; }
-  .modal-box{ position:relative; z-index:1; background:var(--white); width:100%; max-width:480px; max-height:88vh; overflow-y:auto; border-radius:8px; box-shadow:0 40px 80px -20px rgba(17,28,22,.5); padding:48px 40px 40px; opacity:0; transform:translateY(18px) scale(.98); transition:opacity .35s var(--ease), transform .35s var(--ease); }
-  .modal-overlay.open .modal-box{ opacity:1; transform:none; }
-  .modal-close{ position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:var(--bg); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,border-color .2s; }
-  .modal-close:hover{ background:var(--bg-alt); border-color:var(--subtle); }
-  .modal-close svg{ width:14px; height:14px; }
-  .modal-kicker{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:10px; }
-  .modal-title{ font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--text); margin-bottom:10px; line-height:1.25; }
-  .modal-sub{ font-size:13.5px; color:var(--muted); line-height:1.7; margin-bottom:28px; }
-  .modal-field{ margin-bottom:18px; }
-  .modal-field label{ display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--subtle); margin-bottom:7px; font-weight:500; }
-  .modal-field input, .modal-field textarea{ width:100%; font-family:'Outfit',sans-serif; font-size:14.5px; color:var(--text); background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:12px 14px; transition:border-color .2s,background .2s; }
-  .modal-field input:focus, .modal-field textarea:focus{ outline:none; border-color:var(--forest-mid); background:var(--white); }
-  .modal-field textarea{ resize:vertical; min-height:80px; font-family:'Outfit',sans-serif; }
-  .modal-submit{ width:100%; margin-top:6px; }
-  .modal-note{ font-size:11.5px; color:var(--subtle); text-align:center; margin-top:16px; line-height:1.6; }
-  .modal-status{ display:none; text-align:center; padding:20px 0; }
-  .modal-status.show{ display:block; }
-  .modal-status svg{ width:40px; height:40px; color:var(--forest-mid); margin:0 auto 16px; }
-  .modal-status h4{ font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--text); margin-bottom:8px; }
-  .modal-status p{ font-size:13.5px; color:var(--muted); line-height:1.7; }
-  .modal-status.error svg{ color:#B14B3C; }
-  @media (max-width:480px){
-    .modal-box{ padding:40px 24px 32px; }
+    font-family:'Work Sans',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
 
-  /* ── FOOTER ── */
-  footer{ background:var(--forest-deep); padding:64px 0 30px; }
-  .footer-top{ max-width:var(--max); margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:36px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.1); }
-  .footer-brand{ display:flex; align-items:center; }
-  .footer-logo{ height:64px; width:auto; display:block; filter:brightness(0) invert(1) opacity(.92); }
-  .footer-nav{ display:flex; gap:26px; flex-wrap:wrap; align-items:center; }
-  .footer-nav a{ font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
-  .footer-nav a:hover{ color:#fff; }
-  .footer-social{ display:flex; gap:12px; }
-  .footer-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,.25); display:flex; align-items:center; justify-content:center; transition:border-color .25s,background .25s,transform .25s; }
-  .footer-social a:hover{ background:rgba(255,255,255,.1); border-color:var(--gold-soft); transform:translateY(-2px); }
-  .footer-social svg{ width:16px; height:16px; }
-  .footer-bottom{ max-width:var(--max); margin:0 auto; padding:24px 40px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11.5px; color:rgba(255,255,255,.42); }
-  .footer-bottom a{ color:rgba(255,255,255,.42); text-decoration:none; }
-  .footer-bottom a:hover{ color:#fff; }
+  h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width:1080px){
-    .nav-links{ display:none; } .nav-cta{ display:none; } .hamburger{ display:flex; }
-    .hero{ min-height:78vh; }
-    .hero-scrim{ background:
-        linear-gradient(105deg, var(--bg) 0%, rgba(244,239,227,.96) 34%, rgba(244,239,227,.7) 54%, rgba(244,239,227,.2) 74%, rgba(244,239,227,0) 90%); }
-    .hero-inner{ padding:56px 40px; }
-    .branch-bleed{ width:200px; left:-16px; top:-60px; opacity:.7; }
-    .method-grid{ grid-template-columns:1fr 1fr; gap:56px 24px; padding:0 24px; }
-    .method-line{ display:none; }
-    .aud{ grid-template-columns:1fr; }
-    .aud-panel, .aud-panel.org{ grid-template-columns:1fr; }
-    .aud-panel.org .aud-figure{ order:1; }
-    .aud-panel.org .aud-body{ order:2; }
-    .aud-figure{ min-height:300px; }
-    .aud-body{ padding:52px 40px; }
-    .about-grid{ grid-template-columns:1fr; }
-    .about-photo{ min-height:380px; margin:0; border-radius:0; }
-    .about-body{ padding:64px 40px; }
-    .work-head{ grid-template-columns:1fr; gap:18px; padding:72px 40px 48px; }
-    .work-grid{ grid-template-columns:1fr; padding:0 40px 80px; gap:24px; }
+  .eyebrow{
+    font-family:'Work Sans',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.22em;
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--sage-deep);
   }
-  @media (max-width:640px){
-    .util-in{ padding:7px 20px; font-size:10.5px; }
-    .util-tag{ display:none; }
-    .nav-inner{ padding:0 20px; }
-    .hero{ min-height:0; }
-    .hero-scrim{ background:
-        linear-gradient(160deg, var(--bg) 0%, rgba(244,239,227,.97) 50%, rgba(244,239,227,.85) 75%, rgba(244,239,227,.55) 100%); }
-    .hero-inner{ padding:48px 20px; }
-    .hero h1{ font-size:2.7rem; }
-    .reflect-in,.method-grid{ padding-left:20px; padding-right:20px; }
-    .method-grid{ grid-template-columns:1fr; gap:36px; }
-    .aud-body{ padding:48px 24px; }
-    .about-body{ padding:52px 24px; }
-    .about-stats{ flex-wrap:wrap; gap:24px; }
-    .quote{ padding:88px 24px; }
-    .work-head{ padding:56px 20px 36px; }
-    .work-grid{ padding:0 20px 64px; }
-    .work-offer,.work-card{ padding:40px 28px; }
-    .footer-top{ flex-direction:column; }
-    .branch-bleed{ display:none; }
-    .section-pad{ padding:72px 0; }
+
+  a{color:inherit;text-decoration:none;}
+
+  img{display:block;max-width:100%;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 6vw;
   }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    padding:26px 0;
+    background:rgba(255,255,255,0);
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.site.scrolled{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    padding:16px 0;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    line-height:1.05;
+  }
+  header.site:not(.scrolled) .brand{color:var(--white);}
+  .brand span{
+    font-family:'Work Sans',sans-serif;
+    font-size:9.5px;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--sage);
+    margin-top:3px;
+  }
+
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:34px;
+  }
+
+  nav.links{display:flex;gap:38px;}
+  nav.links a{
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--ink);
+    position:relative;
+    padding-bottom:4px;
+  }
+  header.site:not(.scrolled) nav.links a{color:var(--white);}
+  nav.links a::after{
+    content:'';
+    position:absolute;left:0;bottom:0;
+    width:0;height:1px;
+    background:currentColor;
+    transition:width .3s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+
+  .nav-toggle{display:none;}
+
+  .nav-cta{
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:11px 22px;
+    border:1px solid var(--sage);
+    color:var(--white);
+    background:rgba(127,161,145,0.18);
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
+    white-space:nowrap;
+  }
+  header.site.scrolled .nav-cta{
+    color:var(--ink);
+    border-color:var(--sage-deep);
+    background:transparent;
+  }
+  .nav-cta:hover{
+    background:var(--sage);
+    color:var(--ink);
+    border-color:var(--sage);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .hero-fallback-img{
+    position:absolute;
+    inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:32% 62%;
+    filter:saturate(0.92) contrast(1.02);
+  }
+  .hero-video-wrap{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+  }
+  .hero-video-wrap iframe{
+    position:absolute;
+    top:50%;left:50%;
+    width:100vw;
+    height:56.25vw;
+    min-width:177.78vh;
+    min-height:100vh;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    border:0;
+    filter:saturate(0.92) contrast(1.02);
+  }
+  .hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(13,16,17,0.22) 0%, rgba(13,16,17,0) 32%, rgba(13,16,17,0.08) 55%, rgba(13,16,17,0.62) 100%);
+    z-index:1;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(100deg, rgba(10,13,14,0.88) 0%, rgba(10,13,14,0.58) 26%, rgba(10,13,14,0.22) 48%, rgba(10,13,14,0.04) 66%, rgba(10,13,14,0) 82%);
+    z-index:1;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    color:var(--white);
+    padding-bottom:7vw;
+    width:100%;
+    text-shadow:0 2px 18px rgba(0,0,0,0.22);
+  }
+  .hero-content .eyebrow{color:var(--sage);}
+  .hero-content .eyebrow::before{
+    content:'';
+    display:inline-block;
+    width:26px;height:1px;
+    background:var(--sage);
+    margin-right:12px;
+    vertical-align:middle;
+  }
+  .hero h1{
+    font-size:clamp(32px, 4.4vw, 62px);
+    line-height:1.12;
+    margin-top:20px;
+    font-weight:500;
+    max-width:740px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--sage-pale);
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:16px;
+    font-weight:300;
+    max-width:480px;
+    color:rgba(255,255,255,0.86);
+    line-height:1.6;
+  }
+  .hero-pills{
+    display:flex;
+    gap:16px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .hero-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 28px;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    border-radius:999px;
+    transition:background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .hero-pill.solid{
+    background:var(--sage);
+    color:var(--ink);
+    border:1px solid var(--sage);
+  }
+  .hero-pill.solid:hover{background:var(--sage-pale);transform:translateY(-2px);}
+  .hero-pill.outline{
+    background:transparent;
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.55);
+  }
+  .hero-pill.outline:hover{
+    background:rgba(255,255,255,0.12);
+    border-color:var(--white);
+    transform:translateY(-2px);
+  }
+
+  .sound-toggle{
+    position:absolute;
+    left:6vw;bottom:40px;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 16px 10px 13px;
+    border-radius:999px;
+    background:rgba(13,16,17,0.38);
+    border:1px solid rgba(255,255,255,0.4);
+    color:var(--white);
+    backdrop-filter:blur(6px);
+    cursor:pointer;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .sound-toggle:hover{
+    background:rgba(127,161,145,0.5);
+    border-color:var(--sage);
+    transform:translateY(-2px);
+  }
+  .sound-toggle .icon-unmuted{display:none;}
+  .sound-toggle.is-unmuted .icon-muted{display:none;}
+  .sound-toggle.is-unmuted .icon-unmuted{display:block;}
+  .sound-toggle-label{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    right:6vw;bottom:36px;
+    z-index:2;
+    color:rgba(255,255,255,0.7);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    writing-mode:vertical-rl;
+    display:flex;align-items:center;gap:10px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);
+  }
+  .scroll-cue .dash{
+    width:1px;height:46px;
+    background:rgba(255,255,255,0.5);
+  }
+
+  /* ---------- SERVICES SPLIT (dual offer, immediately after hero) ---------- */
+  .services-split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .service-card{
+    position:relative;
+    display:block;
+    height:320px;
+    overflow:hidden;
+  }
+  .service-card img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .service-card:hover img{transform:scale(1.06);}
+  .service-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(20,24,26,0.15) 0%, rgba(20,24,26,0.82) 100%);
+    transition:background .4s ease;
+  }
+  .service-card:nth-child(1) .service-overlay{
+    background:
+      linear-gradient(90deg, rgba(8,11,12,0.82) 0%, rgba(8,11,12,0.5) 30%, rgba(8,11,12,0.12) 56%, rgba(8,11,12,0) 78%),
+      linear-gradient(180deg, rgba(93,125,111,0.12) 0%, rgba(20,24,26,0.7) 100%);
+  }
+  .service-card:nth-child(2) .service-overlay{
+    background:
+      linear-gradient(90deg, rgba(8,11,12,0.78) 0%, rgba(8,11,12,0.46) 30%, rgba(8,11,12,0.1) 56%, rgba(8,11,12,0) 78%),
+      linear-gradient(180deg, rgba(20,24,26,0.16) 0%, rgba(20,24,26,0.72) 100%);
+  }
+  .service-text{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    z-index:2;
+    padding:30px 6vw 32px;
+    color:var(--white);
+    text-shadow:0 2px 14px rgba(0,0,0,0.25);
+  }
+  .service-kicker{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--sage);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .service-text h3{
+    font-size:28px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .service-text p{
+    font-size:14px;
+    color:rgba(255,255,255,0.78);
+    max-width:340px;
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+  .service-link{
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-pale);
+    border-bottom:1px solid rgba(127,161,145,0.6);
+    padding-bottom:3px;
+    transition:color .3s ease, border-color .3s ease;
+  }
+  .service-card:hover .service-link{
+    color:var(--white);
+    border-color:var(--white);
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{position:relative;}
+  .section-pad{padding:120px 0;}
+  .label-row{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:20px;
+  }
+  .label-row .num{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--sage);
+    font-size:15px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--cream);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:7vw;
+  }
+  .about-photo{
+    position:relative;
+  }
+  .about-photo-sticky{
+    position:sticky;
+    top:118px;
+  }
+  .about-photo .frame{
+    position:relative;
+    padding:18px 18px 0 0;
+  }
+  .about-photo img{
+    width:100%;
+    aspect-ratio:828/916;
+    object-fit:cover;
+    object-position:center 25%;
+    position:relative;
+    z-index:2;
+  }
+  .about-photo .frame::before{
+    content:'';
+    position:absolute;
+    top:0;right:0;
+    width:100%;height:100%;
+    border:1.5px solid var(--sage);
+    z-index:1;
+  }
+  .about-photo figcaption{
+    margin-top:18px;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    font-weight:500;
+  }
+  .about h2{
+    font-size:clamp(32px,4vw,46px);
+    line-height:1.1;
+    margin-bottom:26px;
+    color:var(--ink);
+  }
+  .about p{
+    font-size:15.5px;
+    line-height:1.85;
+    color:#3a4240;
+    margin-bottom:18px;
+    max-width:640px;
+  }
+  .pull{
+    border-left:2px solid var(--sage);
+    padding-left:22px;
+    margin:34px 0;
+    font-family:'Work Sans', sans-serif;
+    font-style:normal;
+    font-weight:500;
+    font-size:21px;
+    line-height:1.5;
+    letter-spacing:-0.01em;
+    color:var(--sage-deep);
+    max-width:560px;
+  }
+
+  /* ---------- QUALIFICATIONS & TRAINING (standalone section) ---------- */
+  .quals-section{
+    background:var(--cream);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .quals-layout{
+    display:grid;
+    grid-template-columns:0.78fr 1.22fr;
+    gap:8vw;
+  }
+  .quals-intro-sticky{
+    position:sticky;
+    top:118px;
+  }
+  .quals-intro-sticky h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin:18px 0 18px;
+    line-height:1.12;
+  }
+  .quals-intro-sticky p{
+    font-size:15.5px;
+    line-height:1.75;
+    color:#4a5250;
+    max-width:380px;
+  }
+
+  .quals-trust{
+    margin-top:38px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+    max-width:380px;
+  }
+  .quals-trust img{
+    width:54px;height:54px;
+    border-radius:50%;
+    box-shadow:0 0 0 1.5px var(--sage);
+    flex-shrink:0;
+    object-fit:contain;
+  }
+  .quals-trust-text{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .quals-trust-text strong{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .quals-trust-text span{
+    font-size:12px;
+    color:#6a716e;
+    line-height:1.4;
+  }
+
+  .quals-list{
+    border-top:1px solid var(--line);
+  }
+  .qual-row{
+    display:grid;
+    grid-template-columns:40px 64px 1fr;
+    gap:28px;
+    align-items:start;
+    padding:34px 0;
+    border-bottom:1px solid var(--line);
+    transition:background .3s ease;
+  }
+  .qual-row:hover{background:rgba(127,161,145,0.06);}
+  .qual-row-index{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--sage);
+    padding-top:4px;
+  }
+  .qual-badge{
+    flex-shrink:0;
+  }
+  .qual-badge-photo{
+    width:64px;height:64px;
+    border-radius:50%;
+    overflow:hidden;
+    border:1.5px solid var(--sage);
+    padding:2px;
+  }
+  .qual-badge-photo img{
+    width:100%;height:100%;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .qual-badge-type{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--sage-pale);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .qual-badge-type span{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:17px;
+    font-weight:600;
+    color:var(--sage-deep);
+    line-height:1.1;
+    text-align:center;
+  }
+  .qual-badge-type span small{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-style:normal;
+    font-size:7.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-deep);
+    opacity:0.85;
+    margin-top:1px;
+  }
+  .qual-row-text{min-width:0;}
+  .qual-tag{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--sage-deep);
+    background:var(--sage-pale);
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .qual-row-text h3{
+    font-size:21px;
+    font-weight:600;
+    margin-bottom:5px;
+    color:var(--ink);
+  }
+  .qual-org{
+    font-size:12.5px;
+    color:var(--sage-deep);
+    font-weight:500;
+    margin-bottom:12px;
+  }
+  .qual-row-text p{
+    font-size:14px;
+    line-height:1.7;
+    color:#5a6260;
+    max-width:520px;
+  }
+
+  /* ---------- EXPERIENCE / TIMELINE ---------- */
+  .experience{background:var(--white);}
+  .exp-head{
+    max-width:640px;
+    margin-bottom:70px;
+  }
+  .exp-head h2{
+    font-size:clamp(32px,4vw,46px);
+  }
+  .venues{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    margin-top:26px;
+  }
+  .venues span{
+    font-size:12.5px;
+    letter-spacing:0.05em;
+    padding:9px 16px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--ink);
+  }
+  .venues span::before{
+    content:'♪ ';
+    color:var(--sage);
+  }
+
+  .exp-stage{
+    position:relative;
+    padding-left:48px;
+  }
+  .exp-stage::before{
+    content:'';
+    position:absolute;
+    left:8px;top:6px;bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .exp-item{
+    position:relative;
+    padding-bottom:50px;
+  }
+  .exp-item:last-child{padding-bottom:0;}
+  .exp-item::before{
+    content:'';
+    position:absolute;
+    left:-44px;top:4px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--sage);
+    box-shadow:0 0 0 4px var(--white);
+  }
+  .exp-item h3{
+    font-size:21px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .exp-item p{
+    font-size:14.5px;
+    line-height:1.75;
+    color:#4a5250;
+    max-width:620px;
+  }
+
+  /* ---------- STOCK IMAGE BAND ---------- */
+  .band{
+    position:relative;
+    height:380px;
+    overflow:hidden;
+  }
+  .band img{
+    width:100%;height:100%;
+    object-fit:cover;
+    filter:saturate(0.85);
+  }
+  .band::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(95,124,113,0.78), rgba(20,24,26,0.55));
+    mix-blend-mode:multiply;
+  }
+  .band-text{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--white);
+    padding:0 8vw;
+  }
+  .band-text h2{
+    font-size:clamp(28px,4vw,44px);
+    max-width:760px;
+    line-height:1.25;
+    font-weight:400;
+    font-style:italic;
+  }
+  .band-text .eyebrow{color:var(--sage-pale);margin-bottom:16px;}
+
+  /* ---------- TWO PHOTO + COACHING ---------- */
+  .coach{
+    background:var(--sage-pale);
+  }
+  .coach-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:7vw;
+    align-items:center;
+  }
+  .coach-photo{
+    position:relative;
+  }
+  .coach-photo img{
+    width:100%;
+    aspect-ratio:3/2;
+    object-fit:cover;
+  }
+  .coach-photo::after{
+    content:'';
+    position:absolute;
+    bottom:-16px;right:-16px;
+    width:100%;height:100%;
+    border:1.5px solid var(--sage-deep);
+    z-index:-1;
+  }
+  .coach h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin-bottom:22px;
+  }
+  .coach p{
+    font-size:15.5px;
+    line-height:1.8;
+    color:#33403a;
+    margin-bottom:18px;
+    max-width:520px;
+  }
+  .coach .cta-row{
+    display:flex;
+    gap:16px;
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 28px;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .btn.solid{
+    background:var(--ink);
+    color:var(--white);
+    transition:background .3s ease;
+  }
+  .btn.solid:hover{background:var(--sage-deep);}
+  .btn.outline{
+    border:1px solid var(--ink);
+    color:var(--ink);
+    transition:background .3s ease, color .3s ease;
+  }
+  .btn.outline:hover{background:var(--ink);color:var(--white);}
+
+  /* ---------- LIVE MUSIC BOOKINGS ---------- */
+  .bookings{background:var(--white);}
+  .bookings-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:7vw;
+    align-items:center;
+  }
+  .bookings-photo{position:relative;}
+  .bookings-photo img{
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  .bookings-photo::before{
+    content:'';
+    position:absolute;
+    top:-16px;left:-16px;
+    width:100%;height:100%;
+    border:1.5px solid var(--sage);
+    z-index:-1;
+  }
+  .bookings h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin-bottom:22px;
+  }
+  .bookings p{
+    font-size:15.5px;
+    line-height:1.8;
+    color:#3a4240;
+    margin-bottom:18px;
+    max-width:560px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    position:relative;
+    background:var(--ink);
+    color:var(--white);
+    overflow:hidden;
+  }
+  .contact-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .contact-bg img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:30% 60%;
+    filter:saturate(0.85) contrast(1.05);
+  }
+  .contact-bg::after{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      linear-gradient(100deg, rgba(8,11,12,0.78) 0%, rgba(8,11,12,0.62) 38%, rgba(8,11,12,0.74) 68%, rgba(8,11,12,0.86) 100%),
+      linear-gradient(180deg, rgba(8,11,12,0.25) 0%, rgba(8,11,12,0.1) 30%, rgba(8,11,12,0.5) 100%);
+  }
+  .contact-grid{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7vw;
+  }
+  .contact h2{
+    font-size:clamp(32px,4.4vw,52px);
+    line-height:1.1;
+    color:var(--white);
+    margin-bottom:22px;
+    text-shadow:0 2px 16px rgba(0,0,0,0.3);
+  }
+  .contact h2 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--sage-pale);
+  }
+  .contact .eyebrow{color:var(--sage);}
+  .contact p.lead{
+    font-size:15.5px;
+    line-height:1.8;
+    color:rgba(255,255,255,0.82);
+    max-width:440px;
+    margin-bottom:30px;
+  }
+  .contact-detail{
+    margin-bottom:26px;
+  }
+  .contact-detail .k{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:6px;
+    display:block;
+  }
+  .contact-detail .v{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+  }
+  form.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    background:rgba(13,16,17,0.42);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:4px;
+    padding:32px;
+    backdrop-filter:blur(6px);
+  }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid rgba(255,255,255,0.28);
+    color:var(--white);
+    font-family:'Work Sans',sans-serif;
+    font-size:14.5px;
+    padding:12px 2px;
+    outline:none;
+    transition:border-color .3s ease;
+    width:100%;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder{color:rgba(255,255,255,0.4);}
+  .contact-form input:focus,
+  .contact-form textarea:focus,
+  .contact-form select:focus{border-color:var(--sage);}
+  .contact-form textarea{resize:vertical;min-height:80px;}
+  .contact-form select{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fa191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat:no-repeat;
+    background-position:right 2px center;
+    background-size:16px;
+  }
+  .contact-form select option{color:var(--ink);}
+  .contact-form select:invalid{color:rgba(255,255,255,0.4);}
+  .live-fields{
+    display:none;
+    flex-direction:column;
+    gap:18px;
+    padding:16px 16px 4px;
+    border-left:2px solid var(--sage);
+    background:rgba(127,161,145,0.08);
+  }
+  .live-fields.is-visible{display:flex;}
+  .live-fields input{padding:8px 2px;}
+  .contact-form button{
+    align-self:flex-start;
+    margin-top:6px;
+    padding:14px 34px;
+    background:var(--sage);
+    color:var(--ink);
+    border:none;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .3s ease;
+  }
+  .contact-form button:hover{background:var(--sage-pale);}
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{
+    background:var(--white);
+    border-top:1px solid var(--line);
+    padding:80px 0 30px;
+  }
+  .footer-wrap{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 5vw;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;
+    gap:5vw;
+    padding-bottom:48px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:26px;
+  }
+  .footer-brand .footer-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    margin-bottom:16px;
+  }
+  .footer-brand .footer-logo span{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-size:10px;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    font-weight:600;
+    margin-top:4px;
+  }
+  .footer-brand p{
+    font-size:13.5px;
+    line-height:1.7;
+    color:#6a716e;
+    max-width:260px;
+  }
+  .footer-col h4{
+    font-family:'Work Sans',sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .footer-col a, .footer-col span.static{
+    display:block;
+    font-size:14px;
+    color:#4a5250;
+    margin-bottom:13px;
+    transition:color .25s ease;
+  }
+  .footer-col a:hover{color:var(--sage-deep);}
+  .footer-cta-col p{
+    font-size:13.5px;
+    line-height:1.65;
+    color:#6a716e;
+    margin-bottom:20px;
+    max-width:240px;
+  }
+  .footer-cta-col .btn{padding:12px 24px;font-size:11px;}
+
+  .foot-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:24px;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-bottom .fl{
+    font-size:17px;
+    font-family:'Cormorant Garamond',serif;
+  }
+  .foot-bottom .fr{
+    font-size:12px;
+    color:#8a9189;
+    display:flex;
+    gap:24px;
+    align-items:center;
+  }
+  .foot-bottom .fr a{color:#8a9189;transition:color .25s ease;}
+  .foot-bottom .fr a:hover{color:var(--sage-deep);}
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(26px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
   @media (prefers-reduced-motion: reduce){
-    *, .hero-bg, .aud-figure-img{ animation:none !important; transition:none !important; }
+    .reveal{
+      transition:none !important;
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    .nav-cta{display:none;}
+    nav.links{
+      position:fixed;
+      top:0;right:0;
+      height:100vh;
+      width:78%;
+      background:var(--ink);
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      padding:0 12vw;
+      gap:30px;
+      transform:translateX(100%);
+      transition:transform .4s ease;
+      z-index:60;
+    }
+    nav.links.open{transform:translateX(0);}
+    nav.links a{color:var(--white) !important;font-size:14px;}
+    .nav-toggle{
+      display:block;
+      position:relative;
+      width:24px;
+      height:16px;
+      cursor:pointer;
+      z-index:70;
+    }
+    .nav-toggle span{
+      position:absolute;
+      left:0;
+      width:24px;height:1px;
+      background:var(--white);
+      transition:transform .35s ease, opacity .25s ease, background .3s ease;
+    }
+    .nav-toggle span:nth-child(1){top:0;}
+    .nav-toggle span:nth-child(2){top:7px;}
+    .nav-toggle span:nth-child(3){top:14px;}
+    .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-toggle.active span:nth-child(2){opacity:0;}
+    .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    header.site.scrolled .nav-toggle span{background:var(--ink);}
+    header.site.scrolled .nav-toggle.active span{background:var(--ink);}
+    .nav-toggle.active span{background:var(--white);}
+
+    .about-grid,.coach-grid,.contact-grid,.bookings-grid{
+      grid-template-columns:1fr;
+      gap:40px;
+    }
+    .about-photo-sticky{
+      position:static;
+      top:auto;
+    }
+    .quals-layout{
+      grid-template-columns:1fr;
+      gap:34px;
+    }
+    .quals-intro-sticky{
+      position:static;
+    }
+    .quals-intro-sticky p, .quals-trust{max-width:none;}
+    .qual-row{
+      grid-template-columns:32px 56px 1fr;
+      gap:18px;
+    }
+    .bookings-grid .text-block{order:1;}
+    .bookings-photo{order:2;}
+    .services-split{grid-template-columns:1fr;}
+    .service-card{height:280px;}
+    .coach-photo{order:2;}
+    .coach .text-block{order:1;}
+    .badges{gap:26px;}
+    .footer-top{
+      grid-template-columns:1fr 1fr;
+      gap:36px 24px;
+    }
+  }
+
+  @media (max-width:520px){
+    .section-pad{padding:80px 0;}
+    .hero-content{padding-bottom:90px;}
+    .scroll-cue{display:none;}
+    .sound-toggle{bottom:24px;left:6vw;}
+    .badges{gap:20px;}
+    .badge .ring{width:54px;height:54px;}
+    .footer-top{grid-template-columns:1fr;}
+    .qual-row{
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    .qual-row-index{display:none;}
   }
 </style>
 </head>
 <body>
 
-  <!-- UTILITY BAR -->
-  <div class="util">
-    <div class="util-in">
-      <a href="mailto:hello@ceibamethod.com">hello@ceibamethod.com</a>
-      <div class="util-right">
-        <span class="util-tag">Clarity · Change · Possibility</span>
-        <a href="#" data-open-modal>Book a Discovery Call →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- NAV -->
-  <nav class="main" id="mainNav">
-    <div class="nav-inner">
-      <a href="#top" class="brand" aria-label="CEIBA home">
-        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/0B5D1729-F029-4BA0-91BE-3BD0B7383315.png" alt="CEIBA — Transformational Coaching &amp; Change" class="brand-logo" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="#top" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#method">The CEIBA Method&trade;</a></li>
-        <li><a href="#work">Work With Me</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="#" class="nav-cta" data-open-modal>Book a Discovery Call</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <div class="mob-menu" id="mobMenu">
-    <button class="mob-close" id="mobClose" aria-label="Close menu">&times;</button>
-    <a href="#top" data-close>Home</a>
-    <a href="#about" data-close>About</a>
-    <a href="#method" data-close>The CEIBA Method&trade;</a>
-    <a href="#work" data-close>Work With Me</a>
-    <a href="#contact" data-close>Contact</a>
-    <a href="#" class="mob-cta" data-open-modal data-close>Book a Discovery Call</a>
-  </div>
-
-  <!-- HERO -->
-  <header class="hero" id="top">
-    <div class="hero-bg" role="img" aria-label="Sunlight streaming through the canopy and roots of a great tree" aria-hidden="false"></div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <span class="hero-eyebrow">Transformational Coaching &amp; Change</span>
-        <h1>Growth begins with <br class="hero-br" />strong&nbsp;<em>foundations.</em></h1>
-        <p class="hero-lead">Whether you're navigating a life transition, rebuilding after change, or leading through uncertainty — real growth doesn't start with pushing harder. It starts with knowing who you are, what you stand for, and what you're capable of.</p>
-        <div class="hero-actions">
-          <a href="#method" class="btn btn-fill">Explore The CEIBA Method&trade;</a>
-          <a href="#work" class="arrow-link">Work With Me <span class="ln"></span></a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- BRIDGE: REFLECT + METHOD share a wrapper so the branch can span both -->
-  <div class="bridge">
-    <div class="branch-bleed" aria-hidden="true">
-      <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/ChatGPT%20Image%20Jun%2018%2C%202026%2C%2009_21_42%20PM%20(1).png" alt="" />
-    </div>
-
-    <!-- REFLECT -->
-    <section class="reflect">
-      <div class="reflect-in reveal">
-        <h2 class="headline">What becomes possible when people are <em>grounded</em> enough to <em>grow?</em></h2>
-        <div class="reflect-mark"></div>
-        <p class="lede">Whether facing personal transition, leading through uncertainty or navigating organisational change, meaningful growth begins with clarity, trust and strong foundations.</p>
-      </div>
-    </section>
-
-    <!-- METHOD -->
-    <section class="method" id="method">
-      <div class="method-head reveal">
-        <div class="method-title">The CEIBA Method<sup>&trade;</sup></div>
-        <div class="method-divider"></div>
-        <p class="method-sub">Four stages of grounded growth — each building on the one before.</p>
-      </div>
-      <div class="method-grid">
-        <div class="method-line" aria-hidden="true"></div>
-
-        <div class="m-card reveal">
-          <div class="m-badge">1</div>
-          <span class="m-badge-label">Step One</span>
-          <div class="m-ring is-photo">
-            <img src="https://images.unsplash.com/photo-1560808193-0d6ef54659ad?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
-          </div>
-          <div class="m-name">Roots</div>
-          <span class="m-stage">Foundation</span>
-          <p class="m-words">Identity · Values · Purpose · Psychological Safety</p>
-          <p class="m-ask">Know who you are before you decide where to go.</p>
-        </div>
-
-        <div class="m-card reveal">
-          <div class="m-badge">2</div>
-          <span class="m-badge-label">Step Two</span>
-          <div class="m-ring is-photo">
-            <img src="https://images.unsplash.com/photo-1628888169062-3dc685cb6e1b?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
-          </div>
-          <div class="m-name">Trunk</div>
-          <span class="m-stage">Strength</span>
-          <p class="m-words">Resilience · Confidence · Trust · Capability</p>
-          <p class="m-ask">Build the foundations that hold when everything shifts.</p>
-        </div>
-
-        <div class="m-card reveal">
-          <div class="m-badge">3</div>
-          <span class="m-badge-label">Step Three</span>
-          <div class="m-ring is-photo">
-            <img src="https://images.unsplash.com/photo-1496641536537-0f24489402ee?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
-          </div>
-          <div class="m-name">Branches</div>
-          <span class="m-stage">Possibility</span>
-          <p class="m-words">Creativity · Curiosity · Adaptability · Vision</p>
-          <p class="m-ask">From genuine strength, exploration becomes natural.</p>
-        </div>
-
-        <div class="m-card reveal">
-          <div class="m-badge">4</div>
-          <span class="m-badge-label">Step Four</span>
-          <div class="m-ring is-photo">
-            <img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
-          </div>
-          <div class="m-name">Leaves</div>
-          <span class="m-stage">Movement</span>
-          <p class="m-words">Growth · Impact · Achievement · Transformation</p>
-          <p class="m-ask">Move freely. Create boldly. Live how life matters to you.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- AUDIENCE -->
-  <section class="aud">
-    <div class="aud-panel individuals">
-      <div class="aud-figure">
-        <div class="aud-figure-img" aria-hidden="true"></div>
-        <div class="aud-figure-tone" aria-hidden="true"></div>
-      </div>
-      <div class="aud-body reveal">
-        <div class="aud-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#3A6B52" stroke-width="1.3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7" stroke="#3A6B52" stroke-width="1.3"/></svg></div>
-        <div class="aud-label">For Individuals</div>
-        <h3 class="aud-title">Reconnect with who you are.</h3>
-        <ul class="aud-list">
-          <li><span class="dot"></span> Career transitions &amp; reinvention</li>
-          <li><span class="dot"></span> Divorce &amp; separation</li>
-          <li><span class="dot"></span> Empty nest &amp; new chapters</li>
-          <li><span class="dot"></span> Rebuilding confidence</li>
-          <li><span class="dot"></span> Limiting beliefs &amp; feeling stuck</li>
-        </ul>
-        <p class="aud-foot">Helping you reconnect with clarity, confidence and possibility.</p>
-        <a href="#work" class="arrow-link">Explore Coaching <span class="ln"></span></a>
-      </div>
-    </div>
-    <div class="aud-panel org">
-      <div class="aud-figure">
-        <div class="aud-figure-img" aria-hidden="true"></div>
-        <div class="aud-figure-tone" aria-hidden="true"></div>
-      </div>
-      <div class="aud-body reveal">
-        <div class="aud-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="#9CBBA4" stroke-width="1.3"/><circle cx="17" cy="9" r="2.6" stroke="#9CBBA4" stroke-width="1.3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6" stroke="#9CBBA4" stroke-width="1.3"/><path d="M16 14c2.8 0 5 2.2 5 5.5" stroke="#9CBBA4" stroke-width="1.3"/></svg></div>
-        <div class="aud-label">For Organisations</div>
-        <h3 class="aud-title">Help your people thrive through change.</h3>
-        <ul class="aud-list">
-          <li><span class="dot"></span> Leadership development</li>
-          <li><span class="dot"></span> Organisational change</li>
-          <li><span class="dot"></span> Team wellbeing</li>
-          <li><span class="dot"></span> Culture &amp; engagement</li>
-          <li><span class="dot"></span> Growth &amp; transformation</li>
-        </ul>
-        <p class="aud-foot">Helping leaders and teams thrive through change and uncertainty.</p>
-        <a href="#contact" class="arrow-link" style="color:#fff;">Enquire for Teams <span class="ln"></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-grid">
-      <div class="about-photo">
-        <div class="about-photo-ph" aria-hidden="true">
-          <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="36" r="17" stroke="#3A6B52" stroke-width="1.4"/><path d="M22 86c4-19 14-27 28-27s24 8 28 27" stroke="#3A6B52" stroke-width="1.4"/></svg>
-        </div>
-        <div class="about-photo-frame" aria-hidden="true"></div>
-        <div class="about-photo-tag"><span class="ln"></span><span>Founder &amp; Coach</span></div>
-      </div>
-      <div class="about-body reveal">
-        <svg class="about-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 95V40" stroke="#1F4434" stroke-width="1"/><path d="M50 55C35 45 25 40 12 38M50 55c15-10 25-15 38-17M50 70c-12-7-20-10-30-11M50 70c12-7 20-10 30-11" stroke="#1F4434" stroke-width="1"/><circle cx="50" cy="30" r="20" stroke="#1F4434" stroke-width="1"/></svg>
-        <span class="kicker">About CEIBA</span>
-        <h2 class="headline">Rooted in experience.<br />Focused on what's <em>possible.</em></h2>
-        <p class="lede" style="margin-top:20px;">For years I worked in change management — developing people, motivating teams, helping organisations navigate uncertainty. Then my own life turned upside down, and I discovered that real growth is nothing like a decision. It asks something far more demanding, and far more rewarding.</p>
-        <p class="lede">The resources, the resilience, the strength you need are already inside you. They haven't gone — they've simply become hard to access. That is where CEIBA was born.</p>
-        <div class="about-divider"></div>
-        <div class="about-stats">
-          <div><div class="about-stat-fig">25</div><div class="about-stat-desc">Years of experience</div></div>
-          <div><div class="about-stat-fig">ICF</div><div class="about-stat-desc">Qualified Coach</div></div>
-          <div><div class="about-stat-fig">NLP</div><div class="about-stat-desc">Master Practitioner</div></div>
-        </div>
-        <a href="#about" class="arrow-link" style="margin-top:30px;">Learn More About Me <span class="ln"></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PULL QUOTE -->
-  <section class="quote">
-    <div class="quote-bg" aria-hidden="true"></div>
-    <div class="quote-overlay" aria-hidden="true"></div>
-    <div class="quote-inner reveal">
-      <div class="quote-badge"><svg viewBox="0 0 28 22" fill="none"><path d="M0 12C0 4 5 0 11 0v4c-3 0-5 2-5 5h5v9H0v-6zM16 12c0-8 5-12 11-12v4c-3 0-5 2-5 5h5v9H16v-6z" fill="#D9B98B"/></svg></div>
-      <blockquote>Trust the process. The hard internal work will take time, commitment and truth — and it will bring you to a place of freedom to explore from a completely different landscape.</blockquote>
-      <div class="quote-attrib"><span class="ln"></span><span>Founder, CEIBA</span><span class="ln"></span></div>
-    </div>
-  </section>
-
-
-  <!-- WORK WITH ME -->
-  <section class="work" id="work">
-    <div class="work-head">
-      <div class="reveal">
-        <span class="kicker">Work With Me</span>
-        <h2 class="headline">This is where it <em>starts.</em></h2>
-      </div>
-      <p class="lede reveal">If anything on this page has resonated — if you recognise yourself in the people I work with — the first step is simply a conversation. No commitment, no pressure. Just an honest discussion about where you are and whether CEIBA is the right fit for you.</p>
-    </div>
-    <div class="work-grid">
-      <div class="work-offer reveal">
-        <h3 class="headline">A clear path. Entirely yours.</h3>
-        <p class="lede">The CEIBA Method follows a clear path — Roots, Trunk, Branches, Leaves — but how we walk it adapts entirely to you. Your story, your pace, your goals.</p>
-        <ul class="work-included">
-          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A free 45-minute discovery conversation</li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A 90-minute deep dive session — your story, your starting point, your framework</li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 6–8 fortnightly coaching sessions through the four CEIBA stages</li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Personalised resources and reflective work between every session</li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Message support between sessions — you're never left stuck alone</li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A foundation document you keep and return to long after we finish</li>
-        </ul>
-      </div>
-      <div class="work-card reveal">
-        <span class="work-card-badge">5 Places Left</span>
-        <svg class="work-card-leaf" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M90 10C40 10 10 40 10 90" stroke="#D9B98B" stroke-width="2"/><path d="M90 10c-30 5-45 20-50 50" stroke="#D9B98B" stroke-width="2"/></svg>
-        <span class="work-card-label">Founding Client Rate</span>
-        <div class="work-price-row">
-          <div class="work-price">£999</div>
-          <div class="work-price-was">£1,400</div>
-        </div>
-        <div class="work-price-note">Five founding places only</div>
-        <div class="work-card-divider"></div>
-        <p class="work-card-text">I'm launching CEIBA with a small founding group at an introductory rate. These places are for people who are ready to do the real work — and who want to be part of building something from the beginning.</p>
-        <a href="#" class="btn btn-gold" data-open-modal>Book Your Free Discovery Call</a>
-        <p class="work-card-foot">Not sure if this is right for you? That's exactly what the discovery call is for.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta" id="contact">
-    <div class="cta-bg" aria-hidden="true"></div>
-    <div class="cta-overlay" aria-hidden="true"></div>
-    <div class="cta-inner reveal">
-      <h2 class="headline">Let's create the conditions for your <em>growth.</em></h2>
-      <p>Book a discovery call to explore how we can work together.</p>
-      <a href="#" class="btn btn-gold" data-open-modal>Book a Discovery Call</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/0B5D1729-F029-4BA0-91BE-3BD0B7383315.png" alt="CEIBA — Transformational Coaching &amp; Change" class="footer-logo" />
-      </div>
-      <nav class="footer-nav">
-        <a href="#top">Home</a>
+<header class="site" id="siteHeader">
+  <div class="wrap header-inner">
+    <div class="brand">KASIA HOWLEY<span>Vocalist &amp; Vocal Coach</span></div>
+    <div class="nav-right">
+      <nav class="links" id="navLinks">
+        <a href="#bookings">Live Music Bookings</a>
+        <a href="#coaching">Vocal Coaching</a>
         <a href="#about">About</a>
-        <a href="#method">The CEIBA Method&trade;</a>
-        <a href="#work">Work With Me</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="footer-social">
-        <a href="mailto:hello@ceibamethod.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.3"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M8 10.5V17M8 7.6v.01M12 17v-4.2c0-1.3 1-2.3 2.2-2.3s2.2 1 2.2 2.3V17M12 10.5V17" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#fff" stroke-width="1.3"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.3"/><circle cx="17" cy="7" r="1" fill="#fff"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 CEIBA · hello@ceibamethod.com</span>
-      <span><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener">Website designed by Franks Media</a></span>
-    </div>
-  </footer>
-
-  <!-- DISCOVERY CALL MODAL -->
-  <div class="modal-overlay" id="bookingModal" aria-hidden="true">
-    <div class="modal-scrim" data-modal-close></div>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalCloseBtn" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </button>
-
-      <div id="modalFormWrap">
-        <div class="modal-kicker">CEIBA</div>
-        <h3 class="modal-title" id="modalTitle">Book a free discovery call</h3>
-        <p class="modal-sub">Tell me a little about you and I'll be in touch within one working day to arrange a time. No commitment, no pressure.</p>
-
-        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="modal-field">
-            <label for="bf-name">Name</label>
-            <input type="text" id="bf-name" name="name" required autocomplete="name" />
-          </div>
-          <div class="modal-field">
-            <label for="bf-email">Email</label>
-            <input type="email" id="bf-email" name="email" required autocomplete="email" />
-          </div>
-          <div class="modal-field">
-            <label for="bf-phone">Phone <span style="text-transform:none; letter-spacing:0;">(optional)</span></label>
-            <input type="tel" id="bf-phone" name="phone" autocomplete="tel" />
-          </div>
-          <div class="modal-field">
-            <label for="bf-message">What's bringing you here? <span style="text-transform:none; letter-spacing:0;">(optional)</span></label>
-            <textarea id="bf-message" name="message" placeholder="A few words about what you're navigating right now…"></textarea>
-          </div>
-          <input type="hidden" name="_subject" value="New discovery call request — CEIBA website" />
-          <button type="submit" class="btn btn-gold modal-submit">Send Request</button>
-          <p class="modal-note">Your details are kept private and used only to arrange your call.</p>
-        </form>
-      </div>
-
-      <div class="modal-status" id="modalSuccess">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" stroke="currentColor" stroke-width="1.3"/><path d="M8 12.5l2.7 2.7L16 9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h4>Thank you</h4>
-        <p>Your request has been sent. I'll be in touch within one working day to arrange a time that works for you.</p>
-      </div>
-
-      <div class="modal-status error" id="modalError">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        <h4>Something went wrong</h4>
-        <p>Please try again, or email <a href="mailto:hello@ceibamethod.com" style="color:var(--forest-mid);">hello@ceibamethod.com</a> directly.</p>
+      <a href="#contact" class="nav-cta">Check availability</a>
+      <div class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
       </div>
     </div>
   </div>
+</header>
 
-  <script>
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 12); }, { passive:true });
+<section class="hero">
+  <div class="hero-bg">
+    <img class="hero-fallback-img" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals">
+    <div class="hero-video-wrap">
+      <iframe id="heroVideoFrame" src="https://www.youtube.com/embed/-_ttB6e5vA4?start=49&autoplay=1&mute=1&loop=1&playlist=-_ttB6e5vA4&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1&enablejsapi=1" title="Kasia Howley performing live" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+  <div class="hero-content wrap">
+    <div class="eyebrow">Tileyard North, Wakefield · West Yorkshire</div>
+    <h1>Live music for your day.<br><em>Vocal coaching for your craft.</em></h1>
+    <p class="hero-sub">Kasia Howley is a professional piano vocalist available for weddings, ceremonies and events — and a vocal coach helping performers and singers build technique that lasts.</p>
+    <div class="hero-pills">
+      <a href="#bookings" class="hero-pill solid">Live Music &amp; Weddings →</a>
+      <a href="#coaching" class="hero-pill outline">Vocal Coaching →</a>
+    </div>
+  </div>
+  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Unmute video" aria-pressed="false">
+    <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+    <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+      <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+      <path d="M18.5 6a9 9 0 0 1 0 12"></path>
+    </svg>
+    <span class="sound-toggle-label">Unmute</span>
+  </button>
+  <div class="scroll-cue"><span class="dash"></span>Scroll</div>
+</section>
 
-    const hamburger = document.getElementById('hamburger');
-    const mobMenu = document.getElementById('mobMenu');
-    const mobClose = document.getElementById('mobClose');
-    const closeMob = () => { mobMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); };
-    hamburger.addEventListener('click', () => { mobMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); });
-    mobClose.addEventListener('click', closeMob);
-    mobMenu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMob));
+<section class="about section-pad" id="about">
+  <div class="wrap about-grid">
+    <figure class="about-photo reveal">
+      <div class="about-photo-sticky">
+        <div class="frame">
+          <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/IMG_5168.jpg" alt="Kasia Howley singing live at a piano">
+        </div>
+        <figcaption>Tileyard North, Wakefield</figcaption>
+      </div>
+    </figure>
+    <div class="about-text reveal">
+      <div class="label-row"><span class="num">01</span><span class="eyebrow">About Kasia</span></div>
+      <h2>A coach shaped by<br>the stage and the science.</h2>
+      <p>Kasia is a vocal coach and professional piano vocalist with over 7 years' coaching experience at leading drama schools, universities and conservatoires. She runs her private practice at Tileyard North, Wakefield, holds a BA (Hons) in Musical Theatre from ArtsEd London, and is completing a Master's in Vocal Pedagogy with the Voice Study Centre — turning the science of vocal fatigue into practical, everyday guidance.</p>
+      <p class="pull">"My approach is functional: efficient, sustainable technique that holds up under a strenuous schedule and a demanding stage."</p>
+      <p>Mentored by one of the North's leading Estill Master Trainers and a founding figure of CVT, she's also a qualified Vocal Health First Aider and Certified Vocal Massage Therapist — training that shapes her coaching, not a separate service. As a performer she's appeared as a soloist at the Royal Albert Hall and Trafalgar Square, and recorded alongside artists including Kerry Ellis and Ramin Karimloo. She prides herself on a safe, supportive coaching environment — her students now study and perform at leading drama schools and in the West End.</p>
+    </div>
+  </div>
+</section>
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+<section class="services-split">
+  <a href="#bookings" class="service-card">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
+    <div class="service-overlay"></div>
+    <div class="service-text">
+      <span class="service-kicker">For your event</span>
+      <h3>Live Music Bookings</h3>
+      <p>Piano vocals for weddings, ceremonies &amp; private functions.</p>
+      <span class="service-link">View bookings →</span>
+    </div>
+  </a>
+  <a href="#coaching" class="service-card">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/725005413_1360954722587277_8424250148621098955_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North">
+    <div class="service-overlay"></div>
+    <div class="service-text">
+      <span class="service-kicker">For your craft</span>
+      <h3>Vocal Coaching</h3>
+      <p>Private lessons &amp; technique for performers and singers.</p>
+      <span class="service-link">View coaching →</span>
+    </div>
+  </a>
+</section>
 
-    /* Discovery Call modal */
-    const modal = document.getElementById('bookingModal');
-    const modalFormWrap = document.getElementById('modalFormWrap');
-    const modalSuccess = document.getElementById('modalSuccess');
-    const modalError = document.getElementById('modalError');
-    const bookingForm = document.getElementById('bookingForm');
-    let lastFocused = null;
+<section class="experience section-pad" id="experience">
+  <div class="wrap">
+    <div class="exp-head reveal">
+      <div class="label-row"><span class="num">02</span><span class="eyebrow">Experience</span></div>
+      <h2>From soloist to specialist.</h2>
+      <div class="venues">
+        <span>Royal Albert Hall</span>
+        <span>Trafalgar Square</span>
+        <span>London Hippodrome Casino</span>
+        <span>The Southbank Centre</span>
+        <span>London O2 Indigo Arena</span>
+      </div>
+    </div>
 
-    function openModal(e){
-      if (e) e.preventDefault();
-      lastFocused = document.activeElement;
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-      modalFormWrap.style.display = '';
-      modalSuccess.classList.remove('show');
-      modalError.classList.remove('show');
-      const firstField = document.getElementById('bf-name');
-      if (firstField) setTimeout(() => firstField.focus(), 350);
-    }
-    function closeModal(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-      if (lastFocused) lastFocused.focus();
-    }
+    <div class="exp-stage">
+      <div class="exp-item reveal">
+        <h3>Private Practice &amp; Teaching</h3>
+        <p>Runs a private vocal coaching practice at Tileyard North, Wakefield, and is one of the technical voice tutors on the degree course at Emil Dale Academy, alongside teaching at universities and arts colleges across the UK.</p>
+      </div>
+      <div class="exp-item reveal">
+        <h3>Student &amp; Client Outcomes</h3>
+        <p>Students have secured places at leading drama schools including ArtsEd, Mountview, GSA, EDA and Urdang. Clients can be seen performing in West End, regional and international productions.</p>
+      </div>
+      <div class="exp-item reveal">
+        <h3>Working Musicians</h3>
+        <p>Beyond musical theatre, Kasia works with professional musicians preparing for recording sessions, tours and session work — with a focus on sustainable voice use and longevity.</p>
+      </div>
+      <div class="exp-item reveal">
+        <h3>Notable Collaborations</h3>
+        <p>Has performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('[data-open-modal]').forEach(el => el.addEventListener('click', openModal));
-    document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
-    modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+<div class="band">
+  <img src="https://static.wixstatic.com/media/11062b_791609fba40e400cb0507b472e32a51d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1960,h_742,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Music%20Sheets.jpg" alt="Sheet music">
+  <div class="band-text reveal">
+    <div class="eyebrow">Research-informed practice</div>
+    <h2>"Translating the complexities of vocal fatigue into accessible, actionable guidance for professional voice users."</h2>
+  </div>
+</div>
 
-    bookingForm.addEventListener('submit', async function(e){
-      e.preventDefault();
-      const btn = bookingForm.querySelector('.modal-submit');
-      const origText = btn.textContent;
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      try{
-        const res = await fetch(bookingForm.action, {
-          method: 'POST',
-          body: new FormData(bookingForm),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok){
-          modalFormWrap.style.display = 'none';
-          modalSuccess.classList.add('show');
-          bookingForm.reset();
-        } else {
-          modalFormWrap.style.display = 'none';
-          modalError.classList.add('show');
+<section class="coach section-pad" id="coaching">
+  <div class="wrap coach-grid">
+    <div class="coach-photo reveal">
+      <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/724719899_1642882010129207_6907086987528118233_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North, Wakefield">
+    </div>
+    <div class="text-block reveal">
+      <div class="label-row"><span class="num">03</span><span class="eyebrow">Vocal Coaching</span></div>
+      <h2>Lessons built around your voice, not a method.</h2>
+      <p>Whether you're training for drama school auditions, maintaining your voice through a long-running show, or preparing for a tour, sessions are tailored to your repertoire, your schedule and the demands placed on your voice.</p>
+      <p>One-to-one lessons are available in-person at Tileyard North, Wakefield, and online — for students, working performers and professional musicians alike.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn solid">Enquire about coaching</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bookings section-pad" id="bookings">
+  <div class="wrap bookings-grid">
+    <div class="text-block reveal">
+      <div class="label-row"><span class="num">04</span><span class="eyebrow">Live Music Bookings</span></div>
+      <h2>A piano vocalist for your day.</h2>
+      <p>Kasia performs as a solo piano vocalist or alongside a full band — for wedding ceremonies and drinks receptions, corporate functions, private parties and concert events. Repertoire spans musical theatre, jazz standards, pop and contemporary, tailored to suit the occasion.</p>
+      <p>She has performed as a soloist at venues including the Royal Albert Hall, Trafalgar Square, the London Hippodrome Casino and the London O2 Indigo Arena — bringing the same polish to a wedding breakfast as to a concert stage.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn solid">Check availability</a>
+        <a href="#contact" class="btn outline">Enquire now</a>
+      </div>
+    </div>
+    <div class="bookings-photo reveal">
+      <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley performing live piano vocals at a wedding venue">
+    </div>
+  </div>
+</section>
+
+<section class="quals-section section-pad" id="qualifications">
+  <div class="wrap quals-layout">
+    <div class="quals-intro">
+      <div class="quals-intro-sticky reveal">
+        <div class="label-row"><span class="num">05</span><span class="eyebrow">Credentials</span></div>
+        <h2>Qualifications &amp; Training</h2>
+        <p>A coaching practice grounded in formal training, clinical certification and ongoing research — not just performance experience.</p>
+        <div class="quals-trust">
+          <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+          <div class="quals-trust-text">
+            <strong>Rated 5 Stars on Hitched</strong>
+            <span>Reviewed by real couples for live wedding performances</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quals-list">
+      <div class="qual-row reveal">
+        <div class="qual-row-index">01</div>
+        <div class="qual-badge qual-badge-photo">
+          <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Clinical</span>
+          <h3>Vocal Health First Aid</h3>
+          <div class="qual-org">Level 2, Qualified</div>
+          <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">02</div>
+        <div class="qual-badge qual-badge-photo">
+          <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Clinical</span>
+          <h3>Vocal Manual Therapy</h3>
+          <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
+          <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">03</div>
+        <div class="qual-badge qual-badge-type">
+          <span>E<small>1&amp;2</small></span>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Technique</span>
+          <h3>Estill Method</h3>
+          <div class="qual-org">Levels 1 &amp; 2</div>
+          <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">04</div>
+        <div class="qual-badge qual-badge-type">
+          <span>BA<small>Hons</small></span>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Academic</span>
+          <h3>Musical Theatre</h3>
+          <div class="qual-org">ArtsEd London</div>
+          <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">05</div>
+        <div class="qual-badge qual-badge-type">
+          <span>MA<small>In progress</small></span>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Research</span>
+          <h3>Vocal Pedagogy</h3>
+          <div class="qual-org">Voice Study Centre</div>
+          <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact section-pad" id="contact">
+  <div class="contact-bg">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals at Eaves Hall">
+  </div>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="label-row"><span class="num">06</span><span class="eyebrow">Get in touch</span></div>
+      <h2>Let's talk.</h2>
+      <p class="lead">Whether you're booking live piano vocals for a wedding or event, or starting vocal coaching — get in touch and let's talk through what you need.</p>
+      <div class="contact-detail">
+        <span class="k">Phone</span>
+        <span class="v">07894 945722</span>
+      </div>
+      <div class="contact-detail">
+        <span class="k">Email</span>
+        <span class="v">kasiahowley@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <span class="k">Based in</span>
+        <span class="v">Tileyard North, Wakefield</span>
+      </div>
+    </div>
+    <form class="contact-form reveal" id="contactForm" onsubmit="event.preventDefault();">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Your email" required>
+      <input type="tel" placeholder="Your phone number" required>
+      <select id="serviceType" required>
+        <option value="" disabled selected>What can I help with?</option>
+        <option value="coaching">Vocal Coaching</option>
+        <option value="live">Live Music Booking</option>
+        <option value="other">Something else</option>
+      </select>
+      <div class="live-fields" id="liveFields">
+        <input type="date" id="eventDate" placeholder="Event date">
+        <input type="text" id="eventLocation" placeholder="Venue / location">
+      </div>
+      <textarea placeholder="A few more details..."></textarea>
+      <button type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-wrap">
+    <div class="footer-top">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
+        <p>Piano vocalist &amp; vocal coach, based in West Yorkshire and performing &amp; teaching across the UK.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#bookings">Live Music Bookings</a>
+        <a href="#coaching">Vocal Coaching</a>
+        <a href="#about">About</a>
+        <a href="#qualifications">Qualifications</a>
+        <a href="#experience">Experience</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="tel:07894945722">07894 945722</a>
+        <a href="mailto:kasiahowley@gmail.com">kasiahowley@gmail.com</a>
+        <span class="static">West Yorkshire, UK</span>
+      </div>
+      <div class="footer-col footer-cta-col">
+        <h4>Ready to start?</h4>
+        <p>Tell me about your event, or your goals as a singer.</p>
+        <a href="#contact" class="btn solid">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div class="fl">Kasia Howley Music</div>
+      <div class="fr">
+        <a href="#bookings">Bookings</a>
+        <a href="#coaching">Coaching</a>
+        <span>© 2026</span>
+        <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener" class="credit-link">Website designed by Franks Media</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    links.classList.remove('open');
+  }));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Contact form: reveal date/venue fields only for live music bookings
+  const serviceSelect = document.getElementById('serviceType');
+  const liveFields = document.getElementById('liveFields');
+  if (serviceSelect && liveFields) {
+    serviceSelect.addEventListener('change', () => {
+      const isLive = serviceSelect.value === 'live';
+      liveFields.classList.toggle('is-visible', isLive);
+      document.getElementById('eventDate').required = isLive;
+      document.getElementById('eventLocation').required = isLive;
+    });
+  }
+
+  // Hero video: YouTube IFrame Player API
+  // Used for reliable mute/unmute control and to request 720p playback.
+  const soundToggle = document.getElementById('soundToggle');
+  let heroPlayer = null;
+  let heroMuted = true;
+
+  function setHeroQuality(player){
+    try { player.setPlaybackQuality('hd720'); } catch (e) {}
+  }
+
+  window.onYouTubeIframeAPIReady = function(){
+    heroPlayer = new YT.Player('heroVideoFrame', {
+      events: {
+        onReady: function(e){
+          e.target.mute();
+          setHeroQuality(e.target);
+        },
+        onStateChange: function(e){
+          // YouTube can re-pick quality based on bandwidth when playback starts;
+          // re-assert the preference once it's actually playing.
+          if (e.data === YT.PlayerState.PLAYING) setHeroQuality(e.target);
         }
-      } catch(err){
-        modalFormWrap.style.display = 'none';
-        modalError.classList.add('show');
-      } finally {
-        btn.textContent = origText;
-        btn.disabled = false;
       }
     });
-  </script>
+  };
+
+  if (soundToggle) {
+    soundToggle.addEventListener('click', () => {
+      if (!heroPlayer) return;
+      heroMuted = !heroMuted;
+      if (heroMuted) {
+        heroPlayer.mute();
+      } else {
+        heroPlayer.unMute();
+        heroPlayer.setVolume(80);
+      }
+      soundToggle.classList.toggle('is-unmuted', !heroMuted);
+      soundToggle.setAttribute('aria-pressed', String(!heroMuted));
+      soundToggle.setAttribute('aria-label', heroMuted ? 'Unmute video' : 'Mute video');
+      soundToggle.querySelector('.sound-toggle-label').textContent = heroMuted ? 'Unmute' : 'Mute';
+    });
+  }
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
 </body>
 </html>
