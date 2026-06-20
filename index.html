@@ -6,7 +6,7 @@
 <title>Kasia Howley Music — Live Music Bookings &amp; Vocal Coaching</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --sage:#7fa191;
@@ -474,10 +474,12 @@
     border-left:2px solid var(--sage);
     padding-left:22px;
     margin:34px 0;
-    font-family:'Cormorant Garamond',serif;
-    font-style:italic;
+    font-family:'Work Sans', sans-serif;
+    font-style:normal;
+    font-weight:500;
     font-size:21px;
     line-height:1.5;
+    letter-spacing:-0.01em;
     color:var(--sage-deep);
     max-width:560px;
   }
@@ -1103,20 +1105,29 @@
     nav.links.open{transform:translateX(0);}
     nav.links a{color:var(--white) !important;font-size:14px;}
     .nav-toggle{
-      display:flex;
-      flex-direction:column;
-      gap:5px;
+      display:block;
+      position:relative;
+      width:24px;
+      height:16px;
       cursor:pointer;
       z-index:70;
-      position:relative;
     }
     .nav-toggle span{
+      position:absolute;
+      left:0;
       width:24px;height:1px;
       background:var(--white);
-      transition:background .3s ease;
+      transition:transform .35s ease, opacity .25s ease, background .3s ease;
     }
+    .nav-toggle span:nth-child(1){top:0;}
+    .nav-toggle span:nth-child(2){top:7px;}
+    .nav-toggle span:nth-child(3){top:14px;}
+    .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-toggle.active span:nth-child(2){opacity:0;}
+    .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
     header.site.scrolled .nav-toggle span{background:var(--ink);}
-    header.site.scrolled .nav-toggle.active span{background:var(--white);}
+    header.site.scrolled .nav-toggle.active span{background:var(--ink);}
+    .nav-toggle.active span{background:var(--white);}
 
     .about-grid,.coach-grid,.contact-grid,.bookings-grid{
       grid-template-columns:1fr;
@@ -1232,10 +1243,9 @@
     <div class="about-text reveal">
       <div class="label-row"><span class="num">01</span><span class="eyebrow">About Kasia</span></div>
       <h2>A coach shaped by<br>the stage and the science.</h2>
-      <p>Kasia is a vocal coach and professional piano vocalist with over 7 years' coaching experience at leading drama schools, universities and vocational institutions. She now runs her own private practice at Tileyard North, Wakefield. She holds a BA (Hons) in Musical Theatre from ArtsEd London, and is currently completing a Master's in Vocal Pedagogy with the Voice Study Centre — researching vocal fatigue and translating its science into practical, everyday guidance for working voices.</p>
+      <p>Kasia is a vocal coach and professional piano vocalist with over 7 years' coaching experience at leading drama schools, universities and conservatoires. She runs her private practice at Tileyard North, Wakefield, holds a BA (Hons) in Musical Theatre from ArtsEd London, and is completing a Master's in Vocal Pedagogy with the Voice Study Centre — turning the science of vocal fatigue into practical, everyday guidance.</p>
       <p class="pull">"My approach is functional: efficient, sustainable technique that holds up under a strenuous schedule and a demanding stage."</p>
-      <p>She was mentored by one of the North's leading Estill Master Trainers and a founding figure of CVT, and is a qualified Vocal Health First Aider and Certified Vocal Massage Therapist — training that feeds directly into how she coaches, rather than a separate service. As a performer, Kasia has appeared as a soloist at the Royal Albert Hall, Trafalgar Square, the London Hippodrome Casino and the London O2 Indigo Arena, performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
-      <p>She prides herself on creating a safe, supportive and encouraging environment for every student — from young, aspiring performers to professional musicians and actors. Her students have gone on to secure places at leading drama schools including ArtsEd, Mountview, GSA, EDA and Urdang, and many now work professionally in the West End and on touring productions.</p>
+      <p>Mentored by one of the North's leading Estill Master Trainers and a founding figure of CVT, she's also a qualified Vocal Health First Aider and Certified Vocal Massage Therapist — training that shapes her coaching, not a separate service. As a performer she's appeared as a soloist at the Royal Albert Hall and Trafalgar Square, and recorded alongside artists including Kerry Ellis and Ramin Karimloo. She prides herself on a safe, supportive coaching environment — her students now study and perform at leading drama schools and in the West End.</p>
     </div>
   </div>
 </section>
@@ -1503,6 +1513,7 @@
         <a href="#bookings">Bookings</a>
         <a href="#coaching">Coaching</a>
         <span>© 2026</span>
+        <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener" class="credit-link">Website designed by Franks Media</a>
       </div>
     </div>
   </div>
