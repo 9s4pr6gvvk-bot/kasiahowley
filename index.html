@@ -484,6 +484,180 @@
     max-width:560px;
   }
 
+  /* ---------- PERFORMANCES (video + photo gallery) ---------- */
+  .performances-section{
+    background:var(--ink);
+    color:var(--white);
+  }
+  .performances-head{
+    max-width:640px;
+    margin-bottom:40px;
+  }
+  .performances-head .eyebrow{color:var(--sage);}
+  .performances-head h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin:18px 0 16px;
+    line-height:1.12;
+    color:var(--white);
+  }
+  .performances-head p{
+    font-size:15.5px;
+    line-height:1.7;
+    color:rgba(255,255,255,0.68);
+  }
+  .perf-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:24px;
+  }
+  .perf-chips span{
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    padding:8px 16px;
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:999px;
+    color:rgba(255,255,255,0.85);
+  }
+  .perf-chips span::before{
+    content:'♪ ';
+    color:var(--sage);
+  }
+
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+    margin-bottom:36px;
+  }
+  .video-card{
+    position:relative;
+  }
+  .video-card .video-frame{
+    position:relative;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    border-radius:4px;
+    background:#000;
+  }
+  .video-card iframe{
+    width:100%;height:100%;
+    border:0;
+    display:block;
+  }
+  .video-play{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    border:none;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+    background:none;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .video-play img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .5s ease, filter .4s ease;
+    filter:brightness(0.82);
+  }
+  .video-card:hover .video-play img{
+    transform:scale(1.06);
+    filter:brightness(0.62);
+  }
+  .video-play::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(8,11,12,0.05) 40%, rgba(8,11,12,0.6) 100%);
+  }
+  .play-ring{
+    position:absolute;
+    top:50%;left:50%;
+    width:58px;height:58px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.5);
+    transform:translate(-50%,-50%) scale(1);
+    opacity:0;
+    transition:transform .4s ease, opacity .4s ease;
+    z-index:1;
+  }
+  .video-card:hover .play-ring{
+    transform:translate(-50%,-50%) scale(1.35);
+    opacity:1;
+    border-color:var(--sage);
+  }
+  .play-icon{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:54px;height:54px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.95);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,0.35);
+    transition:background .3s ease, transform .3s ease;
+    z-index:2;
+  }
+  .video-card:hover .play-icon{
+    background:var(--sage);
+    transform:translate(-50%,-50%) scale(1.08);
+  }
+  .play-icon svg{color:var(--ink);margin-left:2px;}
+  .video-caption, .photo-caption{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:rgba(255,255,255,0.7);
+    margin-top:12px;
+  }
+  .video-caption .dash, .photo-caption .dash{
+    width:14px;height:1px;
+    background:var(--sage);
+    flex-shrink:0;
+  }
+
+  .photo-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    grid-template-rows:190px 190px;
+    gap:18px;
+  }
+  .photo-feature{grid-column:1; grid-row:1 / 3;}
+  .photo-wide{grid-column:2 / 4; grid-row:2;}
+  .photo-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:4px;
+  }
+  .photo-item img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .photo-item:hover img{transform:scale(1.07);}
+  .photo-item .photo-caption{
+    position:absolute;
+    left:16px;bottom:14px;
+    margin-top:0;
+    color:var(--white);
+    text-shadow:0 2px 8px rgba(0,0,0,0.5);
+  }
+  .photo-item::before{
+    content:'';
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:60%;
+    background:linear-gradient(180deg, rgba(8,11,12,0) 0%, rgba(8,11,12,0.6) 100%);
+    pointer-events:none;
+  }
+
   /* ---------- QUALIFICATIONS & TRAINING (standalone section) ---------- */
   .quals-section{
     background:var(--cream);
@@ -1325,6 +1499,14 @@
     .coach .text-block{order:1;}
     .badges{gap:26px;}
     .review-card{flex:0 0 78vw;}
+    .video-grid{grid-template-columns:repeat(2, 1fr);}
+    .photo-grid{
+      grid-template-columns:repeat(2, 1fr);
+      grid-template-rows:none;
+    }
+    .photo-feature{grid-column:auto; grid-row:auto; aspect-ratio:4/5;}
+    .photo-wide{grid-column:1/3; grid-row:auto; aspect-ratio:16/8;}
+    .photo-item:not(.photo-feature):not(.photo-wide){aspect-ratio:4/5;}
     .footer-top{
       grid-template-columns:1fr 1fr;
       gap:36px 24px;
@@ -1346,6 +1528,11 @@
     .qual-row-index{display:none;}
     .review-card{flex:0 0 86vw;}
     .reviews-nav{display:none;}
+    .video-grid{grid-template-columns:1fr;}
+    .photo-grid{
+      grid-template-columns:repeat(2, 1fr);
+      grid-template-rows:none;
+    }
   }
 </style>
 </head>
@@ -1522,11 +1709,81 @@
   </div>
 </section>
 
+<section class="performances-section section-pad" id="performances">
+  <div class="wrap">
+    <div class="performances-head reveal">
+      <div class="label-row"><span class="num">05</span><span class="eyebrow">Watch &amp; Listen</span></div>
+      <h2>See and hear Kasia live.</h2>
+      <p>A few moments from recent performances — weddings, events and live sets.</p>
+      <div class="perf-chips">
+        <span>Solo piano vocals</span>
+        <span>Can perform alongside a live band</span>
+        <span>Custom song requests</span>
+      </div>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card reveal" data-video-id="5rAx8sFYiCc">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Play video">
+            <img src="https://img.youtube.com/vi/5rAx8sFYiCc/hqdefault.jpg" alt="Kasia Howley performance video thumbnail" loading="lazy">
+            <span class="play-ring"></span>
+            <span class="play-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="video-card reveal" data-video-id="kSzBrjrddQo">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Play video">
+            <img src="https://img.youtube.com/vi/kSzBrjrddQo/hqdefault.jpg" alt="Kasia Howley performance video thumbnail" loading="lazy">
+            <span class="play-ring"></span>
+            <span class="play-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="video-card reveal" data-video-id="RNH44nkutC8">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Play video">
+            <img src="https://img.youtube.com/vi/RNH44nkutC8/hqdefault.jpg" alt="Kasia Howley performance video thumbnail" loading="lazy">
+            <span class="play-ring"></span>
+            <span class="play-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-grid">
+      <div class="photo-item reveal photo-feature">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals at Eaves Hall" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Eaves Hall</div>
+      </div>
+      <div class="photo-item reveal">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/IMG_5168.jpg" alt="Kasia Howley singing live at a piano" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Live Performance</div>
+      </div>
+      <div class="photo-item reveal">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Manor House</div>
+      </div>
+      <div class="photo-item reveal photo-wide">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley singing live at a wedding venue" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Live Performance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quals-section section-pad" id="qualifications">
   <div class="wrap quals-layout">
     <div class="quals-intro">
       <div class="quals-intro-sticky reveal">
-        <div class="label-row"><span class="num">05</span><span class="eyebrow">Credentials</span></div>
+        <div class="label-row"><span class="num">06</span><span class="eyebrow">Credentials</span></div>
         <h2>Qualifications &amp; Training</h2>
         <p>A coaching practice grounded in formal training, clinical certification and ongoing research — not just performance experience.</p>
         <div class="quals-trust">
@@ -1612,7 +1869,7 @@
   <div class="wrap">
     <div class="reviews-head-row">
       <div class="reviews-head reveal">
-        <div class="label-row"><span class="num">06</span><span class="eyebrow">Reviews</span></div>
+        <div class="label-row"><span class="num">07</span><span class="eyebrow">Reviews</span></div>
         <h2>Loved by couples and clients across the UK.</h2>
         <p>A selection of real reviews from weddings, parties and events — verified through Hitched.</p>
       </div>
@@ -1692,7 +1949,7 @@
   </div>
   <div class="wrap contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">07</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">08</span><span class="eyebrow">Get in touch</span></div>
       <h2>Let's talk.</h2>
       <p class="lead">Whether you're booking live piano vocals for a wedding or event, or starting vocal coaching — get in touch and let's talk through what you need.</p>
       <div class="contact-details-panel">
@@ -1795,6 +2052,17 @@
   }, { threshold: 0.18 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Performance videos: load the YouTube iframe only when played
+  document.querySelectorAll('.video-card').forEach((card) => {
+    const btn = card.querySelector('.video-play');
+    const frame = card.querySelector('.video-frame');
+    if (!btn || !frame) return;
+    btn.addEventListener('click', () => {
+      const id = card.getAttribute('data-video-id');
+      frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="Kasia Howley performance video" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
 
   // Reviews carousel
   const reviewsTrack = document.getElementById('reviewsTrack');
