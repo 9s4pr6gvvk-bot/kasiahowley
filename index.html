@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kasia Howley Music — Live Music Bookings &amp; Vocal Coaching</title>
+<title>Kasia Howley Music - Vocal Coaching &amp; Live Music Bookings</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -76,6 +76,9 @@
     align-items:center;
     justify-content:space-between;
     gap:24px;
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 clamp(20px, 3.5vw, 56px);
   }
   .brand{
     font-family:'Cormorant Garamond',serif;
@@ -96,6 +99,7 @@
     font-weight:500;
     color:var(--sage);
     margin-top:3px;
+    white-space:nowrap;
   }
 
   .nav-right{
@@ -104,15 +108,16 @@
     gap:34px;
   }
 
-  nav.links{display:flex;gap:38px;}
+  nav.links{display:flex;gap:32px;}
   nav.links a{
     font-size:12.5px;
-    letter-spacing:0.14em;
+    letter-spacing:0.13em;
     text-transform:uppercase;
     font-weight:500;
     color:var(--ink);
     position:relative;
     padding-bottom:4px;
+    white-space:nowrap;
   }
   header.site:not(.scrolled) nav.links a{color:var(--white);}
   nav.links a::after{
@@ -133,6 +138,7 @@
     font-weight:600;
     padding:11px 22px;
     border:1px solid var(--sage);
+    border-radius:999px;
     color:var(--white);
     background:rgba(127,161,145,0.18);
     transition:background .3s ease, color .3s ease, border-color .3s ease;
@@ -165,41 +171,27 @@
     overflow:hidden;
     background:var(--ink);
   }
-  .hero-fallback-img{
+  .hero-slide{
     position:absolute;
     inset:0;
     width:100%;height:100%;
     object-fit:cover;
-    object-position:32% 62%;
     filter:saturate(0.92) contrast(1.02);
+    opacity:0;
+    transition:opacity 1.1s ease;
+    z-index:0;
   }
-  .hero-video-wrap{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-  }
-  .hero-video-wrap iframe{
-    position:absolute;
-    top:50%;left:50%;
-    width:100vw;
-    height:56.25vw;
-    min-width:177.78vh;
-    min-height:100vh;
-    transform:translate(-50%,-50%);
-    pointer-events:none;
-    border:0;
-    filter:saturate(0.92) contrast(1.02);
-  }
+  .hero-slide.is-active{opacity:1;z-index:1;}
   .hero::before{
     content:'';
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(13,16,17,0.22) 0%, rgba(13,16,17,0) 32%, rgba(13,16,17,0.08) 55%, rgba(13,16,17,0.62) 100%);
+    background:linear-gradient(180deg, rgba(10,13,14,0.46) 0%, rgba(10,13,14,0.14) 20%, rgba(10,13,14,0.12) 50%, rgba(10,13,14,0.72) 100%);
     z-index:1;
   }
   .hero::after{
     content:'';
     position:absolute;inset:0;
-    background:linear-gradient(100deg, rgba(10,13,14,0.88) 0%, rgba(10,13,14,0.58) 26%, rgba(10,13,14,0.22) 48%, rgba(10,13,14,0.04) 66%, rgba(10,13,14,0) 82%);
+    background:linear-gradient(100deg, rgba(10,13,14,0.92) 0%, rgba(10,13,14,0.64) 26%, rgba(10,13,14,0.28) 48%, rgba(10,13,14,0.08) 66%, rgba(10,13,14,0.02) 82%);
     z-index:1;
   }
   .hero-content{
@@ -274,40 +266,9 @@
     transform:translateY(-2px);
   }
 
-  .sound-toggle{
-    position:absolute;
-    left:6vw;bottom:40px;
-    z-index:2;
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    padding:13px 18px 13px 15px;
-    border-radius:999px;
-    background:rgba(13,16,17,0.38);
-    border:1px solid rgba(255,255,255,0.4);
-    color:var(--white);
-    backdrop-filter:blur(6px);
-    cursor:pointer;
-    transition:background .3s ease, border-color .3s ease, transform .3s ease;
-  }
-  .sound-toggle:hover{
-    background:rgba(127,161,145,0.5);
-    border-color:var(--sage);
-    transform:translateY(-2px);
-  }
-  .sound-toggle .icon-unmuted{display:none;}
-  .sound-toggle.is-unmuted .icon-muted{display:none;}
-  .sound-toggle.is-unmuted .icon-unmuted{display:block;}
-  .sound-toggle-label{
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    font-weight:600;
-  }
-
   .scroll-cue{
     position:absolute;
-    right:6vw;bottom:36px;
+    left:6vw;bottom:36px;
     z-index:2;
     color:rgba(255,255,255,0.7);
     font-size:11px;
@@ -320,6 +281,54 @@
   .scroll-cue .dash{
     width:1px;height:46px;
     background:rgba(255,255,255,0.5);
+  }
+
+  .hero-slide-arrow{
+    position:absolute;
+    right:6vw;bottom:30px;
+    z-index:2;
+    width:48px;height:48px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.45);
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(4px);
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .3s ease, border-color .3s ease, transform .25s ease;
+  }
+  .hero-slide-arrow svg{width:18px;height:18px;}
+  .hero-slide-arrow:hover{
+    background:var(--sage);
+    border-color:var(--sage);
+    transform:translateY(-2px);
+  }
+  .hero-slide-arrow:active{transform:translateY(-2px) scale(0.94);}
+
+  .hero-slide-dots{
+    position:absolute;
+    right:calc(6vw + 8px);
+    bottom:90px;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .hero-slide-dots .dot{
+    width:6px;height:6px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.4);
+    cursor:pointer;
+    transition:background .25s ease, transform .25s ease;
+    border:none;
+    padding:0;
+  }
+  .hero-slide-dots .dot.is-active{
+    background:var(--sage);
+    transform:scale(1.4);
   }
 
   /* ---------- SERVICES SPLIT (dual offer, immediately after hero) ---------- */
@@ -688,6 +697,25 @@
     max-width:380px;
   }
 
+  .quals-venues{
+    margin-top:32px;
+    max-width:380px;
+  }
+  .quals-venues-label{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-deep);
+    margin-bottom:14px;
+  }
+  .quals-venues .venues{margin-top:0; gap:8px 10px;}
+  .quals-venues .venues span{
+    font-size:11.5px;
+    padding:7px 13px;
+  }
+
   .quals-trust{
     margin-top:38px;
     display:flex;
@@ -785,6 +813,25 @@
     opacity:0.85;
     margin-top:1px;
   }
+  .qual-badge-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--sage-pale);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--sage-deep);
+  }
+  .qual-badge-icon svg{width:26px;height:26px;}
+  .quals-subhead{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--sage-deep);
+    padding:28px 0 16px;
+  }
+  .quals-list > .quals-subhead:first-child{padding-top:0;}
   .qual-row-text{min-width:0;}
   .qual-tag{
     display:inline-block;
@@ -817,15 +864,7 @@
     max-width:520px;
   }
 
-  /* ---------- EXPERIENCE / TIMELINE ---------- */
-  .experience{background:var(--white);}
-  .exp-head{
-    max-width:640px;
-    margin-bottom:70px;
-  }
-  .exp-head h2{
-    font-size:clamp(32px,4vw,46px);
-  }
+  /* ---------- VENUE TAGS (reused in merged Experience & Qualifications section) ---------- */
   .venues{
     display:flex;
     flex-wrap:wrap;
@@ -843,43 +882,6 @@
   .venues span::before{
     content:'♪ ';
     color:var(--sage);
-  }
-
-  .exp-stage{
-    position:relative;
-    padding-left:48px;
-  }
-  .exp-stage::before{
-    content:'';
-    position:absolute;
-    left:8px;top:6px;bottom:6px;
-    width:1px;
-    background:var(--line);
-  }
-  .exp-item{
-    position:relative;
-    padding-bottom:50px;
-  }
-  .exp-item:last-child{padding-bottom:0;}
-  .exp-item::before{
-    content:'';
-    position:absolute;
-    left:-44px;top:4px;
-    width:9px;height:9px;
-    border-radius:50%;
-    background:var(--sage);
-    box-shadow:0 0 0 4px var(--white);
-  }
-  .exp-item h3{
-    font-size:21px;
-    font-weight:600;
-    margin-bottom:8px;
-  }
-  .exp-item p{
-    font-size:14.5px;
-    line-height:1.75;
-    color:#4a5250;
-    max-width:620px;
   }
 
   /* ---------- STOCK IMAGE BAND ---------- */
@@ -972,6 +974,7 @@
     letter-spacing:0.16em;
     text-transform:uppercase;
     font-weight:600;
+    border-radius:999px;
   }
   .btn.solid{
     background:var(--ink);
@@ -1556,6 +1559,7 @@
     background:var(--sage);
     color:var(--ink);
     border:none;
+    border-radius:999px;
     font-size:12px;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -1569,20 +1573,92 @@
   .site-footer{
     background:var(--white);
     border-top:1px solid var(--line);
-    padding:80px 0 30px;
+    padding:0 0 30px;
   }
   .footer-wrap{
     max-width:1440px;
     margin:0 auto;
     padding:0 5vw;
   }
+  .newsletter-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    padding:38px 0;
+    border-bottom:1px solid var(--line);
+    margin-bottom:48px;
+  }
+  .newsletter-text{max-width:420px;}
+  .newsletter-text h4{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .newsletter-text p{
+    font-size:13.5px;
+    line-height:1.6;
+    color:#6a716e;
+  }
+  .newsletter-form{
+    display:flex;
+    gap:10px;
+    flex-shrink:0;
+  }
+  .newsletter-form input{
+    width:240px;
+    padding:13px 18px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--cream);
+    font-family:'Work Sans',sans-serif;
+    font-size:13.5px;
+    color:var(--ink);
+    outline:none;
+    transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  .newsletter-form input::placeholder{color:#8a9189;}
+  .newsletter-form input:focus{
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px rgba(127,161,145,0.18);
+  }
+  .newsletter-form button{
+    padding:13px 26px;
+    background:var(--ink);
+    color:var(--white);
+    border:none;
+    border-radius:999px;
+    font-family:'Work Sans',sans-serif;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .25s ease, transform .2s ease;
+  }
+  .newsletter-form button:hover{background:var(--sage-deep);transform:translateY(-1px);}
+  .newsletter-bar.is-subscribed .newsletter-form{display:none;}
+  .newsletter-success{
+    display:none;
+    align-items:center;
+    gap:10px;
+    font-size:13.5px;
+    color:var(--sage-deep);
+    font-weight:500;
+  }
+  .newsletter-bar.is-subscribed .newsletter-success{display:flex;}
+  .newsletter-success svg{width:18px;height:18px;flex-shrink:0;}
+
   .footer-top{
     display:grid;
     grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;
     gap:5vw;
     padding-bottom:48px;
     border-bottom:1px solid var(--line);
-    margin-bottom:26px;
+    margin-bottom:12px;
   }
   .footer-brand .footer-logo{
     font-family:'Cormorant Garamond',serif;
@@ -1609,21 +1685,23 @@
   }
   .footer-social{
     display:flex;
-    gap:14px;
-    margin-top:18px;
+    gap:13px;
+    margin-top:20px;
   }
   .footer-social a{
-    width:34px;height:34px;
+    width:38px;height:38px;
+    flex-shrink:0;
     border-radius:50%;
     border:1px solid var(--line);
     display:flex;
     align-items:center;
     justify-content:center;
     color:#6a716e;
-    transition:background .25s ease, color .25s ease, border-color .25s ease;
+    transition:background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
   }
-  .footer-social a svg{width:16px;height:16px;}
+  .footer-social a svg{width:15px;height:15px;display:block;}
   .footer-social a:hover{
+    transform:translateY(-2px);
     background:var(--sage);
     border-color:var(--sage);
     color:var(--white);
@@ -1646,6 +1724,13 @@
     transition:color .25s ease;
   }
   .footer-col a:hover{color:var(--sage-deep);}
+  .footer-social a{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 !important;
+    margin-bottom:0 !important;
+  }
   .footer-cta-col p{
     font-size:13.5px;
     line-height:1.65;
@@ -1655,26 +1740,34 @@
   }
   .footer-cta-col .btn{
     display:inline-flex;
+    align-items:center;
     width:auto;
     color:var(--white) !important;
-    padding:12px 24px;
+    padding:13px 26px;
     font-size:11px;
+    letter-spacing:0.12em;
+    border-radius:999px;
+    transition:background .3s ease, transform .25s ease, box-shadow .25s ease;
   }
   .footer-cta-col .btn:hover{
     color:var(--white) !important;
+    background:var(--sage-deep);
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(20,24,26,0.18);
   }
 
   .foot-bottom{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding-top:24px;
+    padding-top:10px;
     flex-wrap:wrap;
     gap:14px;
   }
   .foot-bottom .fl{
-    font-size:17px;
-    font-family:'Cormorant Garamond',serif;
+    font-size:12px;
+    font-family:'Work Sans',sans-serif;
+    color:#8a9189;
   }
   .foot-bottom .fr{
     font-size:12px;
@@ -1682,6 +1775,7 @@
     display:flex;
     gap:24px;
     align-items:center;
+    flex-wrap:wrap;
   }
   .foot-bottom .fr a{color:#8a9189;transition:color .25s ease;}
   .foot-bottom .fr a:hover{color:var(--sage-deep);}
@@ -1703,7 +1797,7 @@
   }
 
   /* ---------- RESPONSIVE ---------- */
-  @media (max-width:880px){
+  @media (max-width:1040px){
     .nav-cta{display:none;}
     nav.links{
       position:fixed;
@@ -1750,7 +1844,19 @@
     header.site.scrolled .nav-toggle span{background:var(--ink);}
     header.site.scrolled .nav-toggle.active span{background:var(--ink);}
     .nav-toggle.active span{background:var(--white);}
+  }
 
+  @media (max-width:880px){
+    .scroll-cue{display:none;}
+    .hero-slide-arrow{display:none;}
+    .hero-slide-dots{display:none;}
+    .newsletter-bar{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:20px;
+    }
+    .newsletter-form{width:100%;}
+    .newsletter-form input{flex:1; width:auto;}
     .about-grid,.coach-grid,.contact-grid,.bookings-grid{
       grid-template-columns:1fr;
       gap:40px;
@@ -1807,7 +1913,11 @@
     .section-pad{padding:80px 0;}
     .hero-content{padding-bottom:90px;}
     .scroll-cue{display:none;}
-    .sound-toggle{bottom:24px;left:6vw;}
+    .brand{font-size:17px;}
+    .brand span{
+      font-size:7.5px;
+      letter-spacing:0.13em;
+    }
     .badges{gap:20px;}
     .badge .ring{width:54px;height:54px;}
     .footer-top{grid-template-columns:1fr;}
@@ -1926,12 +2036,12 @@
 <body>
 
 <header class="site" id="siteHeader">
-  <div class="wrap header-inner">
-    <div class="brand">KASIA HOWLEY<span>Vocalist &amp; Vocal Coach</span></div>
+  <div class="header-inner">
+    <div class="brand">KASIA HOWLEY<span>Piano Vocalist &amp; Vocal Coach</span></div>
     <div class="nav-right">
       <nav class="links" id="navLinks">
-        <a href="#bookings">Live Music Bookings</a>
         <a href="#coaching">Vocal Coaching</a>
+        <a href="#bookings">Live Music Bookings</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1945,33 +2055,23 @@
 
 <section class="hero">
   <div class="hero-bg">
-    <img class="hero-fallback-img" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals">
-    <div class="hero-video-wrap">
-      <iframe id="heroVideoFrame" src="https://www.youtube.com/embed/-_ttB6e5vA4?start=49&autoplay=1&mute=1&loop=1&playlist=-_ttB6e5vA4&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1&enablejsapi=1" title="Kasia Howley performing live" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
+    <img class="hero-slide is-active" style="object-position:center 30%;" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
+    <img class="hero-slide" style="object-position:center 25%;" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/IMG_5168.jpg" alt="Kasia Howley singing live at a piano">
+    <img class="hero-slide" style="object-position:center 35%;" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley singing live at a wedding venue">
   </div>
   <div class="hero-content wrap">
     <div class="eyebrow">Tileyard North, Wakefield · West Yorkshire</div>
-    <h1>Live music for your day.<br><em>Vocal coaching for your craft.</em></h1>
-    <p class="hero-sub">Kasia Howley is a professional piano vocalist available for weddings, ceremonies and events — and a vocal coach helping performers and singers build technique that lasts.</p>
+    <h1>Vocal coaching for your craft.<br><em>Live music for your day.</em></h1>
+    <p class="hero-sub">Kasia Howley is a vocal coach helping performers and singers build technique that lasts - and a professional piano vocalist available for weddings, ceremonies and events.</p>
     <div class="hero-pills">
-      <a href="#bookings" class="hero-pill solid">Live Music &amp; Weddings →</a>
-      <a href="#coaching" class="hero-pill outline">Vocal Coaching →</a>
+      <a href="#coaching" class="hero-pill solid">Vocal Coaching →</a>
+      <a href="#bookings" class="hero-pill outline">Live Music &amp; Weddings →</a>
     </div>
   </div>
-  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Unmute video" aria-pressed="false">
-    <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
-      <line x1="23" y1="9" x2="17" y2="15"></line>
-      <line x1="17" y1="9" x2="23" y2="15"></line>
-    </svg>
-    <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
-      <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
-      <path d="M18.5 6a9 9 0 0 1 0 12"></path>
-    </svg>
-    <span class="sound-toggle-label">Unmute</span>
+  <button class="hero-slide-arrow" id="heroSlideArrow" type="button" aria-label="Show next photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
   </button>
+  <div class="hero-slide-dots" id="heroSlideDots"></div>
   <div class="scroll-cue"><span class="dash"></span>Scroll</div>
 </section>
 
@@ -1988,24 +2088,14 @@
     <div class="about-text reveal">
       <div class="label-row"><span class="num">01</span><span class="eyebrow">About Kasia</span></div>
       <h2>A coach shaped by<br>the stage and the science.</h2>
-      <p>Kasia is a vocal coach and professional piano vocalist with over 7 years' coaching experience at leading drama schools, universities and conservatoires. She runs her private practice at Tileyard North, Wakefield, holds a BA (Hons) in Musical Theatre from ArtsEd London, and is completing a Master's in Vocal Pedagogy with the Voice Study Centre — turning the science of vocal fatigue into practical, everyday guidance.</p>
+      <p>Kasia is a vocal coach and professional piano vocalist with over 7 years' coaching experience at leading drama schools, universities and conservatoires. She runs her private practice at Tileyard North, Wakefield, holds a BA (Hons) in Musical Theatre from ArtsEd London, and is completing a Master's in Vocal Pedagogy with the Voice Study Centre - turning the science of vocal fatigue into practical, everyday guidance.</p>
       <p class="pull">"My approach is functional: efficient, sustainable technique that holds up under a strenuous schedule and a demanding stage."</p>
-      <p>Mentored by one of the North's leading Estill Master Trainers and a founding figure of CVT, she's also a qualified Vocal Health First Aider and Certified Vocal Massage Therapist — training that shapes her coaching, not a separate service. As a performer she's appeared as a soloist at the Royal Albert Hall and Trafalgar Square, and recorded alongside artists including Kerry Ellis and Ramin Karimloo. She prides herself on a safe, supportive coaching environment — her students now study and perform at leading drama schools and in the West End.</p>
+      <p>Mentored by one of the North's leading Estill Master Trainers and a founding figure of CVT, she's also a qualified Vocal Health First Aider and Certified Vocal Massage Therapist - training that shapes her coaching, not a separate service. As a performer she's appeared as a soloist at the Royal Albert Hall and Trafalgar Square, and recorded alongside artists including Kerry Ellis and Ramin Karimloo. She prides herself on a safe, supportive coaching environment - her students now study and perform at leading drama schools and in the West End.</p>
     </div>
   </div>
 </section>
 
 <section class="services-split">
-  <a href="#bookings" class="service-card">
-    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
-    <div class="service-overlay"></div>
-    <div class="service-text">
-      <span class="service-kicker">For your event</span>
-      <h3>Live Music Bookings</h3>
-      <p>Piano vocals for weddings, ceremonies &amp; private functions.</p>
-      <span class="service-link">View bookings →</span>
-    </div>
-  </a>
   <a href="#coaching" class="service-card">
     <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/725005413_1360954722587277_8424250148621098955_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North">
     <div class="service-overlay"></div>
@@ -2016,50 +2106,19 @@
       <span class="service-link">View coaching →</span>
     </div>
   </a>
+  <a href="#bookings" class="service-card">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
+    <div class="service-overlay"></div>
+    <div class="service-text">
+      <span class="service-kicker">For your event</span>
+      <h3>Live Music Bookings</h3>
+      <p>Piano vocals for weddings, ceremonies &amp; private functions.</p>
+      <span class="service-link">View bookings →</span>
+    </div>
+  </a>
 </section>
 
-<section class="experience section-pad" id="experience">
-  <div class="wrap">
-    <div class="exp-head reveal">
-      <div class="label-row"><span class="num">02</span><span class="eyebrow">Experience</span></div>
-      <h2>From soloist to specialist.</h2>
-      <div class="venues">
-        <span>Royal Albert Hall</span>
-        <span>Trafalgar Square</span>
-        <span>London Hippodrome Casino</span>
-        <span>The Southbank Centre</span>
-        <span>London O2 Indigo Arena</span>
-      </div>
-    </div>
 
-    <div class="exp-stage">
-      <div class="exp-item reveal">
-        <h3>Private Practice &amp; Teaching</h3>
-        <p>Runs a private vocal coaching practice at Tileyard North, Wakefield, and is one of the technical voice tutors on the degree course at Emil Dale Academy, alongside teaching at universities and arts colleges across the UK.</p>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Student &amp; Client Outcomes</h3>
-        <p>Students have secured places at leading drama schools including ArtsEd, Mountview, GSA, EDA and Urdang. Clients can be seen performing in West End, regional and international productions.</p>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Working Musicians</h3>
-        <p>Beyond musical theatre, Kasia works with professional musicians preparing for recording sessions, tours and session work — with a focus on sustainable voice use and longevity.</p>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Notable Collaborations</h3>
-        <p>Has performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="band">
-  <img src="https://static.wixstatic.com/media/11062b_791609fba40e400cb0507b472e32a51d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1960,h_742,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Music%20Sheets.jpg" alt="Sheet music">
-  <div class="band-text reveal">
-    <div class="eyebrow">Research-informed practice</div>
-    <h2>"Translating the complexities of vocal fatigue into accessible, actionable guidance for professional voice users."</h2>
-  </div>
-</div>
 
 <section class="coach section-pad" id="coaching">
   <div class="wrap coach-grid">
@@ -2067,10 +2126,10 @@
       <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/724719899_1642882010129207_6907086987528118233_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North, Wakefield">
     </div>
     <div class="text-block reveal">
-      <div class="label-row"><span class="num">03</span><span class="eyebrow">Vocal Coaching</span></div>
+      <div class="label-row"><span class="num">02</span><span class="eyebrow">Vocal Coaching</span></div>
       <h2>Lessons built around your voice, not a method.</h2>
       <p>Whether you're training for drama school auditions, maintaining your voice through a long-running show, or preparing for a tour, sessions are tailored to your repertoire, your schedule and the demands placed on your voice.</p>
-      <p>One-to-one lessons are available in-person at Tileyard North, Wakefield, and online — for students, working performers and professional musicians alike.</p>
+      <p>One-to-one lessons are available in-person at Tileyard North, Wakefield, and online - for students, working performers and professional musicians alike.</p>
       <div class="cta-row">
         <a href="#contact" class="btn solid">Enquire about coaching</a>
       </div>
@@ -2081,11 +2140,11 @@
 <section class="bookings section-pad" id="bookings">
   <div class="wrap bookings-grid">
     <div class="text-block reveal">
-      <div class="label-row"><span class="num">04</span><span class="eyebrow">Live Music Bookings</span></div>
+      <div class="label-row"><span class="num">03</span><span class="eyebrow">Live Music Bookings</span></div>
       <h2>A piano vocalist for your day.</h2>
-      <p>Kasia performs as a solo piano vocalist or alongside a full band — for wedding ceremonies, drinks receptions, corporate functions and private parties. She's performed as a soloist at venues including the Royal Albert Hall, Trafalgar Square and the London O2 Indigo Arena, bringing the same polish to a wedding breakfast as to a concert stage.</p>
+      <p>Kasia performs as a solo piano vocalist or alongside a full band - for wedding ceremonies, drinks receptions, corporate functions and private parties. She's performed as a soloist at venues including the Royal Albert Hall, Trafalgar Square and the London O2 Indigo Arena, bringing the same polish to a wedding breakfast as to a concert stage.</p>
 
-      <p class="price-note">Every booking is bespoke — get in touch for a personalised quote and package tailored to your event.</p>
+      <p class="price-note">Every booking is bespoke - get in touch for a personalised quote and package tailored to your event.</p>
       <div class="cta-row">
         <a href="#contact" class="btn solid">Check availability</a>
         <a href="#contact" class="btn outline">Enquire now</a>
@@ -2093,7 +2152,7 @@
     </div>
     <div class="bookings-photo reveal">
       <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley performing live piano vocals at a wedding venue">
-      <div class="bookings-photo-badge"><strong>36+</strong><span>UK venues played</span></div>
+      <div class="bookings-photo-badge"><strong>55+</strong><span>UK venues played</span></div>
     </div>
   </div>
 
@@ -2104,7 +2163,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
         </span>
         <h4>Solo or Full Band</h4>
-        <p>Piano vocals alone, or alongside a live band — whatever suits your event.</p>
+        <p>Piano vocals alone, or alongside a live band - whatever suits your event.</p>
       </div>
       <div class="booking-feature reveal">
         <span class="booking-feature-icon">
@@ -2118,7 +2177,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 4.5L19 9l-4.2 3.3L16 17l-4-2.7L8 17l1.2-4.7L5 9l5.1-1.5z"/></svg>
         </span>
         <h4>Bespoke &amp; Tailored</h4>
-        <p>Custom song requests welcome — every package is built around your day.</p>
+        <p>Custom song requests welcome - every package is built around your day.</p>
       </div>
     </div>
   </div>
@@ -2129,7 +2188,7 @@
         <div class="repertoire-card-text">
           <span class="eyebrow">Sample Repertoire</span>
           <h3>A few favourites from her songbook.</h3>
-          <p>From Adele to Etta James, Ed Sheeran to Carole King — repertoire is tailored to you, and song requests are always welcome.</p>
+          <p>From Adele to Etta James, Ed Sheeran to Carole King - repertoire is tailored to you, and song requests are always welcome.</p>
         </div>
         <div class="repertoire-search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -2138,58 +2197,58 @@
       </div>
 
       <div class="repertoire-grid" id="repertoirePreview">
-        <span>Make You Feel My Love — Adele</span>
-        <span>Perfect — Ed Sheeran</span>
-        <span>At Last — Etta James</span>
-        <span>Fields of Gold — Eva Cassidy</span>
-        <span>(You Make Me Feel Like a) Natural Woman — Carole King</span>
-        <span>Can't Help Falling in Love — Elvis</span>
-        <span>Your Song — Elton John</span>
-        <span>Thinking Out Loud — Ed Sheeran</span>
-        <span>Somewhere Only We Know — Keane</span>
-        <span>All of Me — John Legend</span>
-        <span>Sky Full of Stars — Coldplay</span>
-        <span>This Is Me — The Greatest Showman</span>
+        <span>Make You Feel My Love - Adele</span>
+        <span>Perfect - Ed Sheeran</span>
+        <span>At Last - Etta James</span>
+        <span>Fields of Gold - Eva Cassidy</span>
+        <span>(You Make Me Feel Like a) Natural Woman - Carole King</span>
+        <span>Can't Help Falling in Love - Elvis</span>
+        <span>Your Song - Elton John</span>
+        <span>Thinking Out Loud - Ed Sheeran</span>
+        <span>Somewhere Only We Know - Keane</span>
+        <span>All of Me - John Legend</span>
+        <span>Sky Full of Stars - Coldplay</span>
+        <span>This Is Me - The Greatest Showman</span>
       </div>
       <div class="repertoire-grid repertoire-extra" id="repertoireExtra">
-        <span>All I Ask — Adele</span>
-        <span>Easy On Me — Adele</span>
-        <span>Say a Little Prayer — Aretha Franklin</span>
-        <span>Always a Woman — Billy Joel</span>
-        <span>Vienna — Billy Joel</span>
-        <span>Right on Time — Brandi Carlile</span>
-        <span>Just the Way You Are — Bruno Mars</span>
-        <span>I Can't Make You Love Me — Bonnie Raitt</span>
-        <span>You Are the Reason — Callum Scott</span>
-        <span>Close to You — The Carpenters</span>
-        <span>Because You Loved Me — Celine Dion</span>
-        <span>You've Got a Friend — Carole King</span>
-        <span>A Thousand Years — Christina Perri</span>
-        <span>Fix You — Coldplay</span>
-        <span>Yellow — Coldplay</span>
-        <span>Castle on the Hill — Ed Sheeran</span>
-        <span>Tenerife Sea — Ed Sheeran</span>
-        <span>Goodbye Yellow Brick Road — Elton John</span>
-        <span>Love Me Tender — Elvis</span>
-        <span>Songbird — Eva Cassidy</span>
-        <span>There You'll Be — Faith Hill</span>
-        <span>Lost Without You — Freya Ridings</span>
-        <span>Shotgun — George Ezra</span>
-        <span>Hold Back the River — James Bay</span>
-        <span>Big Yellow Taxi — Joni Mitchell</span>
-        <span>All I Want — Kodaline</span>
-        <span>Always Remember Us This Way — Lady Gaga</span>
-        <span>Shallow — Lady Gaga</span>
-        <span>Crazy Love — Michael Bublé</span>
-        <span>Don't Know Why — Norah Jones</span>
-        <span>Come Away With Me — Norah Jones</span>
-        <span>Somebody to Love — Queen</span>
-        <span>Lay Me Down — Sam Smith</span>
-        <span>Run — Snow Patrol</span>
-        <span>Marry Me — Train</span>
-        <span>A Million Dreams — The Greatest Showman</span>
+        <span>All I Ask - Adele</span>
+        <span>Easy On Me - Adele</span>
+        <span>Say a Little Prayer - Aretha Franklin</span>
+        <span>Always a Woman - Billy Joel</span>
+        <span>Vienna - Billy Joel</span>
+        <span>Right on Time - Brandi Carlile</span>
+        <span>Just the Way You Are - Bruno Mars</span>
+        <span>I Can't Make You Love Me - Bonnie Raitt</span>
+        <span>You Are the Reason - Callum Scott</span>
+        <span>Close to You - The Carpenters</span>
+        <span>Because You Loved Me - Celine Dion</span>
+        <span>You've Got a Friend - Carole King</span>
+        <span>A Thousand Years - Christina Perri</span>
+        <span>Fix You - Coldplay</span>
+        <span>Yellow - Coldplay</span>
+        <span>Castle on the Hill - Ed Sheeran</span>
+        <span>Tenerife Sea - Ed Sheeran</span>
+        <span>Goodbye Yellow Brick Road - Elton John</span>
+        <span>Love Me Tender - Elvis</span>
+        <span>Songbird - Eva Cassidy</span>
+        <span>There You'll Be - Faith Hill</span>
+        <span>Lost Without You - Freya Ridings</span>
+        <span>Shotgun - George Ezra</span>
+        <span>Hold Back the River - James Bay</span>
+        <span>Big Yellow Taxi - Joni Mitchell</span>
+        <span>All I Want - Kodaline</span>
+        <span>Always Remember Us This Way - Lady Gaga</span>
+        <span>Shallow - Lady Gaga</span>
+        <span>Crazy Love - Michael Bublé</span>
+        <span>Don't Know Why - Norah Jones</span>
+        <span>Come Away With Me - Norah Jones</span>
+        <span>Somebody to Love - Queen</span>
+        <span>Lay Me Down - Sam Smith</span>
+        <span>Run - Snow Patrol</span>
+        <span>Marry Me - Train</span>
+        <span>A Million Dreams - The Greatest Showman</span>
       </div>
-      <p class="repertoire-empty" id="repertoireEmpty">No songs match your search — but custom requests are always welcome.</p>
+      <p class="repertoire-empty" id="repertoireEmpty">No songs match your search - but custom requests are always welcome.</p>
       <button class="repertoire-toggle" id="repertoireToggle" type="button">
         <span class="toggle-label">View full repertoire (100+ songs)</span>
         <span class="toggle-arrow">
@@ -2212,9 +2271,9 @@
 <section class="performances-section section-pad" id="performances">
   <div class="wrap">
     <div class="performances-head reveal">
-      <div class="label-row"><span class="num">05</span><span class="eyebrow">Watch &amp; Listen</span></div>
+      <div class="label-row"><span class="num">04</span><span class="eyebrow">Watch &amp; Listen</span></div>
       <h2>See and hear Kasia live.</h2>
-      <p>A few moments from recent performances — weddings, events and live sets.</p>
+      <p>A few moments from recent performances - weddings, events and live sets.</p>
       <div class="perf-chips">
         <span>Solo piano vocals</span>
         <span>Can perform alongside a live band</span>
@@ -2305,13 +2364,31 @@
   </div>
 </section>
 
+<div class="band">
+  <img src="https://static.wixstatic.com/media/11062b_791609fba40e400cb0507b472e32a51d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1960,h_742,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Music%20Sheets.jpg" alt="Sheet music">
+  <div class="band-text reveal">
+    <div class="eyebrow">Research-informed practice</div>
+    <h2>"Translating the complexities of vocal fatigue into accessible, actionable guidance for professional voice users."</h2>
+  </div>
+</div>
+
 <section class="quals-section section-pad" id="qualifications">
   <div class="wrap quals-layout">
     <div class="quals-intro">
       <div class="quals-intro-sticky reveal">
-        <div class="label-row"><span class="num">06</span><span class="eyebrow">Credentials</span></div>
-        <h2>Qualifications &amp; Training</h2>
-        <p>A coaching practice grounded in formal training, clinical certification and ongoing research — not just performance experience.</p>
+        <div class="label-row"><span class="num">05</span><span class="eyebrow">Background</span></div>
+        <h2>Qualifications &amp; Experience</h2>
+        <p>A coaching practice grounded in formal training and clinical certification - backed by real performance experience at the UK's leading venues.</p>
+        <div class="quals-venues">
+          <span class="quals-venues-label">Performed at</span>
+          <div class="venues">
+            <span>Royal Albert Hall</span>
+            <span>Trafalgar Square</span>
+            <span>London Hippodrome Casino</span>
+            <span>The Southbank Centre</span>
+            <span>London O2 Indigo Arena</span>
+          </div>
+        </div>
         <div class="quals-trust">
           <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
           <div class="quals-trust-text">
@@ -2323,6 +2400,8 @@
     </div>
 
     <div class="quals-list">
+      <div class="quals-subhead reveal">Training &amp; Qualifications</div>
+
       <div class="qual-row reveal">
         <div class="qual-row-index">01</div>
         <div class="qual-badge qual-badge-photo">
@@ -2387,6 +2466,60 @@
           <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
         </div>
       </div>
+
+      <div class="quals-subhead reveal">Career Highlights</div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">06</div>
+        <div class="qual-badge qual-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Teaching</span>
+          <h3>Private Practice &amp; Teaching</h3>
+          <div class="qual-org">Tileyard North · Emil Dale Academy</div>
+          <p>Runs a private vocal coaching practice at Tileyard North, Wakefield, and is one of the technical voice tutors on the degree course at Emil Dale Academy, alongside teaching at universities and arts colleges across the UK.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">07</div>
+        <div class="qual-badge qual-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="m9 14-1.5 6L12 18l4.5 2L15 14"/></svg>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Outcomes</span>
+          <h3>Student &amp; Client Outcomes</h3>
+          <div class="qual-org">ArtsEd · Mountview · GSA · EDA · Urdang</div>
+          <p>Students have secured places at leading drama schools, and clients can be seen performing in West End, regional and international productions.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">08</div>
+        <div class="qual-badge qual-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3Z"/></svg>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Session Work</span>
+          <h3>Working Musicians</h3>
+          <div class="qual-org">Recording &amp; Touring</div>
+          <p>Beyond musical theatre, Kasia works with professional musicians preparing for recording sessions, tours and session work - with a focus on sustainable voice use and longevity.</p>
+        </div>
+      </div>
+
+      <div class="qual-row reveal">
+        <div class="qual-row-index">09</div>
+        <div class="qual-badge qual-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="3"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14.5 14.2c2.5.3 4.5 2 4.5 4.8"/></svg>
+        </div>
+        <div class="qual-row-text">
+          <span class="qual-tag">Collaborations</span>
+          <h3>Notable Collaborations</h3>
+          <div class="qual-org">Kerry Ellis · Ramin Karimloo &amp; more</div>
+          <p>Has performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2395,9 +2528,9 @@
   <div class="wrap">
     <div class="reviews-head-row">
       <div class="reviews-head reveal">
-        <div class="label-row"><span class="num">07</span><span class="eyebrow">Reviews</span></div>
+        <div class="label-row"><span class="num">06</span><span class="eyebrow">Reviews</span></div>
         <h2>Loved by couples and clients across the UK.</h2>
-        <p>A selection of real reviews from weddings, parties and events — verified through Hitched.</p>
+        <p>A selection of real reviews from weddings, parties and events - verified through Hitched.</p>
       </div>
       <div class="reviews-nav">
         <button class="reviews-arrow" id="reviewPrev" type="button" aria-label="Previous reviews">
@@ -2424,13 +2557,13 @@
 
       <div class="review-card reveal">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"All my guests commented on how fabulous she was and wanted to know where I'd found her! She sang the songs beautifully — just overall brilliant."</p>
+        <p class="review-quote">"All my guests commented on how fabulous she was and wanted to know where I'd found her! She sang the songs beautifully - just overall brilliant."</p>
         <div class="review-meta"><strong>Tyler H</strong><span>Wedding</span></div>
       </div>
 
       <div class="review-card reveal">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"Kasia learnt and adapted my chosen aisle walk song into the most beautiful rendition we'll treasure forever. Professional throughout — she's got a heart of gold."</p>
+        <p class="review-quote">"Kasia learnt and adapted my chosen aisle walk song into the most beautiful rendition we'll treasure forever. Professional throughout - she's got a heart of gold."</p>
         <div class="review-meta"><strong>Sophie T</strong><span>Wedding</span></div>
       </div>
 
@@ -2442,7 +2575,7 @@
 
       <div class="review-card reveal">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"She has many songs in her repertoire but was also happy to learn and sing new ones we requested. A warm and lovely person — you made our wedding so special."</p>
+        <p class="review-quote">"She has many songs in her repertoire but was also happy to learn and sing new ones we requested. A warm and lovely person - you made our wedding so special."</p>
         <div class="review-meta"><strong>Mandy B</strong><span>Wedding</span></div>
       </div>
 
@@ -2454,7 +2587,7 @@
 
       <div class="review-card reveal">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"It created such a lovely atmosphere — so many people commented how much they enjoyed the music and that it added so much to the day."</p>
+        <p class="review-quote">"It created such a lovely atmosphere - so many people commented how much they enjoyed the music and that it added so much to the day."</p>
         <div class="review-meta"><strong>Sorrel H</strong><span>Wedding</span></div>
       </div>
 
@@ -2481,9 +2614,9 @@
   </div>
   <div class="wrap contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">08</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">07</span><span class="eyebrow">Get in touch</span></div>
       <h2>Let's talk.</h2>
-      <p class="lead">Whether you're booking live piano vocals for a wedding or event, or starting vocal coaching — get in touch and let's talk through what you need.</p>
+      <p class="lead">Whether you're booking live piano vocals for a wedding or event, or starting vocal coaching - get in touch and let's talk through what you need.</p>
       <div class="contact-details-panel">
         <div class="contact-detail">
           <span class="k">Phone</span>
@@ -2521,6 +2654,21 @@
 
 <footer class="site-footer">
   <div class="footer-wrap">
+    <div class="newsletter-bar reveal">
+      <div class="newsletter-text">
+        <h4>Join the mailing list</h4>
+        <p>Occasional updates on availability, new repertoire and coaching openings - no spam.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="newsletter-success">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        You're on the list - thank you!
+      </div>
+    </div>
+
     <div class="footer-top">
       <div class="footer-col footer-brand">
         <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
@@ -2533,12 +2681,11 @@
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
-        <a href="#bookings">Live Music Bookings</a>
         <a href="#coaching">Vocal Coaching</a>
+        <a href="#bookings">Live Music Bookings</a>
         <a href="#about">About</a>
-        <a href="#qualifications">Qualifications</a>
+        <a href="#qualifications">Qualifications &amp; Experience</a>
         <a href="#reviews">Reviews</a>
-        <a href="#experience">Experience</a>
       </div>
       <div class="footer-col">
         <h4>Get in touch</h4>
@@ -2554,11 +2701,11 @@
     </div>
 
     <div class="foot-bottom">
-      <div class="fl">Kasia Howley Music</div>
+      <div class="fl">© 2026 Kasia Howley Music. All rights reserved.</div>
       <div class="fr">
         <a href="#bookings">Bookings</a>
         <a href="#coaching">Coaching</a>
-        <span>© 2026</span>
+        <a href="#privacy">Privacy Policy</a>
         <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener" class="credit-link">Website designed by Franks Media</a>
       </div>
     </div>
@@ -2704,7 +2851,7 @@
     }, { passive: false });
   }
 
-  // Venues marquee strip — populated from list, duplicated for seamless loop
+  // Venues marquee strip - populated from list, duplicated for seamless loop
   const venuesList = [
     'Bagden Hall, Denby Dale', 'Broadoaks, Lake District', 'Casa, Brighouse',
     'Chevin Country Park Hotel & Spa, Otley', 'Cockley Woodland Weddings',
@@ -2774,6 +2921,76 @@
     });
   }
 
+  // Hero background image carousel
+  const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+  const heroArrow = document.getElementById('heroSlideArrow');
+  const heroDotsWrap = document.getElementById('heroSlideDots');
+  let heroSlideIndex = heroSlides.findIndex(s => s.classList.contains('is-active'));
+  if (heroSlideIndex < 0) heroSlideIndex = 0;
+
+  if (heroSlides.length > 1 && heroDotsWrap) {
+    heroSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dot' + (i === heroSlideIndex ? ' is-active' : '');
+      dot.setAttribute('aria-label', `Show photo ${i + 1}`);
+      dot.addEventListener('click', () => { goToHeroSlide(i); resetHeroAutoplay(); });
+      heroDotsWrap.appendChild(dot);
+    });
+  }
+
+  function goToHeroSlide(i) {
+    heroSlides[heroSlideIndex].classList.remove('is-active');
+    heroSlideIndex = i;
+    heroSlides[heroSlideIndex].classList.add('is-active');
+    if (heroDotsWrap) {
+      Array.from(heroDotsWrap.children).forEach((d, di) => d.classList.toggle('is-active', di === heroSlideIndex));
+    }
+  }
+
+  if (heroArrow && heroSlides.length > 1) {
+    heroArrow.addEventListener('click', () => {
+      goToHeroSlide((heroSlideIndex + 1) % heroSlides.length);
+      resetHeroAutoplay();
+    });
+  }
+
+  // Auto-advance every 6.5s; pauses while the tab is hidden, and is skipped
+  // entirely for people who've asked their OS/browser to reduce motion.
+  const heroPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let heroAutoplayTimer = null;
+
+  function startHeroAutoplay() {
+    if (heroPrefersReducedMotion || heroSlides.length < 2) return;
+    heroAutoplayTimer = setInterval(() => {
+      goToHeroSlide((heroSlideIndex + 1) % heroSlides.length);
+    }, 5000);
+  }
+  function stopHeroAutoplay() {
+    if (heroAutoplayTimer) clearInterval(heroAutoplayTimer);
+    heroAutoplayTimer = null;
+  }
+  function resetHeroAutoplay() {
+    stopHeroAutoplay();
+    startHeroAutoplay();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopHeroAutoplay();
+    else startHeroAutoplay();
+  });
+
+  startHeroAutoplay();
+
+  // Newsletter signup: simple front-end success state
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      newsletterForm.closest('.newsletter-bar').classList.add('is-subscribed');
+    });
+  }
+
   // Contact form: reveal date/venue fields only for live music bookings
   const serviceSelect = document.getElementById('serviceType');
   const liveFields = document.getElementById('liveFields');
@@ -2785,51 +3002,7 @@
       document.getElementById('eventLocation').required = isLive;
     });
   }
-
-  // Hero video: YouTube IFrame Player API
-  // Used for reliable mute/unmute control and to request 720p playback.
-  const soundToggle = document.getElementById('soundToggle');
-  let heroPlayer = null;
-  let heroMuted = true;
-
-  function setHeroQuality(player){
-    try { player.setPlaybackQuality('hd720'); } catch (e) {}
-  }
-
-  window.onYouTubeIframeAPIReady = function(){
-    heroPlayer = new YT.Player('heroVideoFrame', {
-      events: {
-        onReady: function(e){
-          e.target.mute();
-          setHeroQuality(e.target);
-        },
-        onStateChange: function(e){
-          // YouTube can re-pick quality based on bandwidth when playback starts;
-          // re-assert the preference once it's actually playing.
-          if (e.data === YT.PlayerState.PLAYING) setHeroQuality(e.target);
-        }
-      }
-    });
-  };
-
-  if (soundToggle) {
-    soundToggle.addEventListener('click', () => {
-      if (!heroPlayer) return;
-      heroMuted = !heroMuted;
-      if (heroMuted) {
-        heroPlayer.mute();
-      } else {
-        heroPlayer.unMute();
-        heroPlayer.setVolume(80);
-      }
-      soundToggle.classList.toggle('is-unmuted', !heroMuted);
-      soundToggle.setAttribute('aria-pressed', String(!heroMuted));
-      soundToggle.setAttribute('aria-label', heroMuted ? 'Unmute video' : 'Mute video');
-      soundToggle.querySelector('.sound-toggle-label').textContent = heroMuted ? 'Unmute' : 'Mute';
-    });
-  }
 </script>
-<script src="https://www.youtube.com/iframe_api"></script>
 
 </body>
 </html>
