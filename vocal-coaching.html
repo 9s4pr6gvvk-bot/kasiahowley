@@ -447,7 +447,7 @@
     width:100%;
     aspect-ratio:828/916;
     object-fit:cover;
-    object-position:center 25%;
+    object-position:20% 50%;
     position:relative;
     z-index:2;
   }
@@ -972,6 +972,46 @@
     color:#33403a;
     margin-bottom:18px;
     max-width:520px;
+  }
+  .coach-highlights{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+    margin:28px 0 8px;
+    max-width:520px;
+  }
+  .coach-highlight{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--cream);
+  }
+  .coach-highlight-icon{
+    flex-shrink:0;
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--sage-pale);
+    color:var(--sage-deep);
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+  .coach-highlight-icon svg{width:18px;height:18px;}
+  .coach-highlight strong{
+    display:block;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .coach-highlight span{
+    display:block;
+    font-size:11.5px;
+    color:#6a716e;
+    margin-top:2px;
   }
   .cta-row{
     display:flex;
@@ -2119,28 +2159,12 @@
     line-height:1.6;
     text-shadow:0 2px 18px rgba(0,0,0,0.22);
   }
-  .breadcrumb{
-    position:relative;
-    z-index:2;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:11.5px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:rgba(255,255,255,0.7);
-    margin-bottom:18px;
-  }
-  .breadcrumb a{color:rgba(255,255,255,0.7); transition:color .25s ease;}
-  .breadcrumb a:hover{color:var(--white);}
-
   /* ---------- VMT SECTION ---------- */
   .vmt-section{background:var(--cream);}
   .vmt-grid{
     display:grid;
     grid-template-columns:0.9fr 1.1fr;
     gap:7vw;
-    align-items:start;
   }
   .vmt-intro h2{
     font-size:clamp(30px,3.6vw,42px);
@@ -2172,17 +2196,26 @@
   .vmt-benefits{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
-    gap:16px;
+    grid-auto-rows:1fr;
+    gap:18px;
+    height:100%;
   }
   .vmt-benefit{
     display:flex;
+    flex-direction:column;
     align-items:flex-start;
-    gap:14px;
-    padding:22px;
+    gap:16px;
+    padding:30px 28px;
     background:var(--white);
     border:1px solid var(--line);
+    border-top:3px solid var(--sage);
     border-radius:6px;
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .vmt-benefit.is-wide{
+    grid-column:1/3;
+    flex-direction:row;
+    align-items:center;
   }
   .vmt-benefit:hover{
     transform:translateY(-3px);
@@ -2191,7 +2224,7 @@
   }
   .vmt-benefit-icon{
     flex-shrink:0;
-    width:38px;height:38px;
+    width:46px;height:46px;
     border-radius:50%;
     background:var(--sage-pale);
     color:var(--sage-deep);
@@ -2199,22 +2232,47 @@
     align-items:center;
     justify-content:center;
   }
-  .vmt-benefit-icon svg{width:18px;height:18px;}
-  .vmt-benefit.is-wide{grid-column:1/3;}
+  .vmt-benefit-icon svg{width:21px;height:21px;}
+  .vmt-benefit h4{
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
   .vmt-benefit p{
     font-size:13.5px;
-    line-height:1.5;
-    color:var(--ink);
-    font-weight:500;
+    line-height:1.55;
+    color:#5a6260;
+    font-weight:400;
     margin:0;
   }
 
   /* ---------- FEATURED TESTIMONIAL ---------- */
   .testimonial-feature{
+    position:relative;
     background:var(--ink);
     color:var(--white);
+    overflow:hidden;
+  }
+  .testimonial-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .testimonial-bg img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center 40%;
+    filter:saturate(0.85) contrast(1.05);
+  }
+  .testimonial-bg::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(8,11,12,0.78) 0%, rgba(8,11,12,0.88) 100%);
   }
   .testimonial-card{
+    position:relative;
+    z-index:1;
     max-width:840px;
     margin:0 auto;
     text-align:center;
@@ -2376,6 +2434,7 @@
     .page-banner-content{padding-bottom:48px;}
     .vmt-grid{grid-template-columns:1fr; gap:40px;}
     .vmt-benefits{grid-template-columns:1fr;}
+    .coach-highlights{grid-template-columns:1fr;}
     .location-row{flex-direction:column; align-items:flex-start; text-align:left;}
     .coaching-contact-grid{grid-template-columns:1fr; gap:40px;}
   }
@@ -2408,7 +2467,6 @@
 <section class="page-banner">
   <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/725005413_1360954722587277_8424250148621098955_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North">
   <div class="wrap page-banner-content">
-    <div class="breadcrumb"><a href="index.html">Home</a> / Vocal Coaching</div>
     <div class="eyebrow">Tileyard North, Wakefield &middot; West Yorkshire</div>
     <h1>Vocal coaching, built<br><em>around your voice.</em></h1>
     <p>Private lessons grounded in research-informed technique, clinical training and over 7 years' experience helping performers and singers build a voice that lasts.</p>
@@ -2425,7 +2483,7 @@
     <figure class="about-photo reveal">
       <div class="about-photo-sticky">
         <div class="frame">
-          <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/IMG_5168.jpg" alt="Kasia Howley singing live at a piano">
+          <img src="https://github.com/9s4pr6gvvk-bot/kasiahowley/blob/main/726349518_1703715594225821_3386371529636017282_n.webp?raw=true" alt="Kasia Howley's vocal coaching studio at Tileyard North">
         </div>
         <figcaption>Tileyard North, Wakefield</figcaption>
       </div>
@@ -2433,11 +2491,29 @@
     <div class="about-text reveal">
       <div class="label-row"><span class="num">01</span><span class="eyebrow">About the Coaching</span></div>
       <h2>A functional approach,<br>grounded in research.</h2>
-      <p>Kasia is a vocal coach with extensive experience running a private practice and training performers at some of the UK's leading drama schools. She holds a BA (Hons) in Musical Theatre from ArtsEd London, and is currently completing her Master's in Vocal Pedagogy with the Voice Study Centre - researching vocal fatigue, its underlying biophysiological mechanisms, and strategies for its mitigation and prevention. Her aim is to translate that complexity into accessible, actionable guidance for working voices.</p>
+      <p>Kasia is a vocal coach with extensive experience running a private practice and training performers at some of the UK's leading drama schools. She holds a BA (Hons) in Musical Theatre from ArtsEd London, and is completing her Master's in Vocal Pedagogy with the Voice Study Centre - researching vocal fatigue and translating the science into practical, everyday guidance.</p>
       <p class="pull">"My approach is functional: efficient, sustainable technique that holds up under a strenuous schedule and a demanding stage."</p>
-      <p>Kasia has worked extensively with the Estill method under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers - whose own training connects to the CVT approach popularised in the book <em>SATS</em>. Combined with her grounding in research-informed, evidence-based practice, this shapes a functional style of coaching that helps clients meet the demands of strenuous schedules and high-intensity performance.</p>
-      <p>Alongside running her private practice at Tileyard North, Kasia is one of the technical voice tutors on the degree course at Emil Dale Academy, and has taught at a number of arts colleges across the UK. Her students have secured places at leading drama schools including ArtsEd, Mountview, GSA, EDA and Urdang, and her clients can be seen performing in West End, regional and international productions. She also works with professional musicians preparing for recording sessions, tours and session work, with a continued focus on sustainable voice use.</p>
-      <p>Above all, Kasia prides herself on creating a safe, supportive and encouraging environment for every client to achieve the best possible results - delivering up-to-date, research-informed knowledge in a way that's accessible and individualised, because every voice is unique.</p>
+      <p>Mentored in the Estill method by one of the North's leading Estill Master Trainers, her research-informed approach helps clients meet the demands of a strenuous schedule and high-intensity performance - always within a safe, supportive and individualised environment.</p>
+
+      <div class="coach-highlights">
+        <div class="coach-highlight">
+          <span class="coach-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <div><strong>7+ Years</strong><span>Coaching experience</span></div>
+        </div>
+        <div class="coach-highlight">
+          <span class="coach-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+          <div><strong>Emil Dale Academy</strong><span>Degree course tutor</span></div>
+        </div>
+        <div class="coach-highlight">
+          <span class="coach-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="m9 14-1.5 6L12 18l4.5 2L15 14"/></svg></span>
+          <div><strong>ArtsEd &middot; Mountview &middot; GSA</strong><span>Student placements</span></div>
+        </div>
+        <div class="coach-highlight">
+          <span class="coach-highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3Z"/></svg></span>
+          <div><strong>West End &amp; Touring</strong><span>Client credits</span></div>
+        </div>
+      </div>
+
       <div class="cta-row">
         <a href="#contact" class="btn solid">Book a lesson</a>
         <a href="index.html#qualifications" class="btn outline">Full experience &amp; qualifications</a>
@@ -2540,29 +2616,32 @@
     <div class="vmt-benefits reveal">
       <div class="vmt-benefit">
         <span class="vmt-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10Z"/></svg></span>
-        <p>An overall feeling of release when using the voice</p>
+        <div><h4>A feeling of release</h4><p>An overall sense of ease and freedom when using the voice.</p></div>
       </div>
       <div class="vmt-benefit">
         <span class="vmt-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg></span>
-        <p>Increased mobility of the larynx</p>
+        <div><h4>Greater mobility</h4><p>Increased mobility and flexibility of the larynx itself.</p></div>
       </div>
       <div class="vmt-benefit">
         <span class="vmt-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
-        <p>Enhanced overall voice quality</p>
+        <div><h4>Enhanced quality</h4><p>A noticeably clearer, more enhanced overall voice quality.</p></div>
       </div>
       <div class="vmt-benefit">
         <span class="vmt-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13a6 6 0 1 0-12 0c0 3 2 4 2 7h8c0-3 2-4 2-7Z"/><line x1="9" y1="22" x2="15" y2="22"/></svg></span>
-        <p>Relief from vocal fatigue</p>
+        <div><h4>Relief from fatigue</h4><p>Meaningful relief from the effects of vocal fatigue.</p></div>
       </div>
       <div class="vmt-benefit is-wide">
         <span class="vmt-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 6h16M4 18h16"/></svg></span>
-        <p>Reduced muscular tension through the jaw, neck and larynx</p>
+        <div><h4>Less tension</h4><p>Reduced muscular tension through the jaw, neck and larynx.</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="testimonial-feature section-pad">
+  <div class="testimonial-bg">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/724719899_1642882010129207_6907086987528118233_n.webp" alt="Kasia Howley's vocal coaching studio at Tileyard North">
+  </div>
   <div class="wrap">
     <div class="testimonial-card reveal">
       <div class="quote-mark">&ldquo;</div>
