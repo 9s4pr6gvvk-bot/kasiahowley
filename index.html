@@ -750,6 +750,7 @@
 
   .quals-list{
     border-top:1px solid var(--line);
+    min-width:0;
   }
   .qual-row{
     display:grid;
@@ -831,7 +832,11 @@
     color:var(--sage-deep);
     padding:28px 0 16px;
   }
-  .quals-list > .quals-subhead:first-child{padding-top:0;}
+  .quals-list > .quals-group-head:first-child .quals-subhead{padding-top:24px;}
+  .quals-group-head{display:block;}
+  .quals-nav{display:none;}
+  .quals-dots{display:none;}
+  .qual-track{display:block;}
   .qual-row-text{min-width:0;}
   .qual-tag{
     display:inline-block;
@@ -1583,13 +1588,13 @@
   .newsletter-bar{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
     gap:40px;
     padding:38px 0;
     border-bottom:1px solid var(--line);
     margin-bottom:48px;
   }
-  .newsletter-text{max-width:420px;}
+  .newsletter-text{max-width:420px; padding-top:6px;}
   .newsletter-text h4{
     font-family:'Cormorant Garamond',serif;
     font-size:22px;
@@ -1604,10 +1609,15 @@
   }
   .newsletter-form{
     display:flex;
-    gap:10px;
+    flex-direction:column;
+    gap:14px;
     flex-shrink:0;
   }
-  .newsletter-form input{
+  .newsletter-input-row{
+    display:flex;
+    gap:10px;
+  }
+  .newsletter-form input[type="email"]{
     width:240px;
     padding:13px 18px;
     border:1px solid var(--line);
@@ -1620,7 +1630,7 @@
     transition:border-color .25s ease, box-shadow .25s ease;
   }
   .newsletter-form input::placeholder{color:#8a9189;}
-  .newsletter-form input:focus{
+  .newsletter-form input[type="email"]:focus{
     border-color:var(--sage);
     box-shadow:0 0 0 3px rgba(127,161,145,0.18);
   }
@@ -1641,6 +1651,33 @@
   }
   .newsletter-form button:hover{background:var(--sage-deep);transform:translateY(-1px);}
   .newsletter-bar.is-subscribed .newsletter-form{display:none;}
+  .newsletter-interests{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    padding:0 4px;
+  }
+  .newsletter-interests-label{
+    font-size:11.5px;
+    color:#8a9189;
+    white-space:nowrap;
+  }
+  .newsletter-interests label{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:12.5px;
+    color:#4a5250;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .newsletter-interests input[type="checkbox"]{
+    width:15px;height:15px;
+    accent-color:var(--sage-deep);
+    cursor:pointer;
+    flex-shrink:0;
+  }
   .newsletter-success{
     display:none;
     align-items:center;
@@ -1850,13 +1887,101 @@
     .scroll-cue{display:none;}
     .hero-slide-arrow{display:none;}
     .hero-slide-dots{display:none;}
+    .hero::before{
+      background:linear-gradient(180deg, rgba(8,11,12,0.5) 0%, rgba(8,11,12,0.38) 30%, rgba(8,11,12,0.55) 60%, rgba(8,11,12,0.82) 100%);
+    }
+    .hero::after{
+      background:linear-gradient(180deg, rgba(8,11,12,0.3) 0%, rgba(8,11,12,0.2) 35%, rgba(8,11,12,0.55) 70%, rgba(8,11,12,0.7) 100%);
+    }
     .newsletter-bar{
       flex-direction:column;
       align-items:flex-start;
       gap:20px;
     }
     .newsletter-form{width:100%;}
-    .newsletter-form input{flex:1; width:auto;}
+    .newsletter-input-row{width:100%;}
+    .newsletter-form input[type="email"]{flex:1; width:auto;}
+    .newsletter-interests{gap:16px 14px;}
+
+    .quals-group-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .quals-list > .quals-group-head:first-child .quals-subhead{padding-top:26px;}
+    .quals-group-head-second{margin-top:12px;}
+    .quals-nav{
+      display:flex;
+      gap:8px;
+    }
+    .quals-arrow{
+      width:38px;height:38px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:var(--white);
+      color:var(--ink);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:background .25s ease, border-color .25s ease, color .25s ease, opacity .25s ease;
+    }
+    .quals-arrow svg{width:15px;height:15px;}
+    .quals-arrow:hover{
+      background:var(--sage);
+      border-color:var(--sage);
+      color:var(--white);
+    }
+    .quals-arrow:disabled{
+      opacity:0.3;
+      pointer-events:none;
+    }
+    .qual-track{
+      display:flex;
+      width:100%;
+      min-width:0;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      gap:16px;
+      padding:18px 4px 10px;
+      margin:-18px -4px -10px;
+      scrollbar-width:none;
+    }
+    .qual-track::-webkit-scrollbar{display:none;}
+    .qual-row{
+      flex:0 0 78vw;
+      scroll-snap-align:start;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      border:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      border-radius:6px;
+      padding:24px 22px;
+      background:var(--white);
+    }
+    .qual-row-index{
+      order:-1;
+      padding-top:0;
+    }
+    .quals-dots{
+      display:flex;
+      justify-content:center;
+      gap:7px;
+      margin-top:14px;
+    }
+    .quals-dots .dot{
+      width:6px;height:6px;
+      border-radius:50%;
+      background:var(--line);
+      transition:background .25s ease, transform .25s ease;
+    }
+    .quals-dots .dot.active{
+      background:var(--sage-deep);
+      transform:scale(1.3);
+    }
     .about-grid,.coach-grid,.contact-grid,.bookings-grid{
       grid-template-columns:1fr;
       gap:40px;
@@ -1895,56 +2020,12 @@
     .coach .text-block{order:1;}
     .badges{gap:26px;}
     .review-card{flex:0 0 78vw;}
-    .video-grid{grid-template-columns:repeat(2, 1fr);}
-    .photo-grid{
-      grid-template-columns:repeat(2, 1fr);
-      grid-template-rows:none;
-    }
-    .photo-feature{grid-column:auto; grid-row:auto; aspect-ratio:4/5;}
-    .photo-wide{grid-column:1/3; grid-row:auto; aspect-ratio:16/8;}
-    .photo-item:not(.photo-feature):not(.photo-wide){aspect-ratio:4/5;}
-    .footer-top{
-      grid-template-columns:1fr 1fr;
-      gap:36px 24px;
-    }
-  }
-
-  @media (max-width:520px){
-    .section-pad{padding:80px 0;}
-    .hero-content{padding-bottom:90px;}
-    .scroll-cue{display:none;}
-    .brand{font-size:17px;}
-    .brand span{
-      font-size:7.5px;
-      letter-spacing:0.13em;
-    }
-    .badges{gap:20px;}
-    .badge .ring{width:54px;height:54px;}
-    .footer-top{grid-template-columns:1fr;}
-    .qual-row{
-      grid-template-columns:1fr;
-      gap:14px;
-    }
-    .qual-row-index{display:none;}
-    .repertoire-toggle{
-      width:100%;
-      justify-content:center;
-      white-space:nowrap;
-      padding:13px 16px;
-      font-size:11px;
-    }
-    .repertoire-grid{grid-template-columns:1fr;}
-    .bookings-photo-badge{
-      left:auto;
-      right:14px;
-      bottom:14px;
-      padding:10px 16px;
-    }
-    .bookings-photo-badge strong{font-size:21px;}
-    .venues-strip-label{padding-left:5vw; font-size:10px;}
-    .venues-strip-inner{gap:18px;}
-    .review-card{flex:0 0 86vw;}
-    .reviews-nav{display:none;}
+    .video-grid{display:flex; grid-template-columns:unset; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; gap:14px; padding:2px 2px 6px; margin:-2px -2px -6px; scrollbar-width:none;}
+    .video-grid::-webkit-scrollbar{display:none;}
+    .video-card{flex:0 0 70vw; scroll-snap-align:start;}
+    .photo-grid{display:flex; grid-template-columns:unset; grid-template-rows:unset; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; gap:12px; padding:2px 2px 6px; margin:-2px -2px -6px; scrollbar-width:none;}
+    .photo-grid::-webkit-scrollbar{display:none;}
+    .photo-item, .photo-feature, .photo-wide{flex:0 0 62vw; aspect-ratio:4/5; grid-column:unset; grid-row:unset; scroll-snap-align:start;}
     .carousel-toolbar{
       display:flex;
       align-items:center;
@@ -1997,39 +2078,43 @@
       background:var(--sage);
       transform:scale(1.3);
     }
-    .video-grid{
-      display:flex;
-      grid-template-columns:unset;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      gap:14px;
-      padding:2px 2px 6px;
-      margin:-2px -2px -6px;
-      scrollbar-width:none;
+    .footer-top{
+      grid-template-columns:1fr 1fr;
+      gap:36px 24px;
     }
-    .video-grid::-webkit-scrollbar{display:none;}
-    .video-card{flex:0 0 70vw; scroll-snap-align:start;}
-    .photo-grid{
-      display:flex;
-      grid-template-columns:unset;
-      grid-template-rows:unset;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      gap:12px;
-      padding:2px 2px 6px;
-      margin:-2px -2px -6px;
-      scrollbar-width:none;
+  }
+
+  @media (max-width:520px){
+    .section-pad{padding:80px 0;}
+    .hero-content{padding-bottom:90px;}
+    .scroll-cue{display:none;}
+    .brand{font-size:17px;}
+    .brand span{
+      font-size:7.5px;
+      letter-spacing:0.13em;
     }
-    .photo-grid::-webkit-scrollbar{display:none;}
-    .photo-item, .photo-feature, .photo-wide{
-      flex:0 0 62vw;
-      aspect-ratio:4/5;
-      grid-column:unset;
-      grid-row:unset;
-      scroll-snap-align:start;
+    .badges{gap:20px;}
+    .badge .ring{width:54px;height:54px;}
+    .footer-top{grid-template-columns:1fr;}
+    .repertoire-toggle{
+      width:100%;
+      justify-content:center;
+      white-space:nowrap;
+      padding:13px 16px;
+      font-size:11px;
     }
+    .repertoire-grid{grid-template-columns:1fr;}
+    .bookings-photo-badge{
+      left:auto;
+      right:14px;
+      bottom:14px;
+      padding:10px 16px;
+    }
+    .bookings-photo-badge strong{font-size:21px;}
+    .venues-strip-label{padding-left:5vw; font-size:10px;}
+    .venues-strip-inner{gap:18px;}
+    .review-card{flex:0 0 86vw;}
+    .reviews-nav{display:none;}
   }
 </style>
 </head>
@@ -2401,126 +2486,152 @@
     </div>
 
     <div class="quals-list">
-      <div class="quals-subhead reveal">Training &amp; Qualifications</div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">01</div>
-        <div class="qual-badge qual-badge-photo">
-          <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Clinical</span>
-          <h3>Vocal Health First Aid</h3>
-          <div class="qual-org">Level 2, Qualified</div>
-          <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
+      <div class="quals-group-head">
+        <div class="quals-subhead reveal">Training &amp; Qualifications</div>
+        <div class="quals-nav">
+          <button class="quals-arrow" type="button" data-target="qualTrack1" data-dir="-1" aria-label="Previous qualification">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+          </button>
+          <button class="quals-arrow" type="button" data-target="qualTrack1" data-dir="1" aria-label="Next qualification">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
 
-      <div class="qual-row reveal">
-        <div class="qual-row-index">02</div>
-        <div class="qual-badge qual-badge-photo">
-          <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
+      <div class="qual-track" id="qualTrack1">
+        <div class="qual-row reveal">
+          <div class="qual-row-index">01</div>
+          <div class="qual-badge qual-badge-photo">
+            <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Clinical</span>
+            <h3>Vocal Health First Aid</h3>
+            <div class="qual-org">Level 2, Qualified</div>
+            <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
+          </div>
         </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Clinical</span>
-          <h3>Vocal Manual Therapy</h3>
-          <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
-          <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">02</div>
+          <div class="qual-badge qual-badge-photo">
+            <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Clinical</span>
+            <h3>Vocal Manual Therapy</h3>
+            <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
+            <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
+          </div>
+        </div>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">03</div>
+          <div class="qual-badge qual-badge-type">
+            <span>E<small>1&amp;2</small></span>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Technique</span>
+            <h3>Estill Method</h3>
+            <div class="qual-org">Levels 1 &amp; 2</div>
+            <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
+          </div>
+        </div>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">04</div>
+          <div class="qual-badge qual-badge-type">
+            <span>BA<small>Hons</small></span>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Academic</span>
+            <h3>Musical Theatre</h3>
+            <div class="qual-org">ArtsEd London</div>
+            <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
+          </div>
+        </div>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">05</div>
+          <div class="qual-badge qual-badge-type">
+            <span>MA<small>In progress</small></span>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Research</span>
+            <h3>Vocal Pedagogy</h3>
+            <div class="qual-org">Voice Study Centre</div>
+            <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="quals-dots" id="qualDots1"></div>
+
+      <div class="quals-group-head quals-group-head-second">
+        <div class="quals-subhead reveal">Career Highlights</div>
+        <div class="quals-nav">
+          <button class="quals-arrow" type="button" data-target="qualTrack2" data-dir="-1" aria-label="Previous highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+          </button>
+          <button class="quals-arrow" type="button" data-target="qualTrack2" data-dir="1" aria-label="Next highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
 
-      <div class="qual-row reveal">
-        <div class="qual-row-index">03</div>
-        <div class="qual-badge qual-badge-type">
-          <span>E<small>1&amp;2</small></span>
+      <div class="qual-track" id="qualTrack2">
+        <div class="qual-row reveal">
+          <div class="qual-row-index">06</div>
+          <div class="qual-badge qual-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Teaching</span>
+            <h3>Private Practice &amp; Teaching</h3>
+            <div class="qual-org">Tileyard North · Emil Dale Academy</div>
+            <p>Runs a private vocal coaching practice at Tileyard North, Wakefield, and is one of the technical voice tutors on the degree course at Emil Dale Academy, alongside teaching at universities and arts colleges across the UK.</p>
+          </div>
         </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Technique</span>
-          <h3>Estill Method</h3>
-          <div class="qual-org">Levels 1 &amp; 2</div>
-          <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">07</div>
+          <div class="qual-badge qual-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="m9 14-1.5 6L12 18l4.5 2L15 14"/></svg>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Outcomes</span>
+            <h3>Student &amp; Client Outcomes</h3>
+            <div class="qual-org">ArtsEd · Mountview · GSA · EDA · Urdang</div>
+            <p>Students have secured places at leading drama schools, and clients can be seen performing in West End, regional and international productions.</p>
+          </div>
+        </div>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">08</div>
+          <div class="qual-badge qual-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3Z"/></svg>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Session Work</span>
+            <h3>Working Musicians</h3>
+            <div class="qual-org">Recording &amp; Touring</div>
+            <p>Beyond musical theatre, Kasia works with professional musicians preparing for recording sessions, tours and session work - with a focus on sustainable voice use and longevity.</p>
+          </div>
+        </div>
+
+        <div class="qual-row reveal">
+          <div class="qual-row-index">09</div>
+          <div class="qual-badge qual-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="3"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14.5 14.2c2.5.3 4.5 2 4.5 4.8"/></svg>
+          </div>
+          <div class="qual-row-text">
+            <span class="qual-tag">Collaborations</span>
+            <h3>Notable Collaborations</h3>
+            <div class="qual-org">Kerry Ellis · Ramin Karimloo &amp; more</div>
+            <p>Has performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
+          </div>
         </div>
       </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">04</div>
-        <div class="qual-badge qual-badge-type">
-          <span>BA<small>Hons</small></span>
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Academic</span>
-          <h3>Musical Theatre</h3>
-          <div class="qual-org">ArtsEd London</div>
-          <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
-        </div>
-      </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">05</div>
-        <div class="qual-badge qual-badge-type">
-          <span>MA<small>In progress</small></span>
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Research</span>
-          <h3>Vocal Pedagogy</h3>
-          <div class="qual-org">Voice Study Centre</div>
-          <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
-        </div>
-      </div>
-
-      <div class="quals-subhead reveal">Career Highlights</div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">06</div>
-        <div class="qual-badge qual-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Teaching</span>
-          <h3>Private Practice &amp; Teaching</h3>
-          <div class="qual-org">Tileyard North · Emil Dale Academy</div>
-          <p>Runs a private vocal coaching practice at Tileyard North, Wakefield, and is one of the technical voice tutors on the degree course at Emil Dale Academy, alongside teaching at universities and arts colleges across the UK.</p>
-        </div>
-      </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">07</div>
-        <div class="qual-badge qual-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="m9 14-1.5 6L12 18l4.5 2L15 14"/></svg>
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Outcomes</span>
-          <h3>Student &amp; Client Outcomes</h3>
-          <div class="qual-org">ArtsEd · Mountview · GSA · EDA · Urdang</div>
-          <p>Students have secured places at leading drama schools, and clients can be seen performing in West End, regional and international productions.</p>
-        </div>
-      </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">08</div>
-        <div class="qual-badge qual-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3Z"/></svg>
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Session Work</span>
-          <h3>Working Musicians</h3>
-          <div class="qual-org">Recording &amp; Touring</div>
-          <p>Beyond musical theatre, Kasia works with professional musicians preparing for recording sessions, tours and session work - with a focus on sustainable voice use and longevity.</p>
-        </div>
-      </div>
-
-      <div class="qual-row reveal">
-        <div class="qual-row-index">09</div>
-        <div class="qual-badge qual-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="3"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14.5 14.2c2.5.3 4.5 2 4.5 4.8"/></svg>
-        </div>
-        <div class="qual-row-text">
-          <span class="qual-tag">Collaborations</span>
-          <h3>Notable Collaborations</h3>
-          <div class="qual-org">Kerry Ellis · Ramin Karimloo &amp; more</div>
-          <p>Has performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
-        </div>
-      </div>
+      <div class="quals-dots" id="qualDots2"></div>
     </div>
   </div>
 </section>
@@ -2661,8 +2772,15 @@
         <p>Occasional updates on availability, new repertoire and coaching openings - no spam.</p>
       </div>
       <form class="newsletter-form" id="newsletterForm">
-        <input type="email" id="newsletterEmail" placeholder="Your email address" required>
-        <button type="submit">Subscribe</button>
+        <div class="newsletter-input-row">
+          <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </div>
+        <div class="newsletter-interests">
+          <span class="newsletter-interests-label">I'm interested in:</span>
+          <label><input type="checkbox" name="interest" value="bookings"><span>Live Music Bookings</span></label>
+          <label><input type="checkbox" name="interest" value="coaching"><span>Vocal Coaching</span></label>
+        </div>
       </form>
       <div class="newsletter-success">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -2758,7 +2876,7 @@
     });
 
     const dots = Array.from(dotsWrap.children);
-    const arrows = document.querySelectorAll(`.carousel-arrow[data-target="${trackId}"]`);
+    const arrows = document.querySelectorAll(`.carousel-arrow[data-target="${trackId}"], .quals-arrow[data-target="${trackId}"]`);
 
     function syncState() {
       const trackRect = track.getBoundingClientRect();
@@ -2786,13 +2904,26 @@
       requestAnimationFrame(() => { syncState(); ticking = false; });
     });
     syncState();
+
+    // Some browsers redirect vertical wheel/trackpad scroll into horizontal
+    // scroll on this kind of element, which traps the page mid-scroll while
+    // the mouse happens to be hovering a card. Force normal page scrolling
+    // to win whenever the gesture is vertically dominant.
+    track.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY);
+      }
+    }, { passive: false });
   }
 
   setupCarouselDots('videoTrack', 'videoDots');
   setupCarouselDots('photoTrack', 'photoDots');
+  setupCarouselDots('qualTrack1', 'qualDots1');
+  setupCarouselDots('qualTrack2', 'qualDots2');
 
   // Carousel arrow buttons: step one card at a time
-  document.querySelectorAll('.carousel-arrow').forEach((btn) => {
+  document.querySelectorAll('.carousel-arrow, .quals-arrow').forEach((btn) => {
     btn.addEventListener('click', () => {
       const track = document.getElementById(btn.getAttribute('data-target'));
       if (!track) return;
