@@ -1901,7 +1901,11 @@
     .newsletter-form{width:100%;}
     .newsletter-input-row{width:100%;}
     .newsletter-form input[type="email"]{flex:1; width:auto;}
-    .newsletter-interests{gap:16px 14px;}
+    .newsletter-interests{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+    }
 
     .quals-group-head{
       display:flex;
@@ -2114,7 +2118,9 @@
     .venues-strip-label{padding-left:5vw; font-size:10px;}
     .venues-strip-inner{gap:18px;}
     .review-card{flex:0 0 86vw;}
-    .reviews-nav{display:none;}
+    .reviews-head-row{margin-bottom:32px;}
+    .reviews-nav{margin-top:8px;}
+    .reviews-arrow{width:40px;height:40px;}
   }
 </style>
 </head>
@@ -2145,7 +2151,7 @@
     <img class="hero-slide" style="object-position:center 35%;" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley singing live at a wedding venue">
   </div>
   <div class="hero-content wrap">
-    <div class="eyebrow">Tileyard North, Wakefield · West Yorkshire</div>
+    <div class="eyebrow">Tileyard North, Wakefield</div>
     <h1>Vocal coaching for your craft.<br><em>Live music for your day.</em></h1>
     <p class="hero-sub">Kasia Howley is a vocal coach helping performers and singers build technique that lasts - and a professional piano vocalist available for weddings, ceremonies and events.</p>
     <div class="hero-pills">
