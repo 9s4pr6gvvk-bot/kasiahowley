@@ -2048,7 +2048,9 @@
     .venues-strip-label{padding-left:5vw; font-size:10px;}
     .venues-strip-inner{gap:18px;}
     .review-card{flex:0 0 86vw;}
-    .reviews-nav{display:none;}
+    .reviews-head-row{margin-bottom:32px;}
+    .reviews-nav{margin-top:8px;}
+    .reviews-arrow{width:40px;height:40px;}
     .carousel-toolbar{
       display:flex;
       align-items:center;
@@ -2697,6 +2699,60 @@
   </div>
 </section>
 
+<section class="reviews-section section-pad" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head-row">
+      <div class="reviews-head reveal">
+        <div class="label-row"><span class="num">04</span><span class="eyebrow">Reviews</span></div>
+        <h2>Loved by students and clients.</h2>
+        <p>A selection of real reviews from coaching students and vocal therapy clients.</p>
+      </div>
+      <div class="reviews-nav">
+        <button class="reviews-arrow" id="reviewPrev" type="button" aria-label="Previous reviews">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+        </button>
+        <button class="reviews-arrow" id="reviewNext" type="button" aria-label="Next reviews">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="reviews-grid" id="reviewsTrack">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Kasia is an absolutely amazing singing teacher! Before I started lessons I had no experience in contemporary singing or belting, however now I feel extremely confident in the style and performing these particular songs... Kasia has also been a huge help to me with auditions by giving me honest feedback on my songs."</p>
+        <div class="review-meta"><strong>Millie S</strong><span>Vocal Coaching</span></div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"I would highly recommend lessons with Kasia. I've been working with her for around 6 months now and I've achieved so much... She's got a way of helping you find your voice and bringing you out of your shell."</p>
+        <div class="review-meta"><strong>Lucy M</strong><span>Vocal Coaching</span></div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"My first vocal massage was such a great experience! ... I could actively feel my larynx and the surrounding muscles responding to the massage very well, providing me with an instant release of tension. I cannot wait to book another!"</p>
+        <div class="review-meta"><strong>Anna G</strong><span>Vocal Coaching</span></div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Kasia helped me prepare for auditions and has so much insight into different colleges' requirements. She's bubbly, talented, and goes above and beyond to help me reach my goals. I use something she's taught me in every lesson."</p>
+        <div class="review-meta"><strong>Effie S</strong><span>Vocal Coaching</span></div>
+      </div>
+    </div>
+
+    <div class="reviews-trust reveal">
+      <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+      <div class="reviews-trust-text">
+        <strong>Rated 5 Stars on Hitched</strong>
+        <span>Reviewed by real students and clients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="location-band">
   <div class="wrap location-row">
     <div class="location-text">
@@ -2713,7 +2769,7 @@
 <section class="coaching-contact section-pad" id="contact">
   <div class="wrap coaching-contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">04</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">05</span><span class="eyebrow">Get in touch</span></div>
       <h2>Ready to start coaching?</h2>
       <p>Get in touch for more information, or to book a slot - lessons are available in-person at Tileyard North, Wakefield, and online.</p>
       <div class="coaching-contact-detail">
@@ -2778,7 +2834,7 @@
         <a href="index.html#bookings">Live Music Bookings</a>
         <a href="index.html#about">About</a>
         <a href="index.html#qualifications">Qualifications &amp; Experience</a>
-        <a href="index.html#reviews">Reviews</a>
+        <a href="#reviews">Reviews</a>
       </div>
       <div class="footer-col">
         <h4>Get in touch</h4>
@@ -2829,6 +2885,43 @@
   }, { threshold: 0.18 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Reviews carousel
+  const reviewsTrack = document.getElementById('reviewsTrack');
+  const reviewPrev = document.getElementById('reviewPrev');
+  const reviewNext = document.getElementById('reviewNext');
+
+  function reviewStep(){
+    const card = reviewsTrack.querySelector('.review-card');
+    if (!card) return 300;
+    const gap = parseFloat(getComputedStyle(reviewsTrack).gap) || 22;
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  function updateReviewArrows(){
+    if (!reviewsTrack || !reviewPrev || !reviewNext) return;
+    const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth - 2;
+    reviewPrev.disabled = reviewsTrack.scrollLeft <= 2;
+    reviewNext.disabled = reviewsTrack.scrollLeft >= maxScroll;
+  }
+
+  if (reviewsTrack && reviewPrev && reviewNext) {
+    reviewPrev.addEventListener('click', () => reviewsTrack.scrollBy({ left: -reviewStep(), behavior: 'smooth' }));
+    reviewNext.addEventListener('click', () => reviewsTrack.scrollBy({ left: reviewStep(), behavior: 'smooth' }));
+    reviewsTrack.addEventListener('scroll', updateReviewArrows);
+    window.addEventListener('resize', updateReviewArrows);
+    updateReviewArrows();
+
+    // Some browsers redirect vertical wheel scroll into horizontal scroll on
+    // this kind of element, which traps the page mid-scroll. Force normal
+    // page scrolling to win whenever the gesture is vertically dominant.
+    reviewsTrack.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY);
+      }
+    }, { passive: false });
+  }
 
   // Newsletter signup: simple front-end success state
   const newsletterForm = document.getElementById('newsletterForm');
