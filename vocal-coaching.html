@@ -2106,6 +2106,86 @@
     line-height:1.6;
     text-shadow:0 2px 18px rgba(0,0,0,0.22);
   }
+  /* ---------- CLIENT DESTINATIONS ---------- */
+  .destinations-section{background:var(--white);}
+  .destinations-head{
+    max-width:680px;
+    margin-bottom:56px;
+  }
+  .destinations-head h2{
+    font-size:clamp(30px,3.6vw,42px);
+    margin:18px 0 16px;
+    line-height:1.12;
+  }
+  .destinations-head p{
+    font-size:15.5px;
+    line-height:1.7;
+    color:#4a5250;
+  }
+  .destinations-pillars{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+    margin-bottom:64px;
+  }
+  .destination-pillar{
+    padding:36px 32px 32px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--cream);
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .destination-pillar:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 32px rgba(20,24,26,0.07);
+    border-color:var(--sage);
+  }
+  .destination-pillar-icon{
+    width:48px;height:48px;
+    border-radius:50%;
+    background:var(--sage-pale);
+    color:var(--sage-deep);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+  }
+  .destination-pillar-icon svg{width:22px;height:22px;}
+  .destination-pillar h3{
+    font-size:21px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .destination-pillar p{
+    font-size:14px;
+    line-height:1.7;
+    color:#5a6260;
+    margin-bottom:20px;
+  }
+  .destination-list{
+    list-style:none;
+    padding:0;margin:0;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .destination-list li{
+    font-size:13px;
+    color:var(--sage-deep);
+    font-weight:500;
+    padding-left:14px;
+    position:relative;
+  }
+  .destination-list li::before{
+    content:'';
+    position:absolute;left:0;top:50%;
+    transform:translateY(-50%);
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--sage);
+  }
+
   /* ---------- VMT SECTION ---------- */
   .vmt-section{background:var(--cream);}
   .vmt-grid{
@@ -2379,6 +2459,7 @@
 
   @media (max-width:880px){
     .page-banner-content{padding-bottom:48px;}
+    .destinations-pillars{grid-template-columns:1fr;gap:20px;}
     .vmt-grid{grid-template-columns:1fr; gap:40px;}
     .vmt-benefits{grid-template-columns:1fr !important;}
     .vmt-benefit.is-wide{grid-column:auto; flex-direction:column; align-items:flex-start;}
@@ -2547,10 +2628,69 @@
   </div>
 </section>
 
+<section class="destinations-section section-pad" id="destinations">
+  <div class="wrap">
+    <div class="destinations-head reveal">
+      <div class="label-row"><span class="num">03</span><span class="eyebrow">Where Clients Go</span></div>
+      <h2>Drama school. West End. The studio.</h2>
+      <p>Kasia works with singers at every stage — from first auditions to professional careers. Whoever you are and wherever you're headed, sessions are built around your goals.</p>
+    </div>
+
+    <div class="destinations-pillars">
+      <div class="destination-pillar reveal">
+        <div class="destination-pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+        </div>
+        <h3>Drama School</h3>
+        <p>Students have gained places at some of the UK's most competitive drama schools. Kasia offers specialist audition preparation — repertoire coaching, technique refinement, and real insight into what each college is looking for.</p>
+        <ul class="destination-list">
+          <li>ArtsEd London</li>
+          <li>Mountview</li>
+          <li>GSA</li>
+          <li>Bird College</li>
+          <li>Urdang</li>
+          <li>Laine Theatre Arts</li>
+          <li>PPA</li>
+          <li>Wilkes Academy</li>
+        </ul>
+      </div>
+
+      <div class="destination-pillar reveal">
+        <div class="destination-pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="m9 14-1.5 6L12 18l4.5 2L15 14"/></svg>
+        </div>
+        <h3>West End &amp; Touring</h3>
+        <p>Clients can be seen performing in West End productions, national tours and international shows. Whether you're preparing for a first contract or sustaining a long-running role, sessions focus on performance longevity under pressure.</p>
+        <ul class="destination-list">
+          <li>West End productions</li>
+          <li>National &amp; UK tours</li>
+          <li>International productions</li>
+          <li>Regional theatre</li>
+        </ul>
+      </div>
+
+      <div class="destination-pillar reveal">
+        <div class="destination-pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3Z"/></svg>
+        </div>
+        <h3>Professional Musicians</h3>
+        <p>Beyond musical theatre, Kasia works with gigging and recording artists preparing for tours, sessions and sustained performance schedules — with a focus on vocal health, longevity and technique that holds up night after night.</p>
+        <ul class="destination-list">
+          <li>Recording sessions</li>
+          <li>Touring &amp; live performance</li>
+          <li>Session vocalists</li>
+          <li>Working artists</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 <section class="vmt-section section-pad" id="vmt">
   <div class="wrap vmt-grid">
     <div class="vmt-intro reveal">
-      <div class="label-row"><span class="num">03</span><span class="eyebrow">Add-on Treatment</span></div>
+      <div class="label-row"><span class="num">04</span><span class="eyebrow">Add-on Treatment</span></div>
       <h2>Vocal Manual Therapy.</h2>
       <p>As professional voice users, we should give our voice the same attention and care we give to our bodies. Vocal manual therapy is a specialist treatment that targets the muscles surrounding the larynx - predominantly the jaw, neck and larynx region.</p>
       <p>Kasia is a fully qualified vocal manual therapist, trained under the guidance of the Voice Care Centre in London. Every client has different needs, so she draws on a range of techniques to support each individual.</p>
@@ -2604,7 +2744,7 @@
   <div class="wrap">
     <div class="reviews-head-row">
       <div class="reviews-head reveal">
-        <div class="label-row"><span class="num">04</span><span class="eyebrow">Reviews</span></div>
+        <div class="label-row"><span class="num">05</span><span class="eyebrow">Reviews</span></div>
         <h2>Loved by students and clients.</h2>
         <p>A selection of real reviews from coaching students and vocal therapy clients.</p>
       </div>
@@ -2686,7 +2826,7 @@
 <section class="coaching-contact section-pad" id="contact">
   <div class="wrap coaching-contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">05</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">06</span><span class="eyebrow">Get in touch</span></div>
       <h2>Ready to start coaching?</h2>
       <p>Get in touch for more information, or to book a slot - lessons are available in-person at Tileyard North, Wakefield, and online.</p>
       <div class="coaching-contact-detail">
