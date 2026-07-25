@@ -131,6 +131,175 @@
   .booking-feature h4{font-size:16.5px;font-weight:600;color:var(--ink);margin-bottom:8px;}
   .booking-feature p{font-size:13.5px;line-height:1.55;color:#5a6260;margin-bottom:0;}
 
+  /* ---------- PRICING ---------- */
+  .pricing-section{background:var(--cream);}
+  .pricing-head{max-width:640px;margin-bottom:52px;}
+  .pricing-head h2{font-size:clamp(28px,3.2vw,38px);margin:18px 0 14px;}
+  .pricing-head p{font-size:15px;line-height:1.7;color:#4a5250;}
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    align-items:stretch;
+    margin-bottom:48px;
+  }
+  .pricing-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:36px 32px 32px;
+    display:flex;
+    flex-direction:column;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .pricing-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(20,24,26,0.08);}
+  .pricing-card-featured{
+    background:var(--ink);
+    border-color:var(--ink);
+    position:relative;
+    transform:translateY(-8px);
+    box-shadow:0 24px 48px rgba(20,24,26,0.18);
+  }
+  .pricing-card-featured:hover{transform:translateY(-12px);}
+  .pricing-badge{
+    display:inline-block;
+    background:var(--sage);
+    color:var(--ink);
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:16px;
+    width:fit-content;
+  }
+  .pricing-card-top{flex:1;}
+  .pricing-tag{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-deep);
+    margin-bottom:14px;
+  }
+  .pricing-card-featured .pricing-tag{color:var(--sage);}
+  .pricing-price{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(38px,4vw,52px);
+    font-weight:500;
+    color:var(--ink);
+    line-height:1;
+    margin-bottom:16px;
+    display:flex;
+    align-items:flex-start;
+    gap:6px;
+  }
+  .pricing-card-featured .pricing-price{color:var(--white);}
+  .pricing-from{
+    font-family:'Work Sans',sans-serif;
+    font-size:12px;
+    font-weight:500;
+    color:#8a9189;
+    letter-spacing:0.04em;
+    margin-top:8px;
+  }
+  .pricing-card-featured .pricing-from{color:rgba(255,255,255,0.5);}
+  .pricing-desc{
+    font-size:13.5px;
+    line-height:1.65;
+    color:#5a6260;
+    margin-bottom:24px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+  .pricing-card-featured .pricing-desc{color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.12);}
+  .pricing-includes{
+    list-style:none;
+    padding:0;margin:0 0 30px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .pricing-includes li{
+    font-size:13px;
+    color:#3a4240;
+    padding-left:18px;
+    position:relative;
+    line-height:1.45;
+  }
+  .pricing-card-featured .pricing-includes li{color:rgba(255,255,255,0.8);}
+  .pricing-includes li::before{
+    content:'';
+    position:absolute;left:0;top:7px;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--sage);
+  }
+  .pricing-cta{
+    display:block;
+    text-align:center;
+    padding:13px 24px;
+    border:1px solid var(--sage-deep);
+    border-radius:999px;
+    font-size:11.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--sage-deep);
+    transition:background .25s ease, color .25s ease, border-color .25s ease, transform .2s ease;
+    margin-top:auto;
+  }
+  .pricing-cta:hover{background:var(--sage-deep);color:var(--white);transform:translateY(-1px);}
+  .pricing-cta-dark{
+    background:var(--sage);
+    border-color:var(--sage);
+    color:var(--ink);
+  }
+  .pricing-cta-dark:hover{background:var(--sage-pale);border-color:var(--sage-pale);color:var(--ink);}
+
+  /* Add-ons */
+  .pricing-addons{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px 36px;
+  }
+  .pricing-addons h4{
+    font-family:'Work Sans',sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:22px;
+  }
+  .pricing-addons-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px 40px;
+    margin-bottom:22px;
+  }
+  .pricing-addon{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line);
+  }
+  .addon-name{font-size:13.5px;font-weight:600;color:var(--ink);}
+  .addon-desc{font-size:12.5px;color:#6a716e;line-height:1.5;}
+  .pricing-note{
+    font-size:12px;
+    color:#8a9189;
+    font-style:italic;
+  }
+  @media(max-width:880px){
+    .pricing-grid{grid-template-columns:1fr;gap:16px;}
+    .pricing-card-featured{transform:none;}
+    .pricing-card-featured:hover{transform:translateY(-4px);}
+    .pricing-addons-grid{grid-template-columns:1fr;}
+    .pricing-addons{padding:24px 20px;}
+  }
+
   /* ---------- OCCASIONS BAND ---------- */
   .occasions-band{
     background:var(--ink);
@@ -850,6 +1019,78 @@
   </div>
 </section>
 
+<!-- PRICING -->
+<section class="pricing-section section-pad" id="pricing">
+  <div class="wrap">
+    <div class="pricing-head reveal">
+      <div class="label-row"><span class="num">06</span><span class="eyebrow">Packages &amp; Pricing</span></div>
+      <h2>Choose what's right for your day.</h2>
+      <p>Every package includes full song personalisation, background playlist between sets, and PA equipment. All prices are indicative — every booking is bespoke and quoted individually.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="pricing-card reveal">
+        <div class="pricing-card-top">
+          <div class="pricing-tag">Ceremony</div>
+          <div class="pricing-price"><span class="pricing-from">from</span> £395</div>
+          <p class="pricing-desc">The ceremony only — covering your aisle walk, signing of the register, and recessional. Perfect for couples who want that live music moment at the heart of the day.</p>
+        </div>
+        <ul class="pricing-includes">
+          <li>Aisle walk song (bespoke arrangement)</li>
+          <li>Signing of the register — 2 songs</li>
+          <li>Recessional</li>
+          <li>PA system &amp; equipment</li>
+          <li>Background playlist before guests arrive</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Enquire</a>
+      </div>
+
+      <div class="pricing-card pricing-card-featured reveal">
+        <div class="pricing-card-top">
+          <div class="pricing-badge">Most popular</div>
+          <div class="pricing-tag">Ceremony &amp; Reception</div>
+          <div class="pricing-price"><span class="pricing-from">from</span> £595</div>
+          <p class="pricing-desc">The ceremony plus a drinks reception set — the most popular choice for weddings. Guests enjoy live music from the moment they arrive through to the wedding breakfast.</p>
+        </div>
+        <ul class="pricing-includes">
+          <li>Everything in Ceremony</li>
+          <li>45–60 min drinks reception set</li>
+          <li>Background playlist during wedding breakfast</li>
+          <li>Song requests welcome</li>
+        </ul>
+        <a href="#contact" class="pricing-cta pricing-cta-dark">Enquire</a>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-card-top">
+          <div class="pricing-tag">Full Day</div>
+          <div class="pricing-price"><span class="pricing-from">from</span> £895</div>
+          <p class="pricing-desc">Music across the whole day — ceremony, drinks reception, and an evening performance set. The complete live music experience from first note to last dance.</p>
+        </div>
+        <ul class="pricing-includes">
+          <li>Everything in Ceremony &amp; Reception</li>
+          <li>Evening performance set (45–60 min)</li>
+          <li>First dance song</li>
+          <li>Personalised studio recording of aisle walk or first dance</li>
+        </ul>
+        <a href="#contact" class="pricing-cta">Enquire</a>
+      </div>
+
+    </div>
+
+    <div class="pricing-addons reveal">
+      <h4>Optional add-ons</h4>
+      <div class="pricing-addons-grid">
+        <div class="pricing-addon"><span class="addon-name">Personalised recording</span><span class="addon-desc">Studio-quality recording of your chosen song to keep forever</span></div>
+        <div class="pricing-addon"><span class="addon-name">Additional set</span><span class="addon-desc">Extra 45-min live set added to any package</span></div>
+        <div class="pricing-addon"><span class="addon-name">Learn a new song</span><span class="addon-desc">Kasia will arrange and perform your specific request</span></div>
+        <div class="pricing-addon"><span class="addon-name">Travel outside Yorkshire</span><span class="addon-desc">Kasia performs UK-wide — longer distances quoted individually</span></div>
+      </div>
+      <p class="pricing-note">All prices exclude VAT where applicable. Travel within West Yorkshire included. A deposit secures your date.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact section-pad" id="contact">
   <div class="contact-bg">
@@ -857,7 +1098,7 @@
   </div>
   <div class="wrap contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">05</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">07</span><span class="eyebrow">Get in touch</span></div>
       <h2>Let's make your day <em>unforgettable.</em></h2>
       <p class="lead">Tell Kasia about your event — date, venue, and what you're looking for — and she'll come back to you with availability and a bespoke quote.</p>
       <div class="contact-details-panel">
