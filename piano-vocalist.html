@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasia Howley - Live Music &amp; Wedding Piano Vocalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#7fa191;
+    --sage-deep:#5d7d6f;
+    --sage-pale:#e7eee9;
+    --ink:#14181a;
+    --white:#ffffff;
+    --cream:#faf9f7;
+    --line:rgba(20,24,26,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:0.01em;}
+  .eyebrow{font-family:'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:0.22em;font-size:11.5px;font-weight:600;color:var(--sage-deep);}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 6vw;}
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:26px 0;
+    background:rgba(255,255,255,0);
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.site.scrolled{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    padding:16px 0;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    max-width:1400px;margin:0 auto;padding:0 clamp(20px,3.5vw,56px);
+  }
+  .brand{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;letter-spacing:0.04em;color:var(--ink);display:flex;flex-direction:column;line-height:1.05;}
+  header.site:not(.scrolled) .brand{color:var(--white);}
+  .brand span{font-family:'Work Sans',sans-serif;font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:500;color:var(--sage);margin-top:3px;white-space:nowrap;}
+  .nav-right{display:flex;align-items:center;gap:34px;}
+  nav.links{display:flex;gap:32px;}
+  nav.links a{font-size:12.5px;letter-spacing:0.13em;text-transform:uppercase;font-weight:500;color:var(--ink);position:relative;padding-bottom:4px;white-space:nowrap;}
+  header.site:not(.scrolled) nav.links a{color:var(--white);}
+  nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:currentColor;transition:width .3s ease;}
+  nav.links a:hover::after{width:100%;}
+  .nav-toggle{display:none;}
+  .nav-cta{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:11px 22px;border:1px solid var(--sage);border-radius:999px;color:var(--white);background:rgba(127,161,145,0.18);transition:background .3s ease, color .3s ease, border-color .3s ease;white-space:nowrap;}
+  header.site.scrolled .nav-cta{color:var(--ink);border-color:var(--sage-deep);background:transparent;}
+  .nav-cta:hover{background:var(--sage);color:var(--ink);border-color:var(--sage);}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--ink);}
+  .hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(0.92) contrast(1.02);opacity:0;transition:opacity 1.1s ease;z-index:0;}
+  .hero-slide.is-active{opacity:1;z-index:1;}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,13,14,0.46) 0%,rgba(10,13,14,0.14) 20%,rgba(10,13,14,0.12) 50%,rgba(10,13,14,0.72) 100%);z-index:1;}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,13,14,0.92) 0%,rgba(10,13,14,0.64) 26%,rgba(10,13,14,0.28) 48%,rgba(10,13,14,0.08) 66%,rgba(10,13,14,0.02) 82%);z-index:1;}
+  .hero-content{position:relative;z-index:2;color:var(--white);padding-bottom:7vw;width:100%;text-shadow:0 2px 18px rgba(0,0,0,0.22);}
+  .hero-content .eyebrow{color:var(--sage);}
+  .hero-content .eyebrow::before{content:'';display:inline-block;width:26px;height:1px;background:var(--sage);margin-right:12px;vertical-align:middle;}
+  .hero h1{font-size:clamp(32px,4.4vw,62px);line-height:1.12;margin-top:20px;font-weight:500;max-width:740px;}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--sage-pale);}
+  .hero-sub{margin-top:22px;font-size:16px;font-weight:300;max-width:480px;color:rgba(255,255,255,0.86);line-height:1.6;}
+  .hero-pills{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+  .hero-pill{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;border-radius:999px;transition:background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;}
+  .hero-pill.solid{background:var(--sage);color:var(--ink);border:1px solid var(--sage);}
+  .hero-pill.solid:hover{background:var(--sage-pale);transform:translateY(-2px);}
+  .hero-pill.outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.55);}
+  .hero-pill.outline:hover{background:rgba(255,255,255,0.12);border-color:var(--white);transform:translateY(-2px);}
+  .scroll-cue{position:absolute;left:6vw;bottom:36px;z-index:2;color:rgba(255,255,255,0.7);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px;text-shadow:0 2px 10px rgba(0,0,0,0.35);}
+  .scroll-cue .dash{width:1px;height:46px;background:rgba(255,255,255,0.5);}
+  .hero-slide-arrow{position:absolute;right:6vw;bottom:30px;z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,0.45);background:rgba(255,255,255,0.06);backdrop-filter:blur(4px);color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s ease, border-color .3s ease, transform .25s ease;}
+  .hero-slide-arrow svg{width:18px;height:18px;}
+  .hero-slide-arrow:hover{background:var(--sage);border-color:var(--sage);transform:translateY(-2px);}
+  .hero-slide-dots{position:absolute;right:calc(6vw + 8px);bottom:90px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .hero-slide-dots .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background .25s ease, transform .25s ease;border:none;padding:0;}
+  .hero-slide-dots .dot.is-active{background:var(--sage);transform:scale(1.4);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{position:relative;}
+  .section-pad{padding:120px 0;}
+  .label-row{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .label-row .num{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--sage);font-size:15px;}
+
+  /* ---------- INTRO SPLIT ---------- */
+  .intro{background:var(--cream);}
+  .intro-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:7vw;align-items:center;}
+  .intro-photo{position:relative;}
+  .intro-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 20%;}
+  .intro-photo::before{content:'';position:absolute;top:-16px;left:-16px;width:100%;height:100%;border:1.5px solid var(--sage);z-index:-1;}
+  .intro-photo-badge{position:absolute;left:-16px;bottom:24px;background:var(--white);border:1px solid var(--line);padding:14px 20px;display:flex;flex-direction:column;line-height:1.2;box-shadow:0 14px 30px rgba(20,24,26,0.1);}
+  .intro-photo-badge strong{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--sage-deep);}
+  .intro-photo-badge span{font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:#6a716e;margin-top:2px;}
+  .intro h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:22px;}
+  .intro p{font-size:15.5px;line-height:1.8;color:#3a4240;margin-bottom:18px;max-width:560px;}
+  .price-note{font-size:13.5px;color:var(--sage-deep);font-weight:500;font-style:italic;margin-bottom:26px;}
+  .cta-row{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;border-radius:999px;}
+  .btn.solid{background:var(--ink);color:var(--white);transition:background .3s ease;}
+  .btn.solid:hover{background:var(--sage-deep);}
+  .btn.outline{border:1px solid var(--ink);color:var(--ink);transition:background .3s ease, color .3s ease;}
+  .btn.outline:hover{background:var(--ink);color:var(--white);}
+
+  /* ---------- WHAT'S INCLUDED FEATURES ---------- */
+  .features-section{background:var(--white);}
+  .features-head{max-width:640px;margin-bottom:48px;}
+  .features-head h2{font-size:clamp(28px,3.2vw,38px);margin:18px 0 14px;}
+  .features-head p{font-size:15.5px;line-height:1.7;color:#4a5250;}
+  .booking-features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .booking-feature{padding:30px 28px 26px;border:1px solid var(--line);border-radius:6px;background:var(--cream);transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;}
+  .booking-feature:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(20,24,26,0.07);border-color:var(--sage);}
+  .booking-feature-icon{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--sage-pale);color:var(--sage-deep);margin-bottom:20px;}
+  .booking-feature-icon svg{width:22px;height:22px;}
+  .booking-feature h4{font-size:16.5px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+  .booking-feature p{font-size:13.5px;line-height:1.55;color:#5a6260;margin-bottom:0;}
+
+  /* ---------- OCCASIONS BAND ---------- */
+  .occasions-band{
+    background:var(--ink);
+    padding:80px 0;
+  }
+  .occasions-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(255,255,255,0.08);
+  }
+  .occasion-item{
+    padding:40px 32px;
+    background:var(--ink);
+    text-align:center;
+    transition:background .3s ease;
+  }
+  .occasion-item:hover{background:rgba(127,161,145,0.12);}
+  .occasion-icon{
+    width:52px;height:52px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.18);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--sage);
+    margin:0 auto 18px;
+  }
+  .occasion-icon svg{width:22px;height:22px;}
+  .occasion-item h3{font-size:20px;color:var(--white);margin-bottom:10px;}
+  .occasion-item p{font-size:13.5px;color:rgba(255,255,255,0.6);line-height:1.6;}
+
+  /* ---------- PERFORMANCES (video + photo) ---------- */
+  .performances-section{background:var(--ink);color:var(--white);}
+  .performances-head{max-width:640px;margin-bottom:40px;}
+  .performances-head .eyebrow{color:var(--sage);}
+  .performances-head h2{font-size:clamp(30px,3.6vw,42px);margin:18px 0 16px;line-height:1.12;color:var(--white);}
+  .performances-head p{font-size:15.5px;line-height:1.7;color:rgba(255,255,255,0.68);}
+  .perf-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .perf-chips span{font-size:11.5px;letter-spacing:0.05em;padding:8px 16px;border:1px solid rgba(255,255,255,0.22);border-radius:999px;color:rgba(255,255,255,0.85);}
+  .perf-chips span::before{content:'♪ ';color:var(--sage);}
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:36px;}
+  .video-card{position:relative;}
+  .video-card .video-frame{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:4px;background:#000;}
+  .video-card iframe{width:100%;height:100%;border:0;display:block;}
+  .video-play{position:absolute;inset:0;width:100%;height:100%;border:none;padding:0;margin:0;cursor:pointer;background:none;border-radius:4px;overflow:hidden;}
+  .video-play img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease, filter .4s ease;filter:brightness(0.82);}
+  .video-card:hover .video-play img{transform:scale(1.06);filter:brightness(0.62);}
+  .video-play::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,12,0.05) 40%,rgba(8,11,12,0.6) 100%);}
+  .play-ring{position:absolute;top:50%;left:50%;width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,0.5);transform:translate(-50%,-50%) scale(1);opacity:0;transition:transform .4s ease, opacity .4s ease;z-index:1;}
+  .video-card:hover .play-ring{transform:translate(-50%,-50%) scale(1.35);opacity:1;border-color:var(--sage);}
+  .play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,0.95);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,0.35);transition:background .3s ease, transform .3s ease;z-index:2;}
+  .video-card:hover .play-icon{background:var(--sage);transform:translate(-50%,-50%) scale(1.08);}
+  .play-icon svg{color:var(--ink);margin-left:2px;}
+  .carousel-toolbar{display:none;}
+  .carousel-dots{display:none;}
+  .photo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:190px 190px;gap:18px;}
+  .photo-feature{grid-column:1;grid-row:1/3;}
+  .photo-wide{grid-column:2/4;grid-row:2;}
+  .photo-item{position:relative;overflow:hidden;border-radius:4px;}
+  .photo-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+  .photo-item:hover img{transform:scale(1.07);}
+  .photo-caption{display:flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;color:rgba(255,255,255,0.7);margin-top:12px;}
+  .photo-caption .dash{width:14px;height:1px;background:var(--sage);flex-shrink:0;}
+  .photo-item .photo-caption{position:absolute;left:16px;bottom:14px;margin-top:0;color:var(--white);text-shadow:0 2px 8px rgba(0,0,0,0.5);}
+  .photo-item::before{content:'';position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(180deg,rgba(8,11,12,0) 0%,rgba(8,11,12,0.6) 100%);pointer-events:none;}
+
+  /* ---------- REPERTOIRE ---------- */
+  .repertoire-section{background:var(--white);}
+  .repertoire-card{background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:44px clamp(24px,4vw,48px);}
+  .repertoire-card-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:32px;}
+  .repertoire-card-text{max-width:480px;}
+  .repertoire-card-text .eyebrow{display:block;margin-bottom:12px;}
+  .repertoire-card-text h3{font-size:clamp(22px,2.4vw,28px);font-weight:600;margin-bottom:10px;color:var(--ink);}
+  .repertoire-card-text p{font-size:14.5px;line-height:1.7;color:#5a6260;}
+  .repertoire-search{position:relative;flex-shrink:0;width:100%;max-width:280px;}
+  .repertoire-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#8a9189;pointer-events:none;}
+  .repertoire-search input{width:100%;padding:13px 16px 13px 40px;border:1px solid var(--line);border-radius:999px;background:var(--white);font-family:'Work Sans',sans-serif;font-size:13.5px;color:var(--ink);outline:none;transition:border-color .25s ease, box-shadow .25s ease;}
+  .repertoire-search input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(127,161,145,0.18);}
+  .repertoire-search input::placeholder{color:#8a9189;}
+  .repertoire-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 24px;}
+  .repertoire-grid span{font-size:13.5px;color:#3a4240;padding:10px 0;border-bottom:1px solid var(--line);transition:opacity .2s ease;}
+  .repertoire-grid span.hidden-match{display:none;}
+  .repertoire-extra{max-height:0;overflow:hidden;margin-top:0;transition:max-height .5s ease;}
+  .repertoire-extra.is-open{max-height:3000px;margin-top:10px;}
+  .repertoire-empty{display:none;font-size:13.5px;color:#5a6260;font-style:italic;padding:14px 0 0;}
+  .repertoire-empty.is-visible{display:block;}
+  .repertoire-toggle{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--white);border:1px solid var(--sage-deep);border-radius:999px;padding:13px 26px;font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--sage-deep);cursor:pointer;transition:background .25s ease, color .25s ease, transform .2s ease, box-shadow .25s ease;}
+  .repertoire-toggle .toggle-arrow{display:inline-flex;transition:transform .3s ease;}
+  .repertoire-toggle .toggle-arrow svg{width:13px;height:13px;}
+  .repertoire-toggle:hover{background:var(--sage-deep);color:var(--white);transform:translateY(-2px);box-shadow:0 10px 22px rgba(93,125,111,0.25);}
+  .repertoire-toggle.is-open .toggle-arrow{transform:rotate(180deg);}
+  .repertoire-toggle.is-hidden{display:none;}
+
+  /* ---------- VENUES CARD ---------- */
+  .venues-section{background:var(--white);}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-section{background:var(--cream);overflow:hidden;}
+  .reviews-head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap;}
+  .reviews-head{max-width:640px;}
+  .reviews-head h2{font-size:clamp(30px,3.6vw,42px);margin:18px 0 16px;line-height:1.12;}
+  .reviews-head p{font-size:15.5px;line-height:1.7;color:#4a5250;}
+  .reviews-nav{display:flex;gap:10px;flex-shrink:0;}
+  .reviews-arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--white);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;}
+  .reviews-arrow:hover{background:var(--sage);border-color:var(--sage);color:var(--white);transform:translateY(-2px);}
+  .reviews-arrow:disabled{opacity:0.35;cursor:default;transform:none;}
+  .reviews-arrow:disabled:hover{background:var(--white);border-color:var(--line);color:var(--ink);}
+  .reviews-grid{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding:4px 4px 16px;margin:-4px -4px -16px;scrollbar-width:none;}
+  .reviews-grid::-webkit-scrollbar{display:none;}
+  .review-card{flex:0 0 290px;scroll-snap-align:start;background:var(--white);border:1px solid var(--line);border-radius:4px;padding:28px 26px;display:flex;flex-direction:column;transition:transform .3s ease, box-shadow .3s ease;}
+  .review-card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(20,24,26,0.07);}
+  .review-stars{color:var(--sage);font-size:13px;letter-spacing:0.12em;margin-bottom:14px;}
+  .review-quote{font-size:14px;line-height:1.7;color:#3a4240;flex:1;margin-bottom:18px;}
+  .review-meta{display:flex;flex-direction:column;gap:2px;padding-top:14px;border-top:1px solid var(--line);}
+  .review-meta strong{font-size:13px;font-weight:600;color:var(--ink);}
+  .review-meta span{font-size:11.5px;color:#8a9189;}
+  .reviews-trust{margin-top:48px;display:flex;align-items:center;gap:0;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;row-gap:16px;}
+  .reviews-trust img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 1.5px var(--sage);flex-shrink:0;object-fit:contain;margin-right:10px;}
+  .reviews-trust-item{display:flex;align-items:center;padding-right:20px;margin-right:20px;border-right:1px solid var(--line);}
+  .reviews-trust-item:last-child{border-right:none;padding-right:0;margin-right:0;}
+  .reviews-trust-text{display:flex;flex-direction:column;gap:2px;}
+  .reviews-trust-text strong{font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;}
+  .reviews-trust-text span{font-size:11px;color:#6a716e;line-height:1.4;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{position:relative;background:var(--ink);color:var(--white);overflow:hidden;}
+  .contact-bg{position:absolute;inset:0;z-index:0;}
+  .contact-bg img{width:100%;height:100%;object-fit:cover;object-position:25% 55%;filter:saturate(0.85) contrast(1.05);}
+  .contact-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,11,12,0.78) 0%,rgba(8,11,12,0.62) 38%,rgba(8,11,12,0.74) 68%,rgba(8,11,12,0.86) 100%),linear-gradient(180deg,rgba(8,11,12,0.25) 0%,rgba(8,11,12,0.1) 30%,rgba(8,11,12,0.5) 100%);}
+  .contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:7vw;}
+  .contact h2{font-size:clamp(32px,4.4vw,52px);line-height:1.1;color:var(--white);margin-bottom:22px;text-shadow:0 2px 16px rgba(0,0,0,0.3);}
+  .contact h2 em{font-style:italic;font-weight:400;color:var(--sage-pale);}
+  .contact .eyebrow{color:var(--sage);}
+  .contact p.lead{font-size:15.5px;line-height:1.8;color:rgba(255,255,255,0.82);max-width:440px;margin-bottom:30px;}
+  .contact-details-panel{display:inline-flex;flex-direction:column;background:rgba(13,16,17,0.42);border:1px solid rgba(255,255,255,0.14);border-radius:4px;padding:28px 32px;backdrop-filter:blur(6px);}
+  .contact-detail{margin-bottom:22px;}
+  .contact-detail:last-child{margin-bottom:0;}
+  .contact-detail .k{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;display:block;}
+  .contact-detail .v{font-family:'Cormorant Garamond',serif;font-size:22px;}
+  form.contact-form{display:flex;flex-direction:column;gap:18px;background:rgba(13,16,17,0.42);border:1px solid rgba(255,255,255,0.14);border-radius:4px;padding:32px;backdrop-filter:blur(6px);}
+  .contact-form input,.contact-form textarea,.contact-form select{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);color:var(--white);font-family:'Work Sans',sans-serif;font-size:14.5px;padding:12px 2px;outline:none;transition:border-color .3s ease;width:100%;}
+  .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.4);}
+  .contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:var(--sage);}
+  .contact-form textarea{resize:vertical;min-height:80px;}
+  .contact-form select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fa191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");background-repeat:no-repeat;background-position:right 2px center;background-size:16px;}
+  .contact-form select option{color:var(--ink);}
+  .contact-form select:invalid{color:rgba(255,255,255,0.4);}
+  .live-fields{display:none;flex-direction:column;gap:18px;padding:16px 16px 4px;border-left:2px solid var(--sage);background:rgba(127,161,145,0.08);}
+  .live-fields.is-visible{display:flex;}
+  .live-fields input{padding:8px 2px;}
+  .contact-form button{align-self:flex-start;margin-top:6px;padding:14px 34px;background:var(--sage);color:var(--ink);border:none;border-radius:999px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .3s ease;}
+  .contact-form button:hover{background:var(--sage-pale);}
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{background:var(--white);border-top:1px solid var(--line);padding:0 0 30px;}
+  .footer-wrap{max-width:1440px;margin:0 auto;padding:0 5vw;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;gap:5vw;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--line);margin-bottom:12px;}
+  .footer-brand .footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:0.03em;margin-bottom:16px;}
+  .footer-brand .footer-logo span{display:block;font-family:'Work Sans',sans-serif;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-top:4px;}
+  .footer-brand p{font-size:13.5px;line-height:1.7;color:#6a716e;max-width:260px;}
+  .footer-social{display:flex;gap:13px;margin-top:20px;}
+  .footer-social a{width:38px;height:38px;flex-shrink:0;border-radius:50%;border:1px solid var(--line);display:flex !important;align-items:center !important;justify-content:center !important;color:#6a716e;padding:0 !important;margin-bottom:0 !important;transition:background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;}
+  .footer-social a svg{width:15px;height:15px;display:block;}
+  .footer-social a:hover{transform:translateY(-2px);background:var(--sage);border-color:var(--sage);color:var(--white);}
+  .footer-col h4{font-family:'Work Sans',sans-serif;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;color:var(--ink);margin-bottom:20px;}
+  .footer-col a,.footer-col span.static{display:block;font-size:14px;color:#4a5250;padding:4px 0;margin-bottom:9px;transition:color .25s ease;}
+  .footer-col a:hover{color:var(--sage-deep);}
+  .footer-cta-col p{font-size:13.5px;line-height:1.65;color:#6a716e;margin-bottom:20px;max-width:240px;}
+  .footer-cta-col .btn{display:inline-flex;align-items:center;width:auto;color:var(--white) !important;padding:13px 26px;font-size:11px;letter-spacing:0.12em;border-radius:999px;transition:background .3s ease, transform .25s ease, box-shadow .25s ease;}
+  .footer-cta-col .btn:hover{color:var(--white) !important;background:var(--sage-deep);transform:translateY(-2px);box-shadow:0 10px 22px rgba(20,24,26,0.18);}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:10px;flex-wrap:wrap;gap:14px;}
+  .foot-bottom .fl{font-size:12px;font-family:'Work Sans',sans-serif;color:#8a9189;}
+  .foot-bottom .fr{font-size:12px;color:#8a9189;display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+  .foot-bottom .fr a{color:#8a9189;transition:color .25s ease;}
+  .foot-bottom .fr a:hover{color:var(--sage-deep);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion:reduce){.reveal{transition:none !important;opacity:1 !important;transform:none !important;}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1040px){
+    .nav-cta{display:none;}
+    nav.links{position:fixed;top:0;right:0;height:100vh;width:78%;background:var(--ink);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 12vw;gap:30px;transform:translateX(100%);transition:transform .4s ease;z-index:60;}
+    nav.links.open{transform:translateX(0);}
+    nav.links a{color:var(--white) !important;font-size:14px;}
+    .nav-toggle{display:flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;margin:-10px -10px -10px 0;cursor:pointer;z-index:70;}
+    .nav-toggle span{position:absolute;left:50%;margin-left:-12px;width:24px;height:1px;background:var(--white);transition:transform .35s ease, opacity .25s ease, background .3s ease;}
+    .nav-toggle span:nth-child(1){top:15px;}
+    .nav-toggle span:nth-child(2){top:22px;}
+    .nav-toggle span:nth-child(3){top:29px;}
+    .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-toggle.active span:nth-child(2){opacity:0;}
+    .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    header.site.scrolled .nav-toggle span{background:var(--ink);}
+    header.site.scrolled .nav-toggle.active span{background:var(--ink);}
+    .nav-toggle.active span{background:var(--white);}
+  }
+
+  @media(max-width:880px){
+    .scroll-cue{display:none;}
+    .hero-slide-arrow{display:none;}
+    .hero-slide-dots{display:none;}
+    .intro-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
+    .booking-features{grid-template-columns:1fr;gap:16px;}
+    .occasions-inner{grid-template-columns:1fr 1fr;}
+    .section-pad{padding:80px 0;}
+    .video-grid{display:flex;grid-template-columns:unset;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:2px 2px 6px;margin:-2px -2px -6px;scrollbar-width:none;}
+    .video-grid::-webkit-scrollbar{display:none;}
+    .video-card{flex:0 0 70vw;scroll-snap-align:start;}
+    .photo-grid{display:flex;grid-template-columns:unset;grid-template-rows:unset;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;padding:2px 2px 6px;margin:-2px -2px -6px;scrollbar-width:none;}
+    .photo-grid::-webkit-scrollbar{display:none;}
+    .photo-item,.photo-feature,.photo-wide{flex:0 0 62vw;aspect-ratio:4/5;grid-column:unset;grid-row:unset;scroll-snap-align:start;}
+    .carousel-toolbar{display:flex;align-items:center;justify-content:space-between;margin:-6px 0 14px;}
+    .carousel-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,0.55);}
+    .carousel-nav{display:flex;gap:8px;}
+    .carousel-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s ease, border-color .25s ease, transform .15s ease, opacity .25s ease;}
+    .carousel-arrow svg{width:16px;height:16px;}
+    .carousel-arrow:active{transform:scale(0.92);}
+    .carousel-arrow:hover{background:var(--sage);border-color:var(--sage);}
+    .carousel-arrow:disabled{opacity:0.3;pointer-events:none;}
+    .carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:16px;}
+    .carousel-dots .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.28);transition:background .25s ease, transform .25s ease;}
+    .carousel-dots .dot.active{background:var(--sage);transform:scale(1.3);}
+    .review-card{flex:0 0 78vw;}
+    .repertoire-card-head{flex-direction:column;align-items:stretch;}
+    .repertoire-search{max-width:none;}
+    .repertoire-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-top{grid-template-columns:1fr;gap:36px;}
+    .intro-photo-badge{left:0;}
+  }
+
+  @media(max-width:520px){
+    .occasions-inner{grid-template-columns:1fr;}
+    .repertoire-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand">KASIA HOWLEY<span>Music</span></a>
+    <div class="nav-right">
+      <nav class="links" id="navLinks">
+        <a href="vocal-coaching.html">Vocal Coaching</a>
+        <a href="#about">About</a>
+        <a href="#performances">Watch &amp; Listen</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Check availability</a>
+      <div class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img class="hero-slide is-active" style="object-position:center 35%;" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley singing live at a wedding venue">
+    <img class="hero-slide" style="object-position:center 30%;" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House">
+  </div>
+  <div class="hero-content wrap">
+    <div class="eyebrow">Live Music &amp; Weddings</div>
+    <h1>A piano vocalist<br><em>for your perfect day.</em></h1>
+    <p class="hero-sub">Kasia Howley is a professional piano vocalist performing at weddings, ceremonies, corporate events and private parties across the UK — solo or alongside a full live band.</p>
+    <div class="hero-pills">
+      <a href="#contact" class="hero-pill solid">Check availability</a>
+      <a href="#performances" class="hero-pill outline">Watch &amp; listen →</a>
+    </div>
+  </div>
+  <button class="hero-slide-arrow" id="heroSlideArrow" type="button" aria-label="Show next photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="hero-slide-dots" id="heroSlideDots"></div>
+  <div class="scroll-cue"><span class="dash"></span>Scroll</div>
+</section>
+
+<!-- INTRO / ABOUT -->
+<section class="intro section-pad" id="about">
+  <div class="wrap intro-grid">
+    <div class="intro-photo reveal">
+      <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/e6d84c1451408b51612ecf161c722be6e2455b15/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley performing live piano vocals at a wedding venue">
+      <div class="intro-photo-badge"><strong>55+</strong><span>UK venues played</span></div>
+    </div>
+    <div class="reveal">
+      <div class="label-row"><span class="num">01</span><span class="eyebrow">About Kasia</span></div>
+      <h2>A piano vocalist for your day.</h2>
+      <p>Kasia performs as a solo piano vocalist or alongside a full band — for wedding ceremonies, drinks receptions, corporate functions and private parties. She's performed as a soloist at venues including the Royal Albert Hall, Trafalgar Square and the London O2 Indigo Arena, bringing the same polish to a wedding breakfast as to a concert stage.</p>
+      <p>Every booking is personal. Kasia takes time to understand what matters to you — from aisle walk songs to first dance moments — and delivers a performance that feels exactly right for your day.</p>
+      <p class="price-note">Every booking is bespoke — get in touch for a personalised quote and package tailored to your event.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn solid">Check availability</a>
+        <a href="#performances" class="btn outline">Watch &amp; listen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="features-section section-pad" id="features">
+  <div class="wrap">
+    <div class="features-head reveal">
+      <div class="label-row"><span class="num">02</span><span class="eyebrow">What's Included</span></div>
+      <h2>Everything built around your event.</h2>
+      <p>Whether you need a solo pianist for an intimate ceremony or a full live band for an evening reception, every package is tailored to you.</p>
+    </div>
+    <div class="booking-features">
+      <div class="booking-feature reveal">
+        <span class="booking-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </span>
+        <h4>Solo or Full Band</h4>
+        <p>Piano vocals alone, or alongside a live band — whatever suits your event and budget.</p>
+      </div>
+      <div class="booking-feature reveal">
+        <span class="booking-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+        </span>
+        <h4>Personalised Recordings</h4>
+        <p>A studio-quality recording of your aisle walk or first dance song — to keep forever.</p>
+      </div>
+      <div class="booking-feature reveal">
+        <span class="booking-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 4.5L19 9l-4.2 3.3L16 17l-4-2.7L8 17l1.2-4.7L5 9l5.1-1.5z"/></svg>
+        </span>
+        <h4>Bespoke &amp; Tailored</h4>
+        <p>Custom song requests always welcome — every package is built around your day.</p>
+      </div>
+      <div class="booking-feature reveal">
+        <span class="booking-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <h4>Ceremony &amp; Reception</h4>
+        <p>Available across the full day — ceremony, drinks reception, wedding breakfast and evening.</p>
+      </div>
+      <div class="booking-feature reveal">
+        <span class="booking-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </span>
+        <h4>Flexible Availability</h4>
+        <p>Kasia has stepped in at short notice for multiple weddings — always reliable, always professional.</p>
+      </div>
+      <div class="booking-feature reveal">
+        <span class="booking-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <h4>Nationwide Coverage</h4>
+        <p>Based in West Yorkshire, Kasia performs across the UK — from Yorkshire barns to London stages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<div class="occasions-band">
+  <div class="wrap">
+    <div class="occasions-inner">
+      <div class="occasion-item">
+        <div class="occasion-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Weddings</h3>
+        <p>Ceremonies, drinks receptions and evening celebrations — every moment made musical.</p>
+      </div>
+      <div class="occasion-item">
+        <div class="occasion-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h3>Corporate Events</h3>
+        <p>Product launches, gala dinners, awards evenings and client hospitality.</p>
+      </div>
+      <div class="occasion-item">
+        <div class="occasion-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3z"/></svg>
+        </div>
+        <h3>Private Parties</h3>
+        <p>Birthday celebrations, anniversaries, and special occasions of all kinds.</p>
+      </div>
+      <div class="occasion-item">
+        <div class="occasion-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Concert &amp; Stage</h3>
+        <p>From the Hippodrome Casino to the O2 Indigo Arena — solo concert performances.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WATCH & LISTEN -->
+<section class="performances-section section-pad" id="performances">
+  <div class="wrap">
+    <div class="performances-head reveal">
+      <div class="label-row"><span class="num">03</span><span class="eyebrow">Watch &amp; Listen</span></div>
+      <h2>See and hear Kasia live.</h2>
+      <p>A few moments from recent performances — weddings, events and live sets.</p>
+      <div class="perf-chips">
+        <span>Solo piano vocals</span>
+        <span>Can perform alongside a live band</span>
+        <span>Custom song requests</span>
+      </div>
+    </div>
+
+    <div class="carousel-toolbar">
+      <span class="carousel-label">Videos</span>
+      <div class="carousel-nav">
+        <button class="carousel-arrow" type="button" data-target="videoTrack" data-dir="-1" aria-label="Previous video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+        </button>
+        <button class="carousel-arrow" type="button" data-target="videoTrack" data-dir="1" aria-label="Next video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="video-grid" id="videoTrack">
+      <div class="video-card reveal" data-video-id="5rAx8sFYiCc">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Play video">
+            <img src="https://img.youtube.com/vi/5rAx8sFYiCc/hqdefault.jpg" alt="Kasia Howley performance video thumbnail" loading="lazy">
+            <span class="play-ring"></span>
+            <span class="play-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+      </div>
+      <div class="video-card reveal" data-video-id="kSzBrjrddQo">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Play video">
+            <img src="https://img.youtube.com/vi/kSzBrjrddQo/hqdefault.jpg" alt="Kasia Howley performance video thumbnail" loading="lazy">
+            <span class="play-ring"></span>
+            <span class="play-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+      </div>
+      <div class="video-card reveal" data-video-id="RNH44nkutC8">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Play video">
+            <img src="https://img.youtube.com/vi/RNH44nkutC8/hqdefault.jpg" alt="Kasia Howley performance video thumbnail" loading="lazy">
+            <span class="play-ring"></span>
+            <span class="play-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-dots" id="videoDots"></div>
+
+    <div class="carousel-toolbar" style="margin-top:36px;">
+      <span class="carousel-label">Photos</span>
+      <div class="carousel-nav">
+        <button class="carousel-arrow" type="button" data-target="photoTrack" data-dir="-1" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+        </button>
+        <button class="carousel-arrow" type="button" data-target="photoTrack" data-dir="1" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="photo-grid" id="photoTrack" style="margin-top:36px;">
+      <div class="photo-item reveal photo-feature">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Eaves-Hall.jpg" alt="Kasia Howley performing live piano vocals at Eaves Hall" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Eaves Hall</div>
+      </div>
+      <div class="photo-item reveal">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/IMG_5168.jpg" alt="Kasia Howley singing live at a piano" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Live Performance</div>
+      </div>
+      <div class="photo-item reveal">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Manor-House.jpg" alt="Kasia Howley performing live piano vocals at Manor House" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Manor House</div>
+      </div>
+      <div class="photo-item reveal photo-wide">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/724320356_1019228810647287_3348236376246816382_n.jpg" alt="Kasia Howley singing live at a wedding venue" loading="lazy">
+        <div class="photo-caption"><span class="dash"></span>Live Performance</div>
+      </div>
+    </div>
+    <div class="carousel-dots" id="photoDots"></div>
+  </div>
+</section>
+
+<!-- REPERTOIRE -->
+<section class="repertoire-section section-pad" id="repertoire">
+  <div class="wrap">
+    <div class="repertoire-card reveal">
+      <div class="repertoire-card-head">
+        <div class="repertoire-card-text">
+          <span class="eyebrow">Sample Repertoire</span>
+          <h3>A few favourites from her songbook.</h3>
+          <p>From Adele to Etta James, Ed Sheeran to Carole King — repertoire is tailored to you, and song requests are always welcome.</p>
+        </div>
+        <div class="repertoire-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="repertoireSearch" placeholder="Search songs or artists…" autocomplete="off">
+        </div>
+      </div>
+      <div class="repertoire-grid" id="repertoirePreview">
+        <span>Make You Feel My Love - Adele</span>
+        <span>Perfect - Ed Sheeran</span>
+        <span>At Last - Etta James</span>
+        <span>Fields of Gold - Eva Cassidy</span>
+        <span>(You Make Me Feel Like a) Natural Woman - Carole King</span>
+        <span>Can't Help Falling in Love - Elvis</span>
+        <span>Your Song - Elton John</span>
+        <span>Thinking Out Loud - Ed Sheeran</span>
+        <span>Somewhere Only We Know - Keane</span>
+        <span>All of Me - John Legend</span>
+        <span>Sky Full of Stars - Coldplay</span>
+        <span>This Is Me - The Greatest Showman</span>
+      </div>
+      <div class="repertoire-grid repertoire-extra" id="repertoireExtra">
+        <span>All I Ask - Adele</span>
+        <span>Easy On Me - Adele</span>
+        <span>Say a Little Prayer - Aretha Franklin</span>
+        <span>Always a Woman - Billy Joel</span>
+        <span>Vienna - Billy Joel</span>
+        <span>Right on Time - Brandi Carlile</span>
+        <span>Just the Way You Are - Bruno Mars</span>
+        <span>I Can't Make You Love Me - Bonnie Raitt</span>
+        <span>You Are the Reason - Callum Scott</span>
+        <span>Close to You - The Carpenters</span>
+        <span>Because You Loved Me - Celine Dion</span>
+        <span>You've Got a Friend - Carole King</span>
+        <span>A Thousand Years - Christina Perri</span>
+        <span>Fix You - Coldplay</span>
+        <span>Yellow - Coldplay</span>
+        <span>Castle on the Hill - Ed Sheeran</span>
+        <span>Tenerife Sea - Ed Sheeran</span>
+        <span>Goodbye Yellow Brick Road - Elton John</span>
+        <span>Love Me Tender - Elvis</span>
+        <span>Songbird - Eva Cassidy</span>
+        <span>There You'll Be - Faith Hill</span>
+        <span>Lost Without You - Freya Ridings</span>
+        <span>Shotgun - George Ezra</span>
+        <span>Hold Back the River - James Bay</span>
+        <span>Big Yellow Taxi - Joni Mitchell</span>
+        <span>All I Want - Kodaline</span>
+        <span>Always Remember Us This Way - Lady Gaga</span>
+        <span>Shallow - Lady Gaga</span>
+        <span>Crazy Love - Michael Bublé</span>
+        <span>Don't Know Why - Norah Jones</span>
+        <span>Come Away With Me - Norah Jones</span>
+        <span>Somebody to Love - Queen</span>
+        <span>Lay Me Down - Sam Smith</span>
+        <span>Run - Snow Patrol</span>
+        <span>Marry Me - Train</span>
+        <span>A Million Dreams - The Greatest Showman</span>
+      </div>
+      <p class="repertoire-empty" id="repertoireEmpty">No songs match your search — but custom requests are always welcome.</p>
+      <button class="repertoire-toggle" id="repertoireToggle" type="button">
+        <span class="toggle-label">View full repertoire (100+ songs)</span>
+        <span class="toggle-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- VENUES -->
+<section class="venues-section section-pad" id="venues" style="padding-top:0;">
+  <div class="wrap">
+    <div class="repertoire-card reveal" style="margin-top:0;">
+      <div class="repertoire-card-head">
+        <div class="repertoire-card-text">
+          <span class="eyebrow">As Performed At</span>
+          <h3>Venues across the UK.</h3>
+          <p>From intimate barns to iconic London stages — search below or browse the full list.</p>
+        </div>
+        <div class="repertoire-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="venuesSearch" placeholder="Search venues…" autocomplete="off">
+        </div>
+      </div>
+      <div class="repertoire-grid" id="venuesPreview">
+        <span>Bagden Hall, Denby Dale</span>
+        <span>Broadoaks, Lake District</span>
+        <span>Casa, Brighouse</span>
+        <span>Chevin Country Park Hotel &amp; Spa, Otley</span>
+        <span>Cockley Woodland Weddings</span>
+        <span>Cooling Castle Barn, Rochester</span>
+        <span>Crazy Coqs, London</span>
+        <span>Crewe Hall, Cheshire</span>
+        <span>Crow Wood Hotel &amp; Spa, Burnley</span>
+        <span>Eaves Hall, Clitheroe</span>
+        <span>Grangefields, Derby</span>
+        <span>Hazel Gap Barn, Nottinghamshire</span>
+      </div>
+      <div class="repertoire-grid repertoire-extra" id="venuesExtra">
+        <span>Headingley Stadium, Leeds</span>
+        <span>Hippodrome Casino, London</span>
+        <span>Holdsworth House, Halifax</span>
+        <span>Holmfirth Vineyard, Holmfirth</span>
+        <span>Hornington Manor, Tadcaster</span>
+        <span>Indigo at the O2, London</span>
+        <span>Manor House, Lindley</span>
+        <span>Middleton Lodge Estate, Richmond</span>
+        <span>Middletons Hotel, York</span>
+        <span>Royal Albert Hall, London</span>
+        <span>Southbank Centre, London</span>
+        <span>Southwood, Halifax</span>
+        <span>St Paul's, Covent Garden</span>
+        <span>Stretton Manor Barn, Chesterfield</span>
+        <span>The Arches, Halifax</span>
+        <span>The Marriott, Leeds</span>
+        <span>The Priests House, Skipton</span>
+        <span>The Stables, Milton Keynes</span>
+        <span>Thicket Priory, York</span>
+        <span>Thirsk Lodge Barns, Thirsk</span>
+        <span>Thorpe Park Hotel &amp; Spa, Leeds</span>
+        <span>Tithe Barn, Poppleton</span>
+        <span>Trafalgar Square, London</span>
+        <span>Wentbridge House, Wentbridge</span>
+        <span>Woodsome Hall, Almondbury</span>
+        <span>Wortley Hall, Sheffield</span>
+        <span>315, Lepton</span>
+      </div>
+      <p class="repertoire-empty" id="venuesEmpty">No venues match your search.</p>
+      <button class="repertoire-toggle" id="venuesToggle" type="button">
+        <span class="toggle-label">View all venues</span>
+        <span class="toggle-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section section-pad" id="reviews">
+  <div class="wrap">
+    <div class="reviews-head-row">
+      <div class="reviews-head reveal">
+        <div class="label-row"><span class="num">04</span><span class="eyebrow">Reviews</span></div>
+        <h2>Loved by couples across the UK.</h2>
+        <p>A selection of real reviews from weddings, parties and events — verified through Hitched.</p>
+      </div>
+      <div class="reviews-nav">
+        <button class="reviews-arrow" id="reviewPrev" type="button" aria-label="Previous reviews">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+        </button>
+        <button class="reviews-arrow" id="reviewNext" type="button" aria-label="Next reviews">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="reviews-grid" id="reviewsTrack">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Kasia has a superb voice and delivered a great performance, providing an emotional touch to our ceremony. We strongly recommend her."</p>
+        <div class="review-meta"><strong>Madalina-Irina L</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"All my guests commented on how fabulous she was and wanted to know where I'd found her! She sang the songs beautifully - just overall brilliant."</p>
+        <div class="review-meta"><strong>Tyler H</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Kasia learnt and adapted my chosen aisle walk song into the most beautiful rendition we'll treasure forever. Professional throughout - she's got a heart of gold."</p>
+        <div class="review-meta"><strong>Sophie T</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Kasia stepped in with only a couple of weeks' notice and we couldn't imagine our wedding without her. So many guests commented on how good she was."</p>
+        <div class="review-meta"><strong>Amy M</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"She has many songs in her repertoire but was also happy to learn and sing new ones we requested. A warm and lovely person - you made our wedding so special."</p>
+        <div class="review-meta"><strong>Mandy B</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Being a vocalist myself I wanted only the best for my wedding day, and she did not disappoint. That special touch on the happiest day of my life."</p>
+        <div class="review-meta"><strong>Sarah M</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"It created such a lovely atmosphere - so many people commented how much they enjoyed the music and that it added so much to the day."</p>
+        <div class="review-meta"><strong>Sorrel H</strong><span>Wedding</span></div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"She arrived on time and was flexible with her set times to fit with food times. Friendly and everything that she promised. Guests commented on how good she was."</p>
+        <div class="review-meta"><strong>Wendy R</strong><span>Wedding</span></div>
+      </div>
+    </div>
+
+    <div class="reviews-trust reveal">
+      <div class="reviews-trust-item">
+        <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>Rated 5 Stars on Hitched</strong>
+          <span>5.0 Fantastic · <a href="https://www.hitched.co.uk/wedding-music-and-djs/kasia-howley_330149.htm?fbclid=IwY2xjawTRfHdleHRuA2FlbQIxMABicmlkETFpY1Jha0EwM3VNYjdmc0Jwc3J0YwZhcHBfaWQPNTE0NzcxNTY5MjI4MDYxAAEe0LHncpADWsZS0_fXxqUj1tPBT7Ti-qSg5Uc-600LzHZrx4zPS9QyThExkYs_aem_vYGUIbCe49qj_yl9-nb2lA#reviews" target="_blank" rel="noopener" style="color:var(--sage-deep);text-decoration:underline;text-underline-offset:2px;">6 reviews on Hitched</a></span>
+        </div>
+      </div>
+      <div class="reviews-trust-item">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Screenshot%202026-07-25%20124338.png" alt="Last Minute Musicians 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>5 Stars on Last Minute Musicians</strong>
+          <span>18 verified ratings from real clients</span>
+        </div>
+      </div>
+      <div class="reviews-trust-item">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Screenshot%202026-07-25%20124121.png" alt="Alive Network 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>5 Stars on Alive Network</strong>
+          <span>5 star rated by every client this year</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section-pad" id="contact">
+  <div class="contact-bg">
+    <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/726349518_1703715594225821_3386371529636017282_n.webp" alt="Kasia Howley performing live">
+  </div>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="label-row"><span class="num">05</span><span class="eyebrow">Get in touch</span></div>
+      <h2>Let's make your day <em>unforgettable.</em></h2>
+      <p class="lead">Tell Kasia about your event — date, venue, and what you're looking for — and she'll come back to you with availability and a bespoke quote.</p>
+      <div class="contact-details-panel">
+        <div class="contact-detail">
+          <span class="k">Phone</span>
+          <span class="v">07894 945722</span>
+        </div>
+        <div class="contact-detail">
+          <span class="k">Email</span>
+          <span class="v">kasiahowley@gmail.com</span>
+        </div>
+        <div class="contact-detail">
+          <span class="k">Based in</span>
+          <span class="v">Tileyard North, Wakefield</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form reveal" id="contactForm" onsubmit="event.preventDefault();">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Your email" required>
+      <input type="tel" placeholder="Your phone number" required>
+      <input type="date" id="eventDate" placeholder="Event date">
+      <input type="text" id="eventLocation" placeholder="Venue / location">
+      <select>
+        <option value="" disabled selected>Type of event</option>
+        <option value="wedding">Wedding</option>
+        <option value="corporate">Corporate event</option>
+        <option value="party">Private party</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea placeholder="Tell Kasia a bit more about your event…"></textarea>
+      <button type="submit">Send enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-wrap">
+    <div class="footer-top">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
+        <p>Piano vocalist &amp; vocal coach, based in West Yorkshire and performing &amp; teaching across the UK.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.55-4 3.9-4 1.1 0 2.25.2 2.25.2v2.5h-1.27c-1.25 0-1.64.78-1.64 1.58V12h2.8l-.45 2.9h-2.35v7A10 10 0 0 0 22 12Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2 3.77-2C20.3 8.7 21 11 21 14.2V21h-4v-6.2c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>On this page</h4>
+        <a href="#about">About</a>
+        <a href="#performances">Watch &amp; Listen</a>
+        <a href="#repertoire">Repertoire</a>
+        <a href="#venues">Venues</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="tel:07894945722">07894 945722</a>
+        <a href="mailto:kasiahowley@gmail.com">kasiahowley@gmail.com</a>
+        <span class="static">West Yorkshire, UK</span>
+      </div>
+      <div class="footer-col footer-cta-col">
+        <h4>Also offering</h4>
+        <p>Private vocal coaching for performers, students and working musicians.</p>
+        <a href="vocal-coaching.html" class="btn solid">Vocal Coaching →</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="fl">© 2026 Kasia Howley Music. All rights reserved.</div>
+      <div class="fr">
+        <a href="index.html">Home</a>
+        <a href="vocal-coaching.html">Vocal Coaching</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener">Website designed by Franks Media</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    links.classList.remove('open');
+  }));
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
+  }, { threshold: 0.18 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile carousel dots + arrows
+  function setupCarouselDots(trackId, dotsId) {
+    const track = document.getElementById(trackId);
+    const dotsWrap = document.getElementById(dotsId);
+    if (!track || !dotsWrap) return;
+    const items = Array.from(track.children);
+    if (items.length < 2) return;
+    items.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to item ${i + 1}`);
+      dot.addEventListener('click', () => { items[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }); });
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+    const arrows = document.querySelectorAll(`.carousel-arrow[data-target="${trackId}"]`);
+    function syncState() {
+      const trackRect = track.getBoundingClientRect();
+      const center = trackRect.left + trackRect.width / 2;
+      let closest = 0, closestDist = Infinity;
+      items.forEach((item, i) => {
+        const r = item.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - center);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+      const maxScroll = track.scrollWidth - track.clientWidth - 2;
+      arrows.forEach(btn => {
+        const dir = parseInt(btn.getAttribute('data-dir'), 10);
+        if (dir < 0) btn.disabled = track.scrollLeft <= 2;
+        else btn.disabled = track.scrollLeft >= maxScroll;
+      });
+    }
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { syncState(); ticking = false; });
+    });
+    track.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { e.preventDefault(); window.scrollBy(0, e.deltaY); }
+    }, { passive: false });
+    syncState();
+  }
+
+  setupCarouselDots('videoTrack', 'videoDots');
+  setupCarouselDots('photoTrack', 'photoDots');
+
+  document.querySelectorAll('.carousel-arrow').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const track = document.getElementById(btn.getAttribute('data-target'));
+      if (!track) return;
+      const dir = parseInt(btn.getAttribute('data-dir'), 10);
+      const item = track.children[0];
+      const gap = parseFloat(getComputedStyle(track).gap) || 14;
+      const step = (item ? item.getBoundingClientRect().width : 280) + gap;
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    });
+  });
+
+  // Video play
+  document.querySelectorAll('.video-card').forEach(card => {
+    const btn = card.querySelector('.video-play');
+    const frame = card.querySelector('.video-frame');
+    if (!btn || !frame) return;
+    btn.addEventListener('click', () => {
+      const id = card.getAttribute('data-video-id');
+      frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="Kasia Howley performance video" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
+
+  // Reviews carousel
+  const reviewsTrack = document.getElementById('reviewsTrack');
+  const reviewPrev = document.getElementById('reviewPrev');
+  const reviewNext = document.getElementById('reviewNext');
+  function reviewStep() {
+    const card = reviewsTrack.querySelector('.review-card');
+    if (!card) return 300;
+    return card.getBoundingClientRect().width + (parseFloat(getComputedStyle(reviewsTrack).gap) || 22);
+  }
+  function updateReviewArrows() {
+    if (!reviewsTrack || !reviewPrev || !reviewNext) return;
+    const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth - 2;
+    reviewPrev.disabled = reviewsTrack.scrollLeft <= 2;
+    reviewNext.disabled = reviewsTrack.scrollLeft >= maxScroll;
+  }
+  if (reviewsTrack && reviewPrev && reviewNext) {
+    reviewPrev.addEventListener('click', () => reviewsTrack.scrollBy({ left: -reviewStep(), behavior: 'smooth' }));
+    reviewNext.addEventListener('click', () => reviewsTrack.scrollBy({ left: reviewStep(), behavior: 'smooth' }));
+    reviewsTrack.addEventListener('scroll', updateReviewArrows);
+    window.addEventListener('resize', updateReviewArrows);
+    reviewsTrack.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { e.preventDefault(); window.scrollBy(0, e.deltaY); }
+    }, { passive: false });
+    updateReviewArrows();
+  }
+
+  // Repertoire search + toggle
+  const repertoireToggle = document.getElementById('repertoireToggle');
+  const repertoireToggleLabel = repertoireToggle ? repertoireToggle.querySelector('.toggle-label') : null;
+  const repertoireExtra = document.getElementById('repertoireExtra');
+  const repertoirePreview = document.getElementById('repertoirePreview');
+  const repertoireSearch = document.getElementById('repertoireSearch');
+  const repertoireEmpty = document.getElementById('repertoireEmpty');
+  if (repertoireToggle && repertoireExtra) {
+    repertoireToggle.addEventListener('click', () => {
+      const isOpen = repertoireExtra.classList.toggle('is-open');
+      repertoireToggle.classList.toggle('is-open', isOpen);
+      repertoireToggleLabel.textContent = isOpen ? 'Show fewer songs' : 'View full repertoire (100+ songs)';
+    });
+  }
+  if (repertoireSearch && repertoirePreview && repertoireExtra) {
+    const allSongs = [...repertoirePreview.querySelectorAll('span'), ...repertoireExtra.querySelectorAll('span')];
+    repertoireSearch.addEventListener('input', () => {
+      const q = repertoireSearch.value.trim().toLowerCase();
+      let visibleCount = 0;
+      if (q === '') {
+        allSongs.forEach(s => s.classList.remove('hidden-match'));
+        repertoireExtra.classList.remove('is-open');
+        repertoireToggle.classList.remove('is-hidden', 'is-open');
+        repertoireToggleLabel.textContent = 'View full repertoire (100+ songs)';
+        repertoireEmpty.classList.remove('is-visible');
+        return;
+      }
+      allSongs.forEach(s => {
+        const match = s.textContent.toLowerCase().includes(q);
+        s.classList.toggle('hidden-match', !match);
+        if (match) visibleCount++;
+      });
+      repertoireExtra.classList.add('is-open');
+      repertoireToggle.classList.add('is-hidden');
+      repertoireEmpty.classList.toggle('is-visible', visibleCount === 0);
+    });
+  }
+
+  // Venues search + toggle
+  const venuesToggle = document.getElementById('venuesToggle');
+  const venuesToggleLabel = venuesToggle ? venuesToggle.querySelector('.toggle-label') : null;
+  const venuesExtra = document.getElementById('venuesExtra');
+  const venuesPreview = document.getElementById('venuesPreview');
+  const venuesSearch = document.getElementById('venuesSearch');
+  const venuesEmpty = document.getElementById('venuesEmpty');
+  if (venuesToggle && venuesExtra) {
+    venuesToggle.addEventListener('click', () => {
+      const isOpen = venuesExtra.classList.toggle('is-open');
+      venuesToggle.classList.toggle('is-open', isOpen);
+      venuesToggleLabel.textContent = isOpen ? 'Show fewer venues' : 'View all venues';
+    });
+  }
+  if (venuesSearch && venuesPreview && venuesExtra) {
+    const allVenues = [...venuesPreview.querySelectorAll('span'), ...venuesExtra.querySelectorAll('span')];
+    venuesSearch.addEventListener('input', () => {
+      const q = venuesSearch.value.trim().toLowerCase();
+      let visible = 0;
+      if (q === '') {
+        allVenues.forEach(s => s.classList.remove('hidden-match'));
+        venuesExtra.classList.remove('is-open');
+        venuesToggle.classList.remove('is-hidden', 'is-open');
+        venuesToggleLabel.textContent = 'View all venues';
+        venuesEmpty.classList.remove('is-visible');
+        return;
+      }
+      allVenues.forEach(s => {
+        const match = s.textContent.toLowerCase().includes(q);
+        s.classList.toggle('hidden-match', !match);
+        if (match) visible++;
+      });
+      venuesExtra.classList.add('is-open');
+      venuesToggle.classList.add('is-hidden');
+      venuesEmpty.classList.toggle('is-visible', visible === 0);
+    });
+  }
+
+  // Hero carousel
+  const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+  const heroArrow = document.getElementById('heroSlideArrow');
+  const heroDotsWrap = document.getElementById('heroSlideDots');
+  let heroSlideIndex = 0;
+  if (heroSlides.length > 1 && heroDotsWrap) {
+    heroSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('aria-label', `Show photo ${i + 1}`);
+      dot.addEventListener('click', () => { goToHeroSlide(i); resetHeroAutoplay(); });
+      heroDotsWrap.appendChild(dot);
+    });
+  }
+  function goToHeroSlide(i) {
+    heroSlides[heroSlideIndex].classList.remove('is-active');
+    heroSlideIndex = i;
+    heroSlides[heroSlideIndex].classList.add('is-active');
+    if (heroDotsWrap) Array.from(heroDotsWrap.children).forEach((d, di) => d.classList.toggle('is-active', di === heroSlideIndex));
+  }
+  if (heroArrow && heroSlides.length > 1) {
+    heroArrow.addEventListener('click', () => { goToHeroSlide((heroSlideIndex + 1) % heroSlides.length); resetHeroAutoplay(); });
+  }
+  const heroPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let heroAutoplayTimer = null;
+  function startHeroAutoplay() {
+    if (heroPrefersReducedMotion || heroSlides.length < 2) return;
+    heroAutoplayTimer = setInterval(() => { goToHeroSlide((heroSlideIndex + 1) % heroSlides.length); }, 5000);
+  }
+  function stopHeroAutoplay() { if (heroAutoplayTimer) clearInterval(heroAutoplayTimer); heroAutoplayTimer = null; }
+  function resetHeroAutoplay() { stopHeroAutoplay(); startHeroAutoplay(); }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopHeroAutoplay(); else startHeroAutoplay(); });
+  startHeroAutoplay();
+</script>
+</body>
+</html>
