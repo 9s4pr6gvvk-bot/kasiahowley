@@ -1456,30 +1456,47 @@
     margin-top:48px;
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:0;
     padding-top:36px;
     border-top:1px solid var(--line);
+    flex-wrap:wrap;
+    row-gap:16px;
   }
   .reviews-trust img{
-    width:54px;height:54px;
+    width:40px;height:40px;
     border-radius:50%;
     box-shadow:0 0 0 1.5px var(--sage);
     flex-shrink:0;
     object-fit:contain;
+    margin-right:10px;
+  }
+  .reviews-trust-item{
+    display:flex;
+    align-items:center;
+    padding-right:20px;
+    margin-right:20px;
+    border-right:1px solid var(--line);
+  }
+  .reviews-trust-item:last-child{
+    border-right:none;
+    padding-right:0;
+    margin-right:0;
   }
   .reviews-trust-text{
     display:flex;
     flex-direction:column;
-    gap:3px;
+    gap:2px;
   }
   .reviews-trust-text strong{
-    font-size:14px;
+    font-size:12.5px;
     font-weight:600;
     color:var(--ink);
+    white-space:nowrap;
   }
   .reviews-trust-text span{
-    font-size:12px;
+    font-size:11px;
     color:#6a716e;
+    line-height:1.4;
   }
 
   /* ---------- CONTACT ---------- */
@@ -1640,114 +1657,11 @@
     margin:0 auto;
     padding:0 5vw;
   }
-  .newsletter-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:40px;
-    padding:38px 0;
-    border-bottom:1px solid var(--line);
-    margin-bottom:48px;
-  }
-  .newsletter-text{max-width:420px; padding-top:6px;}
-  .newsletter-text h4{
-    font-family:'Cormorant Garamond',serif;
-    font-size:22px;
-    font-weight:600;
-    color:var(--ink);
-    margin-bottom:6px;
-  }
-  .newsletter-text p{
-    font-size:13.5px;
-    line-height:1.6;
-    color:#6a716e;
-  }
-  .newsletter-form{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    flex-shrink:0;
-  }
-  .newsletter-input-row{
-    display:flex;
-    gap:10px;
-  }
-  .newsletter-form input[type="email"]{
-    width:240px;
-    padding:13px 18px;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:var(--cream);
-    font-family:'Work Sans',sans-serif;
-    font-size:13.5px;
-    color:var(--ink);
-    outline:none;
-    transition:border-color .25s ease, box-shadow .25s ease;
-  }
-  .newsletter-form input::placeholder{color:#8a9189;}
-  .newsletter-form input[type="email"]:focus{
-    border-color:var(--sage);
-    box-shadow:0 0 0 3px rgba(127,161,145,0.18);
-  }
-  .newsletter-form button{
-    padding:13px 26px;
-    background:var(--ink);
-    color:var(--white);
-    border:none;
-    border-radius:999px;
-    font-family:'Work Sans',sans-serif;
-    font-size:12px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    font-weight:600;
-    cursor:pointer;
-    white-space:nowrap;
-    transition:background .25s ease, transform .2s ease;
-  }
-  .newsletter-form button:hover{background:var(--sage-deep);transform:translateY(-1px);}
-  .newsletter-bar.is-subscribed .newsletter-form{display:none;}
-  .newsletter-interests{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:14px;
-    padding:0 4px;
-  }
-  .newsletter-interests-label{
-    font-size:11.5px;
-    color:#8a9189;
-    white-space:nowrap;
-  }
-  .newsletter-interests label{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    font-size:12.5px;
-    color:#4a5250;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  .newsletter-interests input[type="checkbox"]{
-    width:15px;height:15px;
-    accent-color:var(--sage-deep);
-    cursor:pointer;
-    flex-shrink:0;
-  }
-  .newsletter-success{
-    display:none;
-    align-items:center;
-    gap:10px;
-    font-size:13.5px;
-    color:var(--sage-deep);
-    font-weight:500;
-  }
-  .newsletter-bar.is-subscribed .newsletter-success{display:flex;}
-  .newsletter-success svg{width:18px;height:18px;flex-shrink:0;}
-
   .footer-top{
     display:grid;
     grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;
     gap:5vw;
+    padding-top:48px;
     padding-bottom:48px;
     border-bottom:1px solid var(--line);
     margin-bottom:12px;
@@ -1947,19 +1861,6 @@
     }
     .page-banner::after{
       background:linear-gradient(180deg, rgba(8,11,12,0.3) 0%, rgba(8,11,12,0.2) 35%, rgba(8,11,12,0.55) 70%, rgba(8,11,12,0.7) 100%);
-    }
-    .newsletter-bar{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:20px;
-    }
-    .newsletter-form{width:100%;}
-    .newsletter-input-row{width:100%;}
-    .newsletter-form input[type="email"]{flex:1; width:auto;}
-    .newsletter-interests{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:10px;
     }
     .about-grid,.coach-grid,.contact-grid,.bookings-grid{
       grid-template-columns:1fr;
@@ -2744,10 +2645,26 @@
     </div>
 
     <div class="reviews-trust reveal">
-      <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
-      <div class="reviews-trust-text">
-        <strong>Rated 5 Stars on Hitched</strong>
-        <span>Reviewed by real students and clients</span>
+      <div class="reviews-trust-item">
+        <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>Rated 5 Stars on Hitched</strong>
+          <span>5.0 Fantastic · <a href="https://www.hitched.co.uk/wedding-music-and-djs/kasia-howley_330149.htm?fbclid=IwY2xjawTRfHdleHRuA2FlbQIxMABicmlkETFpY1Jha0EwM3VNYjdmc0Jwc3J0YwZhcHBfaWQPNTE0NzcxNTY5MjI4MDYxAAEe0LHncpADWsZS0_fXxqUj1tPBT7Ti-qSg5Uc-600LzHZrx4zPS9QyThExkYs_aem_vYGUIbCe49qj_yl9-nb2lA#reviews" target="_blank" rel="noopener" style="color:var(--sage-deep);text-decoration:underline;text-underline-offset:2px;">6 reviews on Hitched</a></span>
+        </div>
+      </div>
+      <div class="reviews-trust-item">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Screenshot%202026-07-25%20124338.png" alt="Last Minute Musicians 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>5 Stars on Last Minute Musicians</strong>
+          <span>18 verified ratings from real clients</span>
+        </div>
+      </div>
+      <div class="reviews-trust-item">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Screenshot%202026-07-25%20124121.png" alt="Alive Network 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>5 Stars on Alive Network</strong>
+          <span>5 star rated by every client this year</span>
+        </div>
       </div>
     </div>
   </div>
@@ -2796,28 +2713,6 @@
 
 <footer class="site-footer">
   <div class="footer-wrap">
-    <div class="newsletter-bar reveal">
-      <div class="newsletter-text">
-        <h4>Join the mailing list</h4>
-        <p>Occasional updates on availability, new repertoire and coaching openings - no spam.</p>
-      </div>
-      <form class="newsletter-form" id="newsletterForm">
-        <div class="newsletter-input-row">
-          <input type="email" id="newsletterEmail" placeholder="Your email address" required>
-          <button type="submit">Subscribe</button>
-        </div>
-        <div class="newsletter-interests">
-          <span class="newsletter-interests-label">I'm interested in:</span>
-          <label><input type="checkbox" name="interest" value="bookings"><span>Live Music Bookings</span></label>
-          <label><input type="checkbox" name="interest" value="coaching"><span>Vocal Coaching</span></label>
-        </div>
-      </form>
-      <div class="newsletter-success">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        You're on the list - thank you!
-      </div>
-    </div>
-
     <div class="footer-top">
       <div class="footer-col footer-brand">
         <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
@@ -2921,15 +2816,6 @@
         window.scrollBy(0, e.deltaY);
       }
     }, { passive: false });
-  }
-
-  // Newsletter signup: simple front-end success state
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      newsletterForm.closest('.newsletter-bar').classList.add('is-subscribed');
-    });
   }
 
   // Coaching enquiry form: simple front-end success state
