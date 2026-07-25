@@ -1225,61 +1225,6 @@
   .repertoire-toggle.is-open .toggle-arrow{transform:rotate(180deg);}
   .repertoire-toggle.is-hidden{display:none;}
 
-  /* ---------- VENUES MARQUEE STRIP ---------- */
-  .venues-strip{
-    background:var(--cream);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    padding:40px 0;
-    overflow:hidden;
-  }
-  .venues-strip-inner{
-    display:flex;
-    align-items:center;
-    gap:32px;
-  }
-  .venues-strip-label{
-    flex-shrink:0;
-    font-size:11px;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    font-weight:600;
-    color:var(--sage-deep);
-    padding-left:6vw;
-  }
-  .venues-track-wrap{
-    flex:1;
-    overflow:hidden;
-    mask-image:linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
-  }
-  .venues-track{
-    display:flex;
-    align-items:center;
-    gap:40px;
-    white-space:nowrap;
-    width:max-content;
-    animation:venuesScroll 190s linear infinite;
-  }
-  .venues-strip:hover .venues-track{animation-play-state:paused;}
-  .venues-track span{
-    font-size:14px;
-    letter-spacing:0.01em;
-    color:#4a5250;
-    flex-shrink:0;
-  }
-  .venues-track span.sep{
-    color:var(--sage);
-    font-size:10px;
-  }
-  @keyframes venuesScroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .venues-track{animation:none;}
-    .venues-track-wrap{overflow-x:auto;}
-  }
-
   /* ---------- REVIEWS ---------- */
   .reviews-section{
     background:var(--white);
@@ -1401,30 +1346,48 @@
     margin-top:48px;
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:0;
     padding-top:36px;
     border-top:1px solid var(--line);
+    flex-wrap:wrap;
+    row-gap:16px;
   }
   .reviews-trust img{
-    width:54px;height:54px;
+    width:40px;height:40px;
     border-radius:50%;
     box-shadow:0 0 0 1.5px var(--sage);
     flex-shrink:0;
     object-fit:contain;
+    margin-right:10px;
+  }
+  .reviews-trust-item{
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding-right:20px;
+    margin-right:20px;
+    border-right:1px solid var(--line);
+  }
+  .reviews-trust-item:last-child{
+    border-right:none;
+    padding-right:0;
+    margin-right:0;
   }
   .reviews-trust-text{
     display:flex;
     flex-direction:column;
-    gap:3px;
+    gap:2px;
   }
   .reviews-trust-text strong{
-    font-size:14px;
+    font-size:12.5px;
     font-weight:600;
     color:var(--ink);
+    white-space:nowrap;
   }
   .reviews-trust-text span{
-    font-size:12px;
+    font-size:11px;
     color:#6a716e;
+    line-height:1.4;
   }
 
   /* ---------- CONTACT ---------- */
@@ -1585,114 +1548,12 @@
     margin:0 auto;
     padding:0 5vw;
   }
-  .newsletter-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:40px;
-    padding:38px 0;
-    border-bottom:1px solid var(--line);
-    margin-bottom:48px;
-  }
-  .newsletter-text{max-width:420px; padding-top:6px;}
-  .newsletter-text h4{
-    font-family:'Cormorant Garamond',serif;
-    font-size:22px;
-    font-weight:600;
-    color:var(--ink);
-    margin-bottom:6px;
-  }
-  .newsletter-text p{
-    font-size:13.5px;
-    line-height:1.6;
-    color:#6a716e;
-  }
-  .newsletter-form{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    flex-shrink:0;
-  }
-  .newsletter-input-row{
-    display:flex;
-    gap:10px;
-  }
-  .newsletter-form input[type="email"]{
-    width:240px;
-    padding:13px 18px;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:var(--cream);
-    font-family:'Work Sans',sans-serif;
-    font-size:13.5px;
-    color:var(--ink);
-    outline:none;
-    transition:border-color .25s ease, box-shadow .25s ease;
-  }
-  .newsletter-form input::placeholder{color:#8a9189;}
-  .newsletter-form input[type="email"]:focus{
-    border-color:var(--sage);
-    box-shadow:0 0 0 3px rgba(127,161,145,0.18);
-  }
-  .newsletter-form button{
-    padding:13px 26px;
-    background:var(--ink);
-    color:var(--white);
-    border:none;
-    border-radius:999px;
-    font-family:'Work Sans',sans-serif;
-    font-size:12px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    font-weight:600;
-    cursor:pointer;
-    white-space:nowrap;
-    transition:background .25s ease, transform .2s ease;
-  }
-  .newsletter-form button:hover{background:var(--sage-deep);transform:translateY(-1px);}
-  .newsletter-bar.is-subscribed .newsletter-form{display:none;}
-  .newsletter-interests{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:14px;
-    padding:0 4px;
-  }
-  .newsletter-interests-label{
-    font-size:11.5px;
-    color:#8a9189;
-    white-space:nowrap;
-  }
-  .newsletter-interests label{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    font-size:12.5px;
-    color:#4a5250;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  .newsletter-interests input[type="checkbox"]{
-    width:15px;height:15px;
-    accent-color:var(--sage-deep);
-    cursor:pointer;
-    flex-shrink:0;
-  }
-  .newsletter-success{
-    display:none;
-    align-items:center;
-    gap:10px;
-    font-size:13.5px;
-    color:var(--sage-deep);
-    font-weight:500;
-  }
-  .newsletter-bar.is-subscribed .newsletter-success{display:flex;}
-  .newsletter-success svg{width:18px;height:18px;flex-shrink:0;}
 
   .footer-top{
     display:grid;
     grid-template-columns:1.3fr 0.85fr 0.85fr 1fr;
     gap:5vw;
+    padding-top:48px;
     padding-bottom:48px;
     border-bottom:1px solid var(--line);
     margin-bottom:12px;
@@ -1893,20 +1754,6 @@
     .hero::after{
       background:linear-gradient(180deg, rgba(8,11,12,0.3) 0%, rgba(8,11,12,0.2) 35%, rgba(8,11,12,0.55) 70%, rgba(8,11,12,0.7) 100%);
     }
-    .newsletter-bar{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:20px;
-    }
-    .newsletter-form{width:100%;}
-    .newsletter-input-row{width:100%;}
-    .newsletter-form input[type="email"]{flex:1; width:auto;}
-    .newsletter-interests{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:10px;
-    }
-
     .quals-group-head{
       display:flex;
       justify-content:space-between;
@@ -2351,11 +2198,70 @@
   </div>
 </section>
 
-<section class="venues-strip">
-  <div class="venues-strip-inner">
-    <span class="venues-strip-label">As performed at</span>
-    <div class="venues-track-wrap">
-      <div class="venues-track" id="venuesTrack"></div>
+<section class="bookings section-pad" id="venues" style="padding-top:0;">
+  <div class="wrap">
+    <div class="repertoire-card reveal" style="margin-top:0;">
+      <div class="repertoire-card-head venues-card-head">
+        <div class="repertoire-card-text venues-card-text">
+          <span class="eyebrow">As Performed At</span>
+          <h3>Venues across the UK.</h3>
+          <p>From intimate barns to iconic London stages - search below or browse the full list.</p>
+        </div>
+        <div class="repertoire-search venues-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="venuesSearch" placeholder="Search venues…" autocomplete="off">
+        </div>
+      </div>
+      <div class="repertoire-grid" id="venuesPreview">
+        <span>Bagden Hall, Denby Dale</span>
+        <span>Broadoaks, Lake District</span>
+        <span>Casa, Brighouse</span>
+        <span>Chevin Country Park Hotel &amp; Spa, Otley</span>
+        <span>Cockley Woodland Weddings</span>
+        <span>Cooling Castle Barn, Rochester</span>
+        <span>Crazy Coqs, London</span>
+        <span>Crewe Hall, Cheshire</span>
+        <span>Crow Wood Hotel &amp; Spa, Burnley</span>
+        <span>Eaves Hall, Clitheroe</span>
+        <span>Grangefields, Derby</span>
+        <span>Hazel Gap Barn, Nottinghamshire</span>
+      </div>
+      <div class="repertoire-grid repertoire-extra" id="venuesExtra">
+        <span>Headingley Stadium, Leeds</span>
+        <span>Hippodrome Casino, London</span>
+        <span>Holdsworth House, Halifax</span>
+        <span>Holmfirth Vineyard, Holmfirth</span>
+        <span>Hornington Manor, Tadcaster</span>
+        <span>Indigo at the O2, London</span>
+        <span>Manor House, Lindley</span>
+        <span>Middleton Lodge Estate, Richmond</span>
+        <span>Middletons Hotel, York</span>
+        <span>Royal Albert Hall, London</span>
+        <span>Southbank Centre, London</span>
+        <span>Southwood, Halifax</span>
+        <span>St Paul's, Covent Garden</span>
+        <span>Stretton Manor Barn, Chesterfield</span>
+        <span>The Arches, Halifax</span>
+        <span>The Marriott, Leeds</span>
+        <span>The Priests House, Skipton</span>
+        <span>The Stables, Milton Keynes</span>
+        <span>Thicket Priory, York</span>
+        <span>Thirsk Lodge Barns, Thirsk</span>
+        <span>Thorpe Park Hotel &amp; Spa, Leeds</span>
+        <span>Tithe Barn, Poppleton</span>
+        <span>Trafalgar Square, London</span>
+        <span>Wentbridge House, Wentbridge</span>
+        <span>Woodsome Hall, Almondbury</span>
+        <span>Wortley Hall, Sheffield</span>
+        <span>315, Lepton</span>
+      </div>
+      <p class="repertoire-empty" id="venuesEmpty">No venues match your search.</p>
+      <button class="repertoire-toggle" id="venuesToggle" type="button">
+        <span class="toggle-label">View all venues</span>
+        <span class="toggle-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
     </div>
   </div>
 </section>
@@ -2456,197 +2362,11 @@
   </div>
 </section>
 
-<div class="band">
-  <img src="https://static.wixstatic.com/media/11062b_791609fba40e400cb0507b472e32a51d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1960,h_742,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Music%20Sheets.jpg" alt="Sheet music">
-  <div class="band-text reveal">
-    <div class="eyebrow">Research-informed practice</div>
-    <h2>"Translating the complexities of vocal fatigue into accessible, actionable guidance for professional voice users."</h2>
-  </div>
-</div>
-
-<section class="quals-section section-pad" id="qualifications">
-  <div class="wrap quals-layout">
-    <div class="quals-intro">
-      <div class="quals-intro-sticky reveal">
-        <div class="label-row"><span class="num">05</span><span class="eyebrow">Background</span></div>
-        <h2>Qualifications &amp; Experience</h2>
-        <p>A coaching practice grounded in formal training and clinical certification - backed by real performance experience at the UK's leading venues.</p>
-        <div class="quals-venues">
-          <span class="quals-venues-label">Performed at</span>
-          <div class="venues">
-            <span>Royal Albert Hall</span>
-            <span>Trafalgar Square</span>
-            <span>London Hippodrome Casino</span>
-            <span>The Southbank Centre</span>
-            <span>London O2 Indigo Arena</span>
-          </div>
-        </div>
-        <div class="quals-trust">
-          <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
-          <div class="quals-trust-text">
-            <strong>Rated 5 Stars on Hitched</strong>
-            <span>Reviewed by real couples for live wedding performances</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="quals-list">
-      <div class="quals-group-head">
-        <div class="quals-subhead reveal">Training &amp; Qualifications</div>
-        <div class="quals-nav">
-          <button class="quals-arrow" type="button" data-target="qualTrack1" data-dir="-1" aria-label="Previous qualification">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
-          </button>
-          <button class="quals-arrow" type="button" data-target="qualTrack1" data-dir="1" aria-label="Next qualification">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="qual-track" id="qualTrack1">
-        <div class="qual-row reveal">
-          <div class="qual-row-index">01</div>
-          <div class="qual-badge qual-badge-photo">
-            <img src="https://static.wixstatic.com/media/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg/v1/crop/x_42,y_21,w_869,h_910/fill/w_218,h_218,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4b1edb_e44f4464f0674255a253ad98fbbcd986~mv2.jpg" alt="Vocal Health First Aid certification badge">
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Clinical</span>
-            <h3>Vocal Health First Aid</h3>
-            <div class="qual-org">Level 2, Qualified</div>
-            <p>Trained to recognise and respond appropriately to vocal injury and acute voice loss in professional voice users.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">02</div>
-          <div class="qual-badge qual-badge-photo">
-            <img src="https://static.wixstatic.com/media/4b1edb_36d6a7b4321043dc96459a3d419e1808~mv2.png/v1/crop/x_7,y_7,w_489,h_485/fill/w_218,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VMT%20Certification%20.png" alt="Vocal Manual Therapy certification badge">
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Clinical</span>
-            <h3>Vocal Manual Therapy</h3>
-            <div class="qual-org">Certified Practitioner · Voice Care Centre</div>
-            <p>Certified in myofascial release for the voice, trained under Robert Price at the Voice Care Centre.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">03</div>
-          <div class="qual-badge qual-badge-type">
-            <span>E<small>1&amp;2</small></span>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Technique</span>
-            <h3>Estill Method</h3>
-            <div class="qual-org">Levels 1 &amp; 2</div>
-            <p>Trained extensively under the mentorship of Andy Follin, one of the North's leading Estill Master Trainers.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">04</div>
-          <div class="qual-badge qual-badge-type">
-            <span>BA<small>Hons</small></span>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Academic</span>
-            <h3>Musical Theatre</h3>
-            <div class="qual-org">ArtsEd London</div>
-            <p>Foundational training as a performer, underpinning a coaching approach informed by lived performance experience.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">05</div>
-          <div class="qual-badge qual-badge-type">
-            <span>MA<small>In progress</small></span>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Research</span>
-            <h3>Vocal Pedagogy</h3>
-            <div class="qual-org">Voice Study Centre</div>
-            <p>Researching vocal fatigue and its biophysiological mechanisms, translating findings into accessible, actionable guidance.</p>
-          </div>
-        </div>
-      </div>
-      <div class="quals-dots" id="qualDots1"></div>
-
-      <div class="quals-group-head quals-group-head-second">
-        <div class="quals-subhead reveal">Career Highlights</div>
-        <div class="quals-nav">
-          <button class="quals-arrow" type="button" data-target="qualTrack2" data-dir="-1" aria-label="Previous highlight">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
-          </button>
-          <button class="quals-arrow" type="button" data-target="qualTrack2" data-dir="1" aria-label="Next highlight">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="qual-track" id="qualTrack2">
-        <div class="qual-row reveal">
-          <div class="qual-row-index">06</div>
-          <div class="qual-badge qual-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Teaching</span>
-            <h3>Private Practice &amp; Teaching</h3>
-            <div class="qual-org">Tileyard North · Emil Dale Academy</div>
-            <p>Runs a private vocal coaching practice at Tileyard North, Wakefield, and is one of the technical voice tutors on the degree course at Emil Dale Academy, alongside teaching at universities and arts colleges across the UK.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">07</div>
-          <div class="qual-badge qual-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="m9 14-1.5 6L12 18l4.5 2L15 14"/></svg>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Outcomes</span>
-            <h3>Student &amp; Client Outcomes</h3>
-            <div class="qual-org">ArtsEd · Mountview · GSA · EDA · Urdang</div>
-            <p>Students have secured places at leading drama schools, and clients can be seen performing in West End, regional and international productions.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">08</div>
-          <div class="qual-badge qual-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-8h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-8H3Z"/></svg>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Session Work</span>
-            <h3>Working Musicians</h3>
-            <div class="qual-org">Recording &amp; Touring</div>
-            <p>Beyond musical theatre, Kasia works with professional musicians preparing for recording sessions, tours and session work - with a focus on sustainable voice use and longevity.</p>
-          </div>
-        </div>
-
-        <div class="qual-row reveal">
-          <div class="qual-row-index">09</div>
-          <div class="qual-badge qual-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="3"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14.5 14.2c2.5.3 4.5 2 4.5 4.8"/></svg>
-          </div>
-          <div class="qual-row-text">
-            <span class="qual-tag">Collaborations</span>
-            <h3>Notable Collaborations</h3>
-            <div class="qual-org">Kerry Ellis · Ramin Karimloo &amp; more</div>
-            <p>Has performed alongside Kerry Ellis, Scott Alan, Oliver Tompsett and Dan &amp; Laura Curtis, and features as a solo artist on a concept album alongside Ramin Karimloo, Lea Salonga and John Owen Jones.</p>
-          </div>
-        </div>
-      </div>
-      <div class="quals-dots" id="qualDots2"></div>
-    </div>
-  </div>
-</section>
-
 <section class="reviews-section section-pad" id="reviews">
   <div class="wrap">
     <div class="reviews-head-row">
       <div class="reviews-head reveal">
-        <div class="label-row"><span class="num">06</span><span class="eyebrow">Reviews</span></div>
+        <div class="label-row"><span class="num">05</span><span class="eyebrow">Reviews</span></div>
         <h2>Loved by couples and clients across the UK.</h2>
         <p>A selection of real reviews from weddings, parties and events - verified through Hitched.</p>
       </div>
@@ -2735,10 +2455,26 @@
     </div>
 
     <div class="reviews-trust reveal">
-      <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
-      <div class="reviews-trust-text">
-        <strong>Rated 5 Stars on Hitched</strong>
-        <span>Reviewed by real couples and clients for live performances</span>
+      <div class="reviews-trust-item">
+        <img src="https://www.hitched.co.uk/assets/img/badges/rated/badge-rated-5.png" alt="Hitched 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>Rated 5 Stars on Hitched</strong>
+          <span>5.0 Fantastic · <a href="https://www.hitched.co.uk/wedding-music-and-djs/kasia-howley_330149.htm?fbclid=IwY2xjawTRfHdleHRuA2FlbQIxMABicmlkETFpY1Jha0EwM3VNYjdmc0Jwc3J0YwZhcHBfaWQPNTE0NzcxNTY5MjI4MDYxAAEe0LHncpADWsZS0_fXxqUj1tPBT7Ti-qSg5Uc-600LzHZrx4zPS9QyThExkYs_aem_vYGUIbCe49qj_yl9-nb2lA#reviews" target="_blank" rel="noopener" style="color:var(--sage-deep);text-decoration:underline;text-underline-offset:2px;">6 reviews on Hitched</a></span>
+        </div>
+      </div>
+      <div class="reviews-trust-item">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Screenshot%202026-07-25%20124338.png" alt="Last Minute Musicians 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>5 Stars on Last Minute Musicians</strong>
+          <span>18 verified ratings from real clients</span>
+        </div>
+      </div>
+      <div class="reviews-trust-item">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/kasiahowley/refs/heads/main/Screenshot%202026-07-25%20124121.png" alt="Alive Network 5 star rated badge">
+        <div class="reviews-trust-text">
+          <strong>5 Stars on Alive Network</strong>
+          <span>5 star rated by every client this year</span>
+        </div>
       </div>
     </div>
   </div>
@@ -2750,7 +2486,7 @@
   </div>
   <div class="wrap contact-grid">
     <div class="reveal">
-      <div class="label-row"><span class="num">07</span><span class="eyebrow">Get in touch</span></div>
+      <div class="label-row"><span class="num">06</span><span class="eyebrow">Get in touch</span></div>
       <h2>Let's talk.</h2>
       <p class="lead">Whether you're booking live piano vocals for a wedding or event, or starting vocal coaching - get in touch and let's talk through what you need.</p>
       <div class="contact-details-panel">
@@ -2790,28 +2526,6 @@
 
 <footer class="site-footer">
   <div class="footer-wrap">
-    <div class="newsletter-bar reveal">
-      <div class="newsletter-text">
-        <h4>Join the mailing list</h4>
-        <p>Occasional updates on availability, new repertoire and coaching openings - no spam.</p>
-      </div>
-      <form class="newsletter-form" id="newsletterForm">
-        <div class="newsletter-input-row">
-          <input type="email" id="newsletterEmail" placeholder="Your email address" required>
-          <button type="submit">Subscribe</button>
-        </div>
-        <div class="newsletter-interests">
-          <span class="newsletter-interests-label">I'm interested in:</span>
-          <label><input type="checkbox" name="interest" value="bookings"><span>Live Music Bookings</span></label>
-          <label><input type="checkbox" name="interest" value="coaching"><span>Vocal Coaching</span></label>
-        </div>
-      </form>
-      <div class="newsletter-success">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        You're on the list - thank you!
-      </div>
-    </div>
-
     <div class="footer-top">
       <div class="footer-col footer-brand">
         <div class="footer-logo">KASIA HOWLEY<span>MUSIC</span></div>
@@ -2827,7 +2541,6 @@
         <a href="vocal-coaching.html">Vocal Coaching</a>
         <a href="#bookings">Live Music Bookings</a>
         <a href="#about">About</a>
-        <a href="#qualifications">Qualifications &amp; Experience</a>
         <a href="#reviews">Reviews</a>
       </div>
       <div class="footer-col">
@@ -3007,28 +2720,47 @@
     }, { passive: false });
   }
 
-  // Venues marquee strip - populated from list, duplicated for seamless loop
-  const venuesList = [
-    'Bagden Hall, Denby Dale', 'Broadoaks, Lake District', 'Casa, Brighouse',
-    'Chevin Country Park Hotel & Spa, Otley', 'Cockley Woodland Weddings',
-    'Cooling Castle Barn, Rochester', 'Crazy Coqs, London', 'Crewe Hall, Cheshire',
-    'Crow Wood Hotel & Spa, Burnley', 'Eaves Hall, Clitheroe',
-    'Hazel Gap Barn, Nottinghamshire', 'Headingley Stadium, Leeds',
-    'Hippodrome Casino, London', 'Holmfirth Vineyard, Holmfirth',
-    'Holdsworth House, Halifax', 'Hornington Manor, Tadcaster',
-    'Indigo at the O2, London', 'Grangefields, Derby', 'Manor House, Lindley',
-    'Middleton Lodge Estate, Richmond', 'Middletons Hotel, York',
-    'Southwood, Halifax', 'Stretton Manor Barn, Chesterfield',
-    "St Paul's, Covent Garden", 'The Arches, Halifax', 'The Marriott, Leeds',
-    'The Priests House, Skipton', 'The Stables, Milton Keynes',
-    'Thicket Priory, York', 'Thirsk Lodge Barns, Thirsk', 'Tithe Barn, Poppleton',
-    'Thorpe Park Hotel & Spa, Leeds', 'Wentbridge House, Wentbridge',
-    'Woodsome Hall, Almondbury', 'Wortley Hall, Sheffield', '315, Lepton'
-  ];
-  const venuesTrack = document.getElementById('venuesTrack');
-  if (venuesTrack) {
-    const buildSet = () => venuesList.map(v => `<span>${v}</span><span class="sep">·</span>`).join('');
-    venuesTrack.innerHTML = buildSet() + buildSet();
+  // Venues card: search + expand/collapse
+  const venuesToggle = document.getElementById('venuesToggle');
+  const venuesToggleLabel = venuesToggle ? venuesToggle.querySelector('.toggle-label') : null;
+  const venuesExtra = document.getElementById('venuesExtra');
+  const venuesPreview = document.getElementById('venuesPreview');
+  const venuesSearch = document.getElementById('venuesSearch');
+  const venuesEmpty = document.getElementById('venuesEmpty');
+
+  if (venuesToggle && venuesExtra && venuesToggleLabel) {
+    venuesToggle.addEventListener('click', () => {
+      const isOpen = venuesExtra.classList.toggle('is-open');
+      venuesToggle.classList.toggle('is-open', isOpen);
+      venuesToggleLabel.textContent = isOpen ? 'Show fewer venues' : 'View all venues';
+    });
+  }
+
+  if (venuesSearch && venuesPreview && venuesExtra) {
+    const allVenues = [
+      ...venuesPreview.querySelectorAll('span'),
+      ...venuesExtra.querySelectorAll('span')
+    ];
+    venuesSearch.addEventListener('input', () => {
+      const q = venuesSearch.value.trim().toLowerCase();
+      let visible = 0;
+      if (q === '') {
+        allVenues.forEach(s => s.classList.remove('hidden-match'));
+        venuesExtra.classList.remove('is-open');
+        venuesToggle.classList.remove('is-hidden', 'is-open');
+        venuesToggleLabel.textContent = 'View all venues';
+        venuesEmpty.classList.remove('is-visible');
+        return;
+      }
+      allVenues.forEach(s => {
+        const match = s.textContent.toLowerCase().includes(q);
+        s.classList.toggle('hidden-match', !match);
+        if (match) visible++;
+      });
+      venuesExtra.classList.add('is-open');
+      venuesToggle.classList.add('is-hidden');
+      venuesEmpty.classList.toggle('is-visible', visible === 0);
+    });
   }
 
   // Repertoire: show full list on demand + live search filter
@@ -3137,15 +2869,6 @@
   });
 
   startHeroAutoplay();
-
-  // Newsletter signup: simple front-end success state
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      newsletterForm.closest('.newsletter-bar').classList.add('is-subscribed');
-    });
-  }
 
   // Contact form: reveal date/venue fields only for live music bookings
   const serviceSelect = document.getElementById('serviceType');
