@@ -20,7 +20,7 @@
 
   *{margin:0;padding:0;box-sizing:border-box;}
 
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
 
   body{
     font-family:'Work Sans',sans-serif;
@@ -29,6 +29,7 @@
     font-weight:400;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    overflow-y:clip;
   }
 
   h1,h2,h3{
@@ -964,7 +965,8 @@
     margin-bottom:18px;
     max-width:520px;
   }
-  .coach .cta-row{
+  .coach .cta-row,
+  .text-block .cta-row{
     display:flex;
     gap:16px;
     margin-top:30px;
@@ -1040,7 +1042,7 @@
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     gap:24px;
-    margin:56px 0 8px;
+    margin:56px 0 80px;
   }
   .booking-feature{
     padding:30px 28px 26px;
@@ -2085,8 +2087,8 @@
 
       <p class="price-note">Every booking is bespoke - get in touch for a personalised quote and package tailored to your event.</p>
       <div class="cta-row">
-        <a href="#contact" class="btn solid">Check availability</a>
-        <a href="#contact" class="btn outline">Enquire now</a>
+        <a href="piano-vocalist.html" class="btn solid">Learn more</a>
+        <a href="piano-vocalist.html#contact" class="btn outline">Check availability</a>
       </div>
     </div>
     <div class="bookings-photo reveal">
@@ -2120,151 +2122,6 @@
       </div>
     </div>
   </div>
-
-  <div class="wrap">
-    <div class="repertoire-card reveal">
-      <div class="repertoire-card-head">
-        <div class="repertoire-card-text">
-          <span class="eyebrow">Sample Repertoire</span>
-          <h3>A few favourites from her songbook.</h3>
-          <p>From Adele to Etta James, Ed Sheeran to Carole King - repertoire is tailored to you, and song requests are always welcome.</p>
-        </div>
-        <div class="repertoire-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="repertoireSearch" placeholder="Search songs or artists…" autocomplete="off">
-        </div>
-      </div>
-
-      <div class="repertoire-grid" id="repertoirePreview">
-        <span>Make You Feel My Love - Adele</span>
-        <span>Perfect - Ed Sheeran</span>
-        <span>At Last - Etta James</span>
-        <span>Fields of Gold - Eva Cassidy</span>
-        <span>(You Make Me Feel Like a) Natural Woman - Carole King</span>
-        <span>Can't Help Falling in Love - Elvis</span>
-        <span>Your Song - Elton John</span>
-        <span>Thinking Out Loud - Ed Sheeran</span>
-        <span>Somewhere Only We Know - Keane</span>
-        <span>All of Me - John Legend</span>
-        <span>Sky Full of Stars - Coldplay</span>
-        <span>This Is Me - The Greatest Showman</span>
-      </div>
-      <div class="repertoire-grid repertoire-extra" id="repertoireExtra">
-        <span>All I Ask - Adele</span>
-        <span>Easy On Me - Adele</span>
-        <span>Say a Little Prayer - Aretha Franklin</span>
-        <span>Always a Woman - Billy Joel</span>
-        <span>Vienna - Billy Joel</span>
-        <span>Right on Time - Brandi Carlile</span>
-        <span>Just the Way You Are - Bruno Mars</span>
-        <span>I Can't Make You Love Me - Bonnie Raitt</span>
-        <span>You Are the Reason - Callum Scott</span>
-        <span>Close to You - The Carpenters</span>
-        <span>Because You Loved Me - Celine Dion</span>
-        <span>You've Got a Friend - Carole King</span>
-        <span>A Thousand Years - Christina Perri</span>
-        <span>Fix You - Coldplay</span>
-        <span>Yellow - Coldplay</span>
-        <span>Castle on the Hill - Ed Sheeran</span>
-        <span>Tenerife Sea - Ed Sheeran</span>
-        <span>Goodbye Yellow Brick Road - Elton John</span>
-        <span>Love Me Tender - Elvis</span>
-        <span>Songbird - Eva Cassidy</span>
-        <span>There You'll Be - Faith Hill</span>
-        <span>Lost Without You - Freya Ridings</span>
-        <span>Shotgun - George Ezra</span>
-        <span>Hold Back the River - James Bay</span>
-        <span>Big Yellow Taxi - Joni Mitchell</span>
-        <span>All I Want - Kodaline</span>
-        <span>Always Remember Us This Way - Lady Gaga</span>
-        <span>Shallow - Lady Gaga</span>
-        <span>Crazy Love - Michael Bublé</span>
-        <span>Don't Know Why - Norah Jones</span>
-        <span>Come Away With Me - Norah Jones</span>
-        <span>Somebody to Love - Queen</span>
-        <span>Lay Me Down - Sam Smith</span>
-        <span>Run - Snow Patrol</span>
-        <span>Marry Me - Train</span>
-        <span>A Million Dreams - The Greatest Showman</span>
-      </div>
-      <p class="repertoire-empty" id="repertoireEmpty">No songs match your search - but custom requests are always welcome.</p>
-      <button class="repertoire-toggle" id="repertoireToggle" type="button">
-        <span class="toggle-label">View full repertoire (100+ songs)</span>
-        <span class="toggle-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<section class="bookings section-pad" id="venues" style="padding-top:0;">
-  <div class="wrap">
-    <div class="repertoire-card reveal" style="margin-top:0;">
-      <div class="repertoire-card-head venues-card-head">
-        <div class="repertoire-card-text venues-card-text">
-          <span class="eyebrow">As Performed At</span>
-          <h3>Venues across the UK.</h3>
-          <p>From intimate barns to iconic London stages - search below or browse the full list.</p>
-        </div>
-        <div class="repertoire-search venues-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="venuesSearch" placeholder="Search venues…" autocomplete="off">
-        </div>
-      </div>
-      <div class="repertoire-grid" id="venuesPreview">
-        <span>Bagden Hall, Denby Dale</span>
-        <span>Broadoaks, Lake District</span>
-        <span>Casa, Brighouse</span>
-        <span>Chevin Country Park Hotel &amp; Spa, Otley</span>
-        <span>Cockley Woodland Weddings</span>
-        <span>Cooling Castle Barn, Rochester</span>
-        <span>Crazy Coqs, London</span>
-        <span>Crewe Hall, Cheshire</span>
-        <span>Crow Wood Hotel &amp; Spa, Burnley</span>
-        <span>Eaves Hall, Clitheroe</span>
-        <span>Grangefields, Derby</span>
-        <span>Hazel Gap Barn, Nottinghamshire</span>
-      </div>
-      <div class="repertoire-grid repertoire-extra" id="venuesExtra">
-        <span>Headingley Stadium, Leeds</span>
-        <span>Hippodrome Casino, London</span>
-        <span>Holdsworth House, Halifax</span>
-        <span>Holmfirth Vineyard, Holmfirth</span>
-        <span>Hornington Manor, Tadcaster</span>
-        <span>Indigo at the O2, London</span>
-        <span>Manor House, Lindley</span>
-        <span>Middleton Lodge Estate, Richmond</span>
-        <span>Middletons Hotel, York</span>
-        <span>Royal Albert Hall, London</span>
-        <span>Southbank Centre, London</span>
-        <span>Southwood, Halifax</span>
-        <span>St Paul's, Covent Garden</span>
-        <span>Stretton Manor Barn, Chesterfield</span>
-        <span>The Arches, Halifax</span>
-        <span>The Marriott, Leeds</span>
-        <span>The Priests House, Skipton</span>
-        <span>The Stables, Milton Keynes</span>
-        <span>Thicket Priory, York</span>
-        <span>Thirsk Lodge Barns, Thirsk</span>
-        <span>Thorpe Park Hotel &amp; Spa, Leeds</span>
-        <span>Tithe Barn, Poppleton</span>
-        <span>Trafalgar Square, London</span>
-        <span>Wentbridge House, Wentbridge</span>
-        <span>Woodsome Hall, Almondbury</span>
-        <span>Wortley Hall, Sheffield</span>
-        <span>315, Lepton</span>
-      </div>
-      <p class="repertoire-empty" id="venuesEmpty">No venues match your search.</p>
-      <button class="repertoire-toggle" id="venuesToggle" type="button">
-        <span class="toggle-label">View all venues</span>
-        <span class="toggle-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </span>
-      </button>
-    </div>
-  </div>
-</section>
 
 <section class="performances-section section-pad" id="performances">
   <div class="wrap">
@@ -2718,95 +2575,6 @@
         window.scrollBy(0, e.deltaY);
       }
     }, { passive: false });
-  }
-
-  // Venues card: search + expand/collapse
-  const venuesToggle = document.getElementById('venuesToggle');
-  const venuesToggleLabel = venuesToggle ? venuesToggle.querySelector('.toggle-label') : null;
-  const venuesExtra = document.getElementById('venuesExtra');
-  const venuesPreview = document.getElementById('venuesPreview');
-  const venuesSearch = document.getElementById('venuesSearch');
-  const venuesEmpty = document.getElementById('venuesEmpty');
-
-  if (venuesToggle && venuesExtra && venuesToggleLabel) {
-    venuesToggle.addEventListener('click', () => {
-      const isOpen = venuesExtra.classList.toggle('is-open');
-      venuesToggle.classList.toggle('is-open', isOpen);
-      venuesToggleLabel.textContent = isOpen ? 'Show fewer venues' : 'View all venues';
-    });
-  }
-
-  if (venuesSearch && venuesPreview && venuesExtra) {
-    const allVenues = [
-      ...venuesPreview.querySelectorAll('span'),
-      ...venuesExtra.querySelectorAll('span')
-    ];
-    venuesSearch.addEventListener('input', () => {
-      const q = venuesSearch.value.trim().toLowerCase();
-      let visible = 0;
-      if (q === '') {
-        allVenues.forEach(s => s.classList.remove('hidden-match'));
-        venuesExtra.classList.remove('is-open');
-        venuesToggle.classList.remove('is-hidden', 'is-open');
-        venuesToggleLabel.textContent = 'View all venues';
-        venuesEmpty.classList.remove('is-visible');
-        return;
-      }
-      allVenues.forEach(s => {
-        const match = s.textContent.toLowerCase().includes(q);
-        s.classList.toggle('hidden-match', !match);
-        if (match) visible++;
-      });
-      venuesExtra.classList.add('is-open');
-      venuesToggle.classList.add('is-hidden');
-      venuesEmpty.classList.toggle('is-visible', visible === 0);
-    });
-  }
-
-  // Repertoire: show full list on demand + live search filter
-  const repertoireToggle = document.getElementById('repertoireToggle');
-  const repertoireToggleLabel = repertoireToggle ? repertoireToggle.querySelector('.toggle-label') : null;
-  const repertoireExtra = document.getElementById('repertoireExtra');
-  const repertoirePreview = document.getElementById('repertoirePreview');
-  const repertoireSearch = document.getElementById('repertoireSearch');
-  const repertoireEmpty = document.getElementById('repertoireEmpty');
-
-  if (repertoireToggle && repertoireExtra && repertoireToggleLabel) {
-    repertoireToggle.addEventListener('click', () => {
-      const isOpen = repertoireExtra.classList.toggle('is-open');
-      repertoireToggle.classList.toggle('is-open', isOpen);
-      repertoireToggleLabel.textContent = isOpen ? 'Show fewer songs' : 'View full repertoire (100+ songs)';
-    });
-  }
-
-  if (repertoireSearch && repertoirePreview && repertoireExtra) {
-    const allSongs = [
-      ...repertoirePreview.querySelectorAll('span'),
-      ...repertoireExtra.querySelectorAll('span')
-    ];
-    repertoireSearch.addEventListener('input', () => {
-      const q = repertoireSearch.value.trim().toLowerCase();
-      let visibleCount = 0;
-
-      if (q === '') {
-        allSongs.forEach(s => s.classList.remove('hidden-match'));
-        repertoireExtra.classList.remove('is-open');
-        repertoireToggle.classList.remove('is-hidden', 'is-open');
-        repertoireToggleLabel.textContent = 'View full repertoire (100+ songs)';
-        repertoireEmpty.classList.remove('is-visible');
-        return;
-      }
-
-      allSongs.forEach((s) => {
-        const match = s.textContent.toLowerCase().includes(q);
-        s.classList.toggle('hidden-match', !match);
-        if (match) visibleCount++;
-      });
-
-      repertoireExtra.classList.add('is-open');
-      repertoireToggle.classList.add('is-hidden');
-      repertoireEmpty.classList.toggle('is-visible', visibleCount === 0);
-    });
   }
 
   // Hero background image carousel
